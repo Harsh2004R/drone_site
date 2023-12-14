@@ -14,8 +14,8 @@ export const SlideData = [
     text1: "1 CMOS Pocket Gibal Camera",
     text2: "OSMO POCKET 3",
     text3: "For Moving Moments",
-    link1:"",
-    link2:"",
+    link1:"1",
+    link2:"2",
   },
   {
     image:
@@ -23,8 +23,8 @@ export const SlideData = [
     text1: "Get 1% of your order back in DJI Credit",
     text2: "DJI INSPIRE 3",
     text3: "Master the Unseen",
-    link1:"",
-    link2:"",
+    link1:"1",
+    link2:"2",
   },
   {
     image:
@@ -32,8 +32,8 @@ export const SlideData = [
     text1: "Enterprise Small Commercial Drones",
     text2: "MAVIC 3",
     text3: "Your Everyday Commercial Drones",
-    link1:"",
-    link2:"",
+    link1:"1",
+    link2:"2",
   },
   {
     image:
@@ -41,8 +41,8 @@ export const SlideData = [
     text1: "Mission Planning",
     text2: "DJI MAVIC 3M",
     text3: "See More, Work Smarter",
-    link1:"",
-    link2:"",
+    link1:"1",
+    link2:"2",
   },
   {
     image:
@@ -50,15 +50,15 @@ export const SlideData = [
     text1: "Agricultural Flagships",
     text2: "AGRAS T40",
     text3: "One For All",
-    link1:"",
-    link2:"",
+    link1:"1",
+    link2:"2",
   }, {
     image:
       "https://dji-official-fe.djicdn.com/cms/uploads/6f10c62aeb91090cf4cc4577ccef7feb@1x.jpg",
     text1: "DJI Holiday Wonderlands Savings",
     text2: "UP TO 30% OFF",
     text3: "Discover exclusive gifts and discounts at the DJI store",
-    link1:"",
-    link2:"",
+    link1:"1",
+    link2:"2",
   }
 ];

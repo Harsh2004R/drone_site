@@ -3,6 +3,7 @@
 
 import { useBreakpointValue, Image, Text, Box } from "@chakra-ui/react";
 import { Carousel } from "react-responsive-carousel";
+import { FiShoppingCart,FiArrowRight } from 'react-icons/fi';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const ImageSlider = ({ slides }) => {
@@ -13,16 +14,16 @@ const ImageSlider = ({ slides }) => {
   };
   const textStyle1 = {
     position: "absolute",
-    top: useBreakpointValue({ base: "10vh", md: "10vh", lg: "10vh" }),
+    top: useBreakpointValue({ base: "10%", md: "10vh", lg: "10vh" }),
     left: "50%",
     transform: "translateX(-50%)",
     color: "#ededed",
-    fontSize: useBreakpointValue({ base: "12px", md: "16px", lg: "16px" }),
+    fontSize: useBreakpointValue({ base: "13px", md: "16px", lg: "16px" }),
     width: "100%"
   };
   const textStyle2 = {
     position: "absolute",
-    top: useBreakpointValue({ base: "14vh", md: "12.5vh", lg: "12.5vh" }),
+    top: useBreakpointValue({ base: "12.5%", md: "12.5vh", lg: "12.5vh" }),
     left: "50%",
     transform: "translateX(-50%)",
     color: "white",
@@ -32,7 +33,7 @@ const ImageSlider = ({ slides }) => {
   };
   const textStyle3 = {
     position: "absolute",
-    top: useBreakpointValue({ base: "21vh", md: "21vh", lg: "21vh" }),
+    top: useBreakpointValue({ base: "20%", md: "21vh", lg: "21vh" }),
     left: "50%",
     transform: "translateX(-50%)",
     color: "white",
@@ -40,13 +41,46 @@ const ImageSlider = ({ slides }) => {
     width: "100%"
   };
   const linkBox1 = {
-
+    width: useBreakpointValue({ base: "100px", md: "90px", lg: "130px" }),
+    height: useBreakpointValue({ base: "35px", md: "90px", lg: "35px" }),
+    position: "absolute",
+    top: useBreakpointValue({ base: "25%", md: "30%", lg: "30%" }),
+    left: useBreakpointValue({ base: "35%", md: "44%", lg: "44%" }),
+    transform: "translateX(-50%)",
+    color: "#ededed",
+    border:"1px solid #fff",
+    borderBottomRightRadius:"15px",
+    borderTopRightRadius:"15px",
+    borderBottomLeftRadius:"15px",
+    borderTopLeftRadius:"15px",
+    paddingLeft:"10px",
+    paddingRight:"10px",
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    fontSize:useBreakpointValue({ base: "12px", md: "", lg: "" }),
 
 
   }
   const linkBox2 = {
-
-
+    width: useBreakpointValue({ base: "80px", md: "90px", lg: "130px" }),
+    height: useBreakpointValue({ base: "35px", md: "90px", lg: "35px" }),
+    position: "absolute",
+    top: useBreakpointValue({ base: "25%", md: "30%", lg: "30%" }),
+    left: "50%",
+    transform: "translateX(+5%)",
+    color: "#ededed",
+    border:"1px solid #fff",
+    borderBottomRightRadius:"15px",
+    borderTopRightRadius:"15px",
+    borderBottomLeftRadius:"15px",
+    borderTopLeftRadius:"15px",
+    paddingLeft:"10px",
+    paddingRight:"10px",
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    fontSize:useBreakpointValue({ base: "12px", md: "", lg: "" }),
 
   }
 
@@ -72,12 +106,12 @@ const ImageSlider = ({ slides }) => {
           )}
           {slide.link1 && (
             <Box style={linkBox1} textAlign="center">
-              {slide.text3}
+               Learn more <FiArrowRight />
             </Box>
           )}
           {slide.link2 && (
             <Box style={linkBox2} textAlign="center">
-              {slide.text3}
+             Buy now <FiShoppingCart />
             </Box>
           )}
 
