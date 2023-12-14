@@ -8,11 +8,13 @@ const Navbar = () => {
 
   return (
     <Flex
-    //  border={"1px solid cyan"}
-     w={{ base: "100%", md: "90%" }} m={{base:"0%",md:"auot"}} h={{ base: "70px", md: "70px" }} bgColor="white" >
-      <Box 
-      // border={"1px solid cyan"}
-      w={{ base: "100%", md: "0px" }} h="auto"  display={"flex"} alignContent={"center"} alignItems={"center"} justifyContent={"space-between"} flexDirection={{ base: "row" }}>
+      //  border={"1px solid cyan"}
+    
+    
+      w={{ base: "100%", md: "90%" }} m={{ base: "0%", md: "auot" }} h={{ base: "70px", md: "70px" }} bgColor="white" >
+      <Box
+        // border={"1px solid cyan"}
+        w={{ base: "100%", md: "0px" }} h="auto" display={"flex"} alignContent={"center"} alignItems={"center"} justifyContent={"space-between"} flexDirection={{ base: "row" }}>
         <Button
           display={{ base: 'block', md: 'none' }}
           onClick={isOpen ? onClose : onOpen}
@@ -37,13 +39,13 @@ const Navbar = () => {
       <Box
         display={{ base: isOpen ? 'block' : 'none', md: 'block' }}
         w="80%" h={{ base: "100vh", md: "70px" }} bgColor="#fff"
-        // border={"1px solid red"} 
+      // border={"1px solid red"} 
       >
 
 
-        <Box 
-        // border={"1px solid red"} 
-         w={{ base: "100%", md: "70%" }} m="auto" display={"flex"} alignContent={"center"} alignItems={"center"} flexDirection={{ base: "column", md: "row" }} >
+        <Box
+          // border={"1px solid red"} 
+          w={{ base: "100%", md: "70%" }} m="auto" display={"flex"} alignContent={"center"} alignItems={"center"} flexDirection={{ base: "column", md: "row" }} >
           <Box w="55px" h={{ base: "55px", md: "55px" }} display={"flex"} alignContent={"center"} alignItems={"center"} >
             <Image w="100%" h="100%"
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pn
