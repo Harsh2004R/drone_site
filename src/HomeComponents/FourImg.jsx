@@ -1,97 +1,31 @@
-// import { Box, Grid, Image } from '@chakra-ui/react';
-// import React from 'react'
 
-// const ImageData = [
-//     {
-//         image1: "https://www1.djicdn.com/cms/uploads/dc9e619bc6ac2bc59d17d0bcaff58b3f.webp",
-//         text_svg1: "www1.djicdn.com/cms/uploads/79944970c7d71630e6a98f34d1764670.svg",
-//     },
-//     {
-//         image2: "https://www1.djicdn.com/cms/uploads/09994a9e1f41431e686c06556900bbb2.webp",
-//         text_svg2: "https://www1.djicdn.com/cms/uploads/1bd5cd9f763f790d6abbe8193b5c95c8.svg",
-//     },
-//     {
-//         image3: "https://www1.djicdn.com/cms/uploads/cbf96b4e76c9d541c79ca9e40797cd1f.webp",
-//         text_svg3: "https://www1.djicdn.com/cms/uploads/92bd5ecd6c16060de84770c1631efd37.svg",
-//     },
-//     {
-//         image4: "https://www1.djicdn.com/cms/uploads/47b9ef9ae26196db022314bf3eebb00d.webp",
-//         text_svg4: "",
-//     },
-
-// ];
-
-// function FourImg() {
-//     return (
-//         <>
-//             <Box w="100%" h="auto" border="1px solid red">
-//                 <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}>
-//                     <Box w={{ base: "100=%", md: "95%" }}
-//                         m={{ base: "0%", md: "auto", lg: "auto" }} mt={{ base: "2%", md: "0%" }}
-//                         mb={{ base: "1%", md: "0%" }} h={{ base: "65vh", md: "80vh" }}
-
-//                     >
-//                         <Image w="100%" h="100%" src={ImageData[0].image1} alt="Image data obj error" />
-
-
-//                     </Box>
-//                     <Box w={{ base: "100=%", md: "95%" }}
-//                         m={{ base: "0%", md: "auto", lg: "auto" }} mt={{ base: "2%", md: "0%" }}
-//                         mb={{ base: "1%", md: "0%" }} h={{ base: "65vh", md: "80vh" }}
-
-//                     >
-//                         <Image w="100%" h="100%" src={ImageData[1].image2} alt="Image data obj error" />
-
-
-//                     </Box>
-//                     <Box w={{ base: "100=%", md: "95%" }}
-//                         m={{ base: "0%", md: "auto", lg: "auto" }} mt={{ base: "2%", md: "0%" }}
-//                         mb={{ base: "1%", md: "0%" }} h={{ base: "65vh", md: "80vh" }}
-
-//                     >
-//                         <Image w="100%" h="100%" src={ImageData[2].image3} alt="Image data obj error" />
-
-
-//                     </Box>
-//                     <Box w={{ base: "100=%", md: "95%" }}
-//                         m={{ base: "0%", md: "auto", lg: "auto" }} mt={{ base: "2%", md: "0%" }}
-//                         mb={{ base: "1%", md: "0%" }} h={{ base: "65vh", md: "80vh" }}
-
-//                     >
-//                         <Image w="100%" h="100%" src={ImageData[3].image4} alt="Image data obj error" />
-
-
-//                     </Box>
-//                 </Grid>
-//             </Box>
-//         </>
-//     )
-// }
-
-// export default FourImg
-import { Box, Grid, Image } from '@chakra-ui/react';
+import { Box, Grid, Image, useBreakpointValue, Text } from '@chakra-ui/react';
 import React from 'react';
 
 const ImageData = [
     {
-        image1: "https://www1.djicdn.com/cms/uploads/dc9e619bc6ac2bc59d17d0bcaff58b3f.webp",
+        image: "https://www1.djicdn.com/cms/uploads/dc9e619bc6ac2bc59d17d0bcaff58b3f.webp",
         text_svg1: "www1.djicdn.com/cms/uploads/79944970c7d71630e6a98f34d1764670.svg",
         objectPosition: "50% 50%",
+
     },
     {
-        image2: "https://www1.djicdn.com/cms/uploads/09994a9e1f41431e686c06556900bbb2.webp",
-        text_svg2: "https://www1.djicdn.com/cms/uploads/1bd5cd9f763f790d6abbe8193b5c95c8.svg",
+        image: "https://www1.djicdn.com/cms/uploads/53c3f3c5718ddeaa6bebbcf2e0a4f444.webp",
+        text_svg2: "https://www1.djicdn.com/cms/uploads/282d6b77b8dc608b6b6f7a344e7b6a91.svg",
         objectPosition: "30% 50%",
+
     },
     {
-        image3: "https://www1.djicdn.com/cms/uploads/cbf96b4e76c9d541c79ca9e40797cd1f.webp",
+        image: "https://www1.djicdn.com/cms/uploads/09994a9e1f41431e686c06556900bbb2.webp",
         text_svg3: "https://www1.djicdn.com/cms/uploads/92bd5ecd6c16060de84770c1631efd37.svg",
         objectPosition: "20% 80%",
+
     },
     {
-        image4: "https://www1.djicdn.com/cms/uploads/47b9ef9ae26196db022314bf3eebb00d.webp",
+        image: "https://www1.djicdn.com/cms/uploads/47b9ef9ae26196db022314bf3eebb00d.webp",
         text_svg4: "",
         objectPosition: "10% 90%",
+
     },
 ];
 
@@ -99,17 +33,47 @@ const ImageData = [
 
 
 function FourImg() {
+
+    const textStyle1 = {
+        position: "absolute",
+        top: useBreakpointValue({ base: "10%", md: "10vh", lg: "10vh" }),
+        left: "50%",
+        transform: "translateX(-50%)",
+        color: "#ededed",
+        fontSize: useBreakpointValue({ base: "13px", md: "16px", lg: "16px" }),
+        width: "100%"
+    };
+    const textStyle2 = {
+        position: "absolute",
+        top: useBreakpointValue({ base: "12.5%", md: "12.5vh", lg: "12.5vh" }),
+        left: "50%",
+        transform: "translateX(-50%)",
+        color: "white",
+        fontSize: useBreakpointValue({ base: "30px", md: "45px", lg: "45px" }),
+        fontWeight: "400",
+        width: "100%"
+    };
+    const textStyle3 = {
+        position: "absolute",
+        top: useBreakpointValue({ base: "20%", md: "21vh", lg: "21vh" }),
+        left: "50%",
+        transform: "translateX(-50%)",
+        color: "white",
+        fontSize: useBreakpointValue({ base: "18px", md: "24px", lg: "24px" }),
+        width: "100%"
+    };
     return (
         <>
-            <Box w="100%" h="auto" >
+            <Box position="relative" w="100%" h="auto" >
                 <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}>
-                    {ImageData.map((item, index) => (
+                    {/* {ImageData.map((item, index) => (
+
                         <Box
                             key={index}
                             w={{ base: "100%", md: "98%" }}
                             m={{ base: "0%", md: "auto", lg: "auto" }}
-                            mt={{ base: "2%", md: "1%" ,lg:"1%"}}
-                            mb={{ base: "1%", md: "1%",lg:"1%" }}
+                            mt={{ base: "2%", md: "1%", lg: "1%" }}
+                            mb={{ base: "1%", md: "1%", lg: "1%" }}
                             h={{ base: "65vh", md: "80vh" }}
                             overflow="hidden"
                         >
@@ -121,8 +85,47 @@ function FourImg() {
                                 src={item[`image${index + 1}`]}
                                 alt={`Image ${index + 1}`}
                             />
+                            {item.text1 && (
+                                <Text style={textStyle1} textAlign="center">
+                                    {item.text1}
+                                </Text>
+                            )}
+                            {item.text2 && (
+                                <Text style={textStyle2} textAlign="center">
+                                    {item.text2}
+                                </Text>
+                            )}
+                            {item.text3 && (
+                                <Text style={textStyle3} textAlign="center">
+                                    {item.text3}
+                                </Text>
+                            )}
+
+                        </Box>
+                    ))} */}
+                    {ImageData.map((item, index) => (
+                        <Box
+                            key={index}
+                            w={{ base: "100%", md: "98%" }}
+                            m={{ base: "0%", md: "auto", lg: "auto" }}
+                            mt={{ base: "2%", md: "1%", lg: "1%" }}
+                            mb={{ base: "1%", md: "1%", lg: "1%" }}
+                            h={{ base: "65vh", md: "80vh" }}
+                            overflow="hidden"
+                        >
+                            <Image
+                                w="100%"
+                                h="100%"
+                                objectFit="cover"
+                                objectPosition={item.objectPosition}
+                                src={item.image}
+                                alt={`Image ${index + 1}`}
+                            />
+
                         </Box>
                     ))}
+
+
                 </Grid>
             </Box>
         </>

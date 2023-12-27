@@ -60,9 +60,16 @@ export const SlideData = [
     text3: "Discover exclusive gifts and discounts at the DJI store",
     link1: "1",
     link2: "2",
+  }, {
+    image:
+      "https://dji-official-fe.djicdn.com/cms/uploads/7bb8eb7615a19c1ed4824f6dc58cea13.jpg",
+    text1: "Intigrate 8K Cinema Camera",
+    text2: "DJI RONIN 4D-8D",
+    text3: " Imagin Excilence Redefined",
+    link1: "1",
+    link2: "2",
   }
 ];
-
 
 
 

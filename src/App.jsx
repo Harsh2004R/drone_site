@@ -4,6 +4,7 @@ import { ChakraProvider, CSSReset, extendTheme } from '@chakra-ui/react';
 import ImageSlider from './Sliders/HomeSlide';
 import { SlideData } from './Sliders/SlideData';
 import FourImg from './HomeComponents/FourImg';
+import VideoSlider from './HomeComponents/VideoSlider';
 function App() {
   const theme = extendTheme({
     styles: {
@@ -21,6 +22,7 @@ function App() {
         <Nav />
         <ImageSlider slides={SlideData} />
         <FourImg/>
+        <VideoSlider/>
 
       </ChakraProvider>
     </>
