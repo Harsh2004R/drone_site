@@ -86,11 +86,13 @@ export const SlideData = [
 function VideoSlider() {
     return (
         <div>
+            <Box w="100%" h={{ base: "25px", md: "50px" }}></Box>
             <Carousel infiniteLoop showThumbs={false}>
                 {SlideData.map((slide, index) => (
                     <Box key={index} position="relative">
                         <video
                             style={{ width: '100%', height: '100vh' }}
+                            loop
                             autoPlay={true} // Set to true if you want videos to autoplay
                             muted // Add this if you want videos to start muted
                         >
@@ -106,6 +108,16 @@ function VideoSlider() {
                             height="25vh"
                             border="1px solid red"
                         >
+                            <Text>
+
+                            </Text>
+                            <Text>
+
+                            </Text>
+                            <Text>
+
+                            </Text>
+
 
 
                         </Box>

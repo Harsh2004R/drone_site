@@ -5,6 +5,7 @@ import ImageSlider from './Sliders/HomeSlide';
 import { SlideData } from './Sliders/SlideData';
 import FourImg from './HomeComponents/FourImg';
 import VideoSlider from './HomeComponents/VideoSlider';
+import DJI_Products from './HomeComponents/DJI_Products';
 function App() {
   const theme = extendTheme({
     styles: {
@@ -23,6 +24,7 @@ function App() {
         <ImageSlider slides={SlideData} />
         <FourImg/>
         <VideoSlider/>
+        <DJI_Products/>
 
       </ChakraProvider>
     </>
