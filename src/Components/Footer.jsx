@@ -139,13 +139,38 @@ function Footer() {
                         <Box w="100%" h="7vh" border={"1px solid lime"} >
                             {/* <Divider /> */}
 
-                            <Grid  h="100%" templateColumns={{ base: "repeat(2, 1fr)", md: 'repeat(2, 1fr)' }} gap={1}>
+                            <Grid h="100%" templateColumns={{ base: "repeat(2, 1fr)", md: 'repeat(2, 1fr)' }} gap={1}>
 
                                 <Box w="100%" h="100%" >
 
                                     {/* <Box w="50px"  border={"1px solid lime"}>
                                         <Image w="100%"  src="https://www1.djicdn.com/dps/176201ad61d0753e17d860c4ca117932.svg" alt="" />
                                     </Box> */}
+                                    <Grid h="100%" templateColumns={{ base: "repeat(7, 1fr)", md: 'repeat(7, 1fr)' }} gap={1}>
+
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"left"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                            <Image w="55%" h="auto" src="https://www1.djicdn.com/dps/176201ad61d0753e17d860c4ca117932.svg" alt="" />
+                                        </Box>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                            <Text color={"#dadada"} fontSize={"11.4px"}>Who we are</Text>
+                                        </Box>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                            <Text color={"#dadada"} fontSize={"11.4px"}>Contact Us</Text>
+                                        </Box>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                            <Text color={"#dadada"} fontSize={"11.4px"}>Careers</Text>
+                                        </Box>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                            <Text color={"#dadada"} fontSize={"11.4px"}>Dealer Portal</Text>
+                                        </Box>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                            <Text color={"#dadada"} fontSize={"11.4px"}>RoboMaster</Text>
+                                        </Box>
+                                        <Box w="110%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                            <Text color={"#dadada"} fontSize={"11px"}>DJI Automotive</Text>
+                                        </Box>
+
+                                    </Grid>
 
                                 </Box>
                                 <Box w="100%" h="100%" bg="coral">
