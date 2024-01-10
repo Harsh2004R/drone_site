@@ -1,6 +1,6 @@
 import React from 'react'
 import { Carousel } from "react-responsive-carousel";
-import { Box, Image, Text } from "@chakra-ui/react"
+import { Box, useBreakpointValue, Text } from "@chakra-ui/react"
 
 
 export const SlideData = [
@@ -82,17 +82,23 @@ export const SlideData = [
 
 
 
-
 function VideoSlider() {
+    const videoStyles = {
+        width: '100%',
+        height: useBreakpointValue({ base: "80vh", md: "100vh", lg: "100vh" }),
+        objectFit: 'cover',
+    }
+
     return (
         <div>
-            <Box w="100%" h={{ base: "25px", md: "50px" }}></Box>
+            <Box w="100%" h={{ base: "25px", md: "50px" }} border="3px solid green"></Box>
             <Carousel infiniteLoop showThumbs={false}>
                 {SlideData.map((slide, index) => (
                     <Box key={index} position="relative">
                         <video
-                            style={{ width: '100%', height: '100vh' }}
+                            style={videoStyles}
                             loop
+
                             autoPlay={true} // Set to true if you want videos to autoplay
                             muted // Add this if you want videos to start muted
                         >
