@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Carousel } from "react-responsive-carousel";
 import { Box, useBreakpointValue, Text } from "@chakra-ui/react"
+import { FiShoppingCart, FiArrowRight } from 'react-icons/fi';
 
 
 export const SlideData = [
@@ -12,7 +13,8 @@ export const SlideData = [
         text3: "Inspiration in Focus",
         link1: "https://www.dji.com/mavic-3-pro?site=brandsite&from=homepage",
         link2: "https://store.dji.com/product/dji-mavic-3-pro?site=brandsite&from=homepage",
-    },
+    }
+    ,
     {
         video_url:
             "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/212%20download/F55_HG212_%E9%A6%96%E9%A1%B5Shot%20on%20Banner%E8%A7%86%E9%A2%91_CLEAN_-10s_V2_1200-720%20%EF%BC%88%E8%BE%93%E5%87%BA2X%EF%BC%89.mp4",
@@ -81,18 +83,72 @@ export const SlideData = [
 
 
 
-
 function VideoSlider() {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    const handleSlideChange = (index) => {
+        setCurrentSlide(index);
+    };
     const videoStyles = {
         width: '100%',
         height: useBreakpointValue({ base: "80vh", md: "100vh", lg: "100vh" }),
         objectFit: 'cover',
     }
 
+
+
+
+
+
+    const linkBox1 = {
+        width: useBreakpointValue({ base: "100px", md: "90px", lg: "130px" }),
+        height: useBreakpointValue({ base: "35px", md: "90px", lg: "35px" }),
+        position: "absolute",
+        top: useBreakpointValue({ base: "50%", md: "65%", lg: "70%" }),
+        left: useBreakpointValue({ base: "35%", md: "44%", lg: "44%" }),
+        transform: "translateX(-50%)",
+        color: "#ededed",
+        border: "1px solid #fff",
+        borderBottomRightRadius: "15px",
+        borderTopRightRadius: "15px",
+        borderBottomLeftRadius: "15px",
+        borderTopLeftRadius: "15px",
+        paddingLeft: "10px",
+        paddingRight: "10px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: useBreakpointValue({ base: "12px", md: "", lg: "" }),
+
+
+    }
+    const linkBox2 = {
+        width: useBreakpointValue({ base: "80px", md: "90px", lg: "130px" }),
+        height: useBreakpointValue({ base: "35px", md: "90px", lg: "35px" }),
+        position: "absolute",
+        top: useBreakpointValue({ base: "50%", md: "65%", lg: "70%" }),
+        left: "50%",
+        transform: "translateX(+5%)",
+        color: "#ededed",
+        border: "1px solid #fff",
+        borderBottomRightRadius: "15px",
+        borderTopRightRadius: "15px",
+        borderBottomLeftRadius: "15px",
+        borderTopLeftRadius: "15px",
+        paddingLeft: "10px",
+        paddingRight: "10px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: useBreakpointValue({ base: "12px", md: "", lg: "" }),
+
+    }
     return (
         <div>
-            <Box w="100%" h={{ base: "25px", md: "50px" }} border="3px solid green"></Box>
-            <Carousel infiniteLoop showThumbs={false}>
+            <Box w="100%" h={{ base: "25px", md: "50px" }}
+            // border="3px solid green"
+            ></Box>
+            <Carousel infiniteLoop showThumbs={false} onChange={handleSlideChange}>
                 {SlideData.map((slide, index) => (
                     <Box key={index} position="relative">
                         <video
@@ -108,21 +164,23 @@ function VideoSlider() {
 
 
                         <Box position="absolute"
-                            top={0}
+                            top={{ base: "15%", md: "10%" }}
                             left={0}
                             width="100%"
-                            height="25vh"
-                            border="1px solid red"
+                            height={{ base: "25vh", md: "30vh" }}
+                            cursor={"pointer"}
+                        // border="1px solid red"
                         >
-                            <Text>
+                            <Text fontSize={{ base: "18px", md: "30px" }} fontWeight={"500"} color="#fff">{SlideData[currentSlide].text1}</Text>
+                            <Text fontSize={{ base: "18px", md: "30px" }} fontWeight={"500"} color="#fff">{SlideData[currentSlide].text2}</Text>
+                            <Text fontSize={{ base: "18px", md: "30px" }} fontWeight={"500"} color="#fff">{SlideData[currentSlide].text3}</Text>
+                            <a href={SlideData[currentSlide].link1} style={linkBox1} target="_blank" rel="noopener noreferrer">
+                                Learn more <FiArrowRight />
+                            </a>
+                            <a href={SlideData[currentSlide].link2} style={linkBox2} target="_blank" rel="noopener noreferrer">
+                                Buy now <FiShoppingCart />
+                            </a>
 
-                            </Text>
-                            <Text>
-
-                            </Text>
-                            <Text>
-
-                            </Text>
 
 
 

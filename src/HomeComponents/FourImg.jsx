@@ -12,7 +12,7 @@ const ImageData = [
     {
         image: "https://www1.djicdn.com/cms/uploads/53c3f3c5718ddeaa6bebbcf2e0a4f444.webp",
         text_svg2: "https://www1.djicdn.com/cms/uploads/282d6b77b8dc608b6b6f7a344e7b6a91.svg",
-        objectPosition: "30% 50%",
+        objectPosition: "50% 50%",
 
     },
     {

@@ -31,7 +31,7 @@ function DJI_Products() {
 
                     <Grid templateColumns={{ base: "repeat(1, 1fr)", md: 'repeat(3, 1fr)' }} gap={4}>
                         <Box w='100%' h={{base:"500px" ,md:"500px"}} position="relative" cursor={"pointer"}
-                            overflow="hidden" border={"1px solid lime"}>
+                            overflow="hidden" >
 
                             <Box w='100%' h="100%"
                                 bgImage="url('https://www1.djicdn.com/cms/uploads/add9aa1ceef194bd5774249c6e88983b.webp')"
@@ -53,7 +53,7 @@ function DJI_Products() {
 
                             </Box></Box>
 
-                        <Box w='100%' h="100%" position="relative" cursor={"pointer"}
+                        <Box w='100%' h={{base:"500px" ,md:"500px"}} position="relative" cursor={"pointer"}
                             overflow="hidden">
                             <Box w='100%' h="500px"
                                 bgImage="url('https://www1.djicdn.com/cms/uploads/698fb861951da3f2fd736a6c867217b1.webp')"
@@ -71,7 +71,7 @@ function DJI_Products() {
 
 
                             </Box></Box>
-                        <Box w='100%' h="100%" position="relative" cursor={"pointer"}
+                        <Box w='100%' h={{base:"500px" ,md:"500px"}} position="relative" cursor={"pointer"}
                             overflow="hidden">
                             <Box w='100%' h="500px" bgImage="url('https://www1.djicdn.com/cms/uploads/3a800890a9e26382f74908783cd653b9.webp')"
                                 bgSize="cover" objectFit="cover"
