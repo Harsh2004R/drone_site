@@ -13,7 +13,7 @@ function DJI_Products() {
             </Box>
             <Box
                 // border={"1px solid red"}
-                w="100%" h="100vh">
+                w="100%" h="auto">
 
                 <Text textAlign={"center"} fontWeight={"500"} fontSize={{ base: "2xl", md: "41.5px" }}>Explore DJI Products in Different Fields</Text>
 
@@ -30,8 +30,8 @@ function DJI_Products() {
                 >
 
                     <Grid templateColumns={{ base: "repeat(1, 1fr)", md: 'repeat(3, 1fr)' }} gap={4}>
-                        <Box w='100%' h="500px" position="relative" cursor={"pointer"}
-                            overflow="hidden">
+                        <Box w='100%' h={{base:"500px" ,md:"500px"}} position="relative" cursor={"pointer"}
+                            overflow="hidden" border={"1px solid lime"}>
 
                             <Box w='100%' h="100%"
                                 bgImage="url('https://www1.djicdn.com/cms/uploads/add9aa1ceef194bd5774249c6e88983b.webp')"

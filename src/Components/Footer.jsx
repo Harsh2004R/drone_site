@@ -6,33 +6,33 @@ function Footer() {
     return (
         <>
             <Box w="100%" h="auto"
-            // border={"5px solid #000"}
+                
             >
                 {/* WHERE TO BUY SUPPORT AND FLY SAFE container starting from here*/}
-                <Box w="100%" h="45vh" bg="#f7f9fa">
-                    <Box m="auto" w="80%" h="100%" >
+                <Box w="100%" h={{ base: "20vh", md: "45vh" }} bg="#f7f9fa">
+                    <Box m="auto" w={{ base: "100%", md: "80%" }} h="100%"  >
 
-                        <Grid h="45vh" templateColumns={{ base: "repeat(1, 1fr)", md: 'repeat(3, 1fr)' }} gap={4}>
+                        <Grid h={{ base: "20vh", md: "45vh" }} templateColumns={{ base: "repeat(3, 1fr)", md: 'repeat(3, 1fr)' }} gap={{ base: "0", md: "4" }}>
 
-                            <Box m="auto" w="250px" h="25vh" >
+                            <Box m="auto" w={{ base: "100px", md: "250px" }} h={{ base: "120px", md: "25vh" }} >
                                 <Box display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} flexDirection={"column"}>
-                                    <Image src="https://www1.djicdn.com/cms/uploads/94964ecb1bc4c100c42c93a814bd4733.svg" w="78px" h={"78px"} alt="svg1" />
-                                    <Text marginTop={"10px"} fontWeight={"500"} fontSize={{ base: "xl", md: "2xl" }}>Where to Buy</Text>
-                                    <Text>Learn More </Text>
+                                    <Image src="https://www1.djicdn.com/cms/uploads/94964ecb1bc4c100c42c93a814bd4733.svg" w={{ base: "50px", md: "78px" }} h={{ base: "50px", md: "78px" }} alt="svg1" />
+                                    <Text marginTop={"10px"} fontWeight={"500"} fontSize={{ base: "15px", md: "2xl" }}>Where to Buy</Text>
+                                    <Text fontSize={{ base: "12px", md: "2xl" }}>Learn More </Text>
                                 </Box>
                             </Box>
-                            <Box m="auto" w="250px" h="25vh" >
+                            <Box m="auto" w={{ base: "100px", md: "250px" }} h={{ base: "120px", md: "25vh" }} >
                                 <Box display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} flexDirection={"column"}>
-                                    <Image src="https://www1.djicdn.com/cms/uploads/60ff58dae8a3fffc6a6e292ce587ca46.svg" w="78px" h={"78px"} alt="svg2" />
-                                    <Text marginTop={"10px"} fontWeight={"500"} fontSize={{ base: "xl", md: "2xl" }}>Support</Text>
-                                    <Text>Learn More </Text>
+                                    <Image src="https://www1.djicdn.com/cms/uploads/60ff58dae8a3fffc6a6e292ce587ca46.svg" w={{ base: "50px", md: "78px" }} h={{ base: "50px", md: "78px" }} alt="svg2" />
+                                    <Text marginTop={"10px"} fontWeight={"500"} fontSize={{ base: "15px", md: "2xl" }}>Support</Text>
+                                    <Text fontSize={{ base: "12px", md: "2xl" }}>Learn More </Text>
                                 </Box>
                             </Box>
-                            <Box m="auto" w="250px" h="25vh" >
+                            <Box m="auto" w={{ base: "100px", md: "250px" }} h={{ base: "120px", md: "25vh" }} >
                                 <Box display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} flexDirection={"column"}>
-                                    <Image src="https://www1.djicdn.com/cms/uploads/e5878a0a23f0c8b05878dac1e0293dfd.svg" m="auto" w="78px" h={"78px"} alt="svg3" />
-                                    <Text marginTop={"10px"} fontWeight={"500"} fontSize={{ base: "xl", md: "2xl" }}>Fly Safe</Text>
-                                    <Text >Learn More </Text>
+                                    <Image src="https://www1.djicdn.com/cms/uploads/e5878a0a23f0c8b05878dac1e0293dfd.svg" m="auto" w={{ base: "50px", md: "78px" }} h={{ base: "50px", md: "78px" }} alt="svg3" />
+                                    <Text marginTop={"10px"} fontWeight={"500"} fontSize={{ base: "15px", md: "2xl" }}>Fly Safe</Text>
+                                    <Text fontSize={{ base: "12px", md: "2xl" }} >Learn More </Text>
 
                                 </Box>
                             </Box>
@@ -45,7 +45,7 @@ function Footer() {
 
 
                 {/* Main Footer Container starting from here>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
-                <Box w="100%" h="90vh" bg="#272727">
+                <Box w="100%" h={{ base: "auto", md: "90vh" }} bg="#272727" >
 
 
 
@@ -134,47 +134,79 @@ function Footer() {
 
 
 
-                    <Grid h="30%" w="80%" m="auto" border={"1px solid teal"} templateColumns={{ base: "repeat(1, 1fr)", md: 'repeat(1, 1fr)' }} >
+                    <Grid borderBottom={"1px solid #999"} h={{ base: "auto", md: "20%" }} w={{base:"80%",md:"80%"}} m="auto" templateColumns={{ base: "repeat(1, 1fr)", md: 'repeat(1, 1fr)' }} >
 
-                        <Box w="100%" h="7vh" border={"1px solid lime"} >
+                        <Box w="100%" h={{ base: "auto", md: "7vh" }} >
                             {/* <Divider /> */}
 
-                            <Grid h="100%" templateColumns={{ base: "repeat(2, 1fr)", md: 'repeat(2, 1fr)' }} gap={1}>
+                            <Grid h="100%" templateColumns={{ base: "repeat(1, 1fr)", md: 'repeat(2, 1fr)' }} >
 
-                                <Box w="100%" h="100%" >
+                                <Box w={{ base: "100%", md: "100%" }} h="100%" >
 
                                     {/* <Box w="50px"  border={"1px solid lime"}>
                                         <Image w="100%"  src="https://www1.djicdn.com/dps/176201ad61d0753e17d860c4ca117932.svg" alt="" />
                                     </Box> */}
-                                    <Grid h="100%" templateColumns={{ base: "repeat(7, 1fr)", md: 'repeat(7, 1fr)' }} gap={1}>
+                                    <Grid h="100%" w={{ base: "30%", md: "100%" }} gap={{base:"2.5",md:"0"}} templateColumns={{ base: "repeat(1, 1fr)", md: 'repeat(7, 1fr)' }} >
 
-                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"left"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={{base:"left",md:"center"}} alignContent={"center"} alignItems={"center"} >
                                             <Image w="55%" h="auto" src="https://www1.djicdn.com/dps/176201ad61d0753e17d860c4ca117932.svg" alt="" />
                                         </Box>
-                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={{ base: "left", md: "center" }} alignContent={"center"} alignItems={"center"} >
                                             <Text color={"#dadada"} fontSize={"11.4px"}>Who we are</Text>
                                         </Box>
-                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={{ base: "left", md: "center" }} alignContent={"center"} alignItems={"center"} >
                                             <Text color={"#dadada"} fontSize={"11.4px"}>Contact Us</Text>
                                         </Box>
-                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={{ base: "left", md: "center" }} alignContent={"center"} alignItems={"center"} >
                                             <Text color={"#dadada"} fontSize={"11.4px"}>Careers</Text>
                                         </Box>
-                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={{ base: "left", md: "center" }} alignContent={"center"} alignItems={"center"} >
                                             <Text color={"#dadada"} fontSize={"11.4px"}>Dealer Portal</Text>
                                         </Box>
-                                        <Box w="100%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={{ base: "left", md: "center" }} alignContent={"center"} alignItems={"center"} >
                                             <Text color={"#dadada"} fontSize={"11.4px"}>RoboMaster</Text>
                                         </Box>
-                                        <Box w="110%" h="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} border={"1px solid red"}>
+                                        <Box w="100%" h="100%" display={"flex"} justifyContent={{ base: "left", md: "center" }} alignContent={"center"} alignItems={"center"} >
                                             <Text color={"#dadada"} fontSize={"11px"}>DJI Automotive</Text>
                                         </Box>
 
                                     </Grid>
 
                                 </Box>
-                                <Box w="100%" h="100%" bg="coral">
+                                <Box w={{ base: "30%", md: "100%" }} h="100%" >
+                                    <Grid h="100%" w={{ base: "100%", md: "100%" }} templateColumns={{ base: "repeat(2, 1fr)", md: 'repeat(8, 1fr)' }} >
 
+                                        <Box w="100%" h={{ base: "50px", md: "100%" }} display={"flex"} justifyContent={"left"} alignContent={"center"} alignItems={"center"} >
+
+                                        </Box>
+                                        <Box w="100%" h={{ base: "0px", md: "100%" }} display={"flex"} justifyContent={"left"} alignContent={"center"} alignItems={"center"}>
+
+                                        </Box>
+                                        <Box w="100%" h={{ base: "0px", md: "100%" }} display={"flex"} justifyContent={"left"} alignContent={"center"} alignItems={"center"} >
+
+                                        </Box>
+                                        <Box w="100%" h={{ base: "0px", md: "100%" }} display={"flex"} justifyContent={"left"} alignContent={"center"} alignItems={"center"} >
+
+                                        </Box>
+                                        <Box w="100%" h={{ base: "0px", md: "100%" }} display={"flex"} justifyContent={"left"} alignContent={"center"} alignItems={"center"} >
+
+                                        </Box>
+                                        <Box w="100%" h={{ base: "0px", md: "100%" }} display={"flex"} justifyContent={"left"} alignContent={"center"} alignItems={"center"} >
+
+                                        </Box>
+                                        <Box w="100%" h={{ base: "50px", md: "100%" }} display={"flex"} justifyContent={"space-evenly"} alignContent={"center"} m="auto" alignItems={"center"} >
+                                            <Image w={{base:"40%",md:"25%"}} src="https://www5.djicdn.com/uploads/footer_social/cover/1792/793cb64aaae69d1dd1b478336fd1b42e.png" alt="facebook" />
+                                            <Image w={{base:"40%",md:"25%"}} src="https://www1.djicdn.com/uploads/footer_social/cover/1793/f973c01f1a95ba549a2e54b60a0e90a1.png" alt="X" />
+                                        
+                                        </Box>
+                                        <Box w="100%" h={{ base: "50px", md: "100%" }} display={"flex"} justifyContent={"space-evenly"} alignContent={"center"} alignItems={"center"} >
+                                            <Image w={{base:"40%",md:"25%"}} src="https://www3.djicdn.com/uploads/footer_social/cover/1794/8f24c284378a0920e6df15c87c4b9b59.png" alt="youtube"/>
+                                            <Image w={{base:"40%",md:"25%"}} src="https://www1.djicdn.com/uploads/footer_social/cover/1798/51bab9bb7867de27a68b9ea14ae8f8b3.png" alt="insta" />
+                                        </Box>
+
+
+
+                                    </Grid>
                                 </Box>
 
                             </Grid>
