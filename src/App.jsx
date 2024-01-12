@@ -1,12 +1,7 @@
 import React from 'react'
-import Nav from './Components/Nav'
 import { ChakraProvider, CSSReset, extendTheme } from '@chakra-ui/react';
-import ImageSlider from './Sliders/HomeSlide';
-import { SlideData } from './Sliders/SlideData';
-import FourImg from './HomeComponents/FourImg';
-import VideoSlider from './HomeComponents/VideoSlider';
-import DJI_Products from './HomeComponents/DJI_Products';
-import Footer from './Components/Footer';
+import { BrowserRouter } from "react-router-dom";
+import Home from './Pages/Home';
 function App() {
   const theme = extendTheme({
     styles: {
@@ -19,16 +14,13 @@ function App() {
   });
   return (
     <>
-      <ChakraProvider theme={theme}>
-        <CSSReset />
-        <Nav />
-        <ImageSlider slides={SlideData} />
-        <FourImg/>
-        <VideoSlider/>
-        <DJI_Products/>
-        <Footer/>
+      <BrowserRouter>
+        <ChakraProvider theme={theme}>
+          <CSSReset />
+          <Home />
+        </ChakraProvider>
+      </BrowserRouter>
 
-      </ChakraProvider>
     </>
   )
 }
