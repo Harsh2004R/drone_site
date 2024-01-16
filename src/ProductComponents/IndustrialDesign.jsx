@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, Text, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, Text, useBreakpointValue, Image } from '@chakra-ui/react';
 import { Link as ScrollLink, Element } from 'react-scroll';
 import { motion } from 'framer-motion';
 
@@ -218,7 +218,23 @@ function IndustrialDesign() {
             {/* https://dji-official-fe.djicdn.com/reactor/assets/_next/static/videos/f6b4f76e-d2ee-4ad2-8128-c6748b327517.mp4 */}
 
 
-            <Box>
+            <Box w="100%" bg="#000" h="auto" >
+                <video
+                    style={videoStyles}
+                    loop
+
+                    autoPlay={true} // Set to true if you want videos to autoplay
+                    muted // Adding this video to start muted
+                >
+                    <source src={"https://dji-official-fe.djicdn.com/reactor/assets/_next/static/videos/f6b4f76e-d2ee-4ad2-8128-c6748b327517.mp4"} />
+                    Your browser does not support the video tag.
+                </video>
+
+                <Box  m="auto" w={{base:"95%",md:"55%",lg:"45%"}}>
+                    <Text textAlign={"center"} fontSize={{base:"16px",md:"22px"}} mt="30px" mb="50px" color="#dadade">From the exterior design to the internal structure of the aircraft, every detail of the Inspire 3 has been carefully thought out and optimized.</Text>
+                </Box>
+
+                <Image w={{base:"98%",md:"95%",lg:"95%"}} m="auto" height={{base:"40vh",md:"100vh",lg:"100vh"}} src="https://dji-official-fe.djicdn.com/dps/7b2ac164df5d05d3128fd1f6faca6798.jpg" alt="" />
 
 
             </Box>
