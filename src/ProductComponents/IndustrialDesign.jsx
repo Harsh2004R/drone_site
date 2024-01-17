@@ -257,5 +257,3 @@ export default IndustrialDesign;
 
 
 
-
-// adding a dummy comment
