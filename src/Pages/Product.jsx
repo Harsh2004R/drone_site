@@ -6,6 +6,7 @@ import IndustrialDesign from '../ProductComponents/IndustrialDesign'
 import Flight_system from '../ProductComponents/Flight_system'
 import Imaging_system from '../ProductComponents/Imaging_system'
 import Video_transmission from '../ProductComponents/Video_transmission'
+import Operational_system from '../ProductComponents/Operational_system'
 
 
 function Product() {
@@ -18,6 +19,7 @@ function Product() {
             <Flight_system/>
             <Imaging_system/>
             <Video_transmission/>
+            <Operational_system/>
 
         </>
     )

@@ -54,7 +54,7 @@ function Video_transmission() {
     };
     return (
         <>
-            <Box w="100%" h="500vh" bg="#fff" position="relative">
+            <Box w="100%" h="auto" bg="#fff" position="relative">
 
                 <Box w="100%" h={{ base: "50vh", md: "150vh" }} >
                     <Text style={textStyle1} textAlign="center">
