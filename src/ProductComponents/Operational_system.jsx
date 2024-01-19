@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Image, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, Text, useBreakpointValue,Button } from '@chakra-ui/react';
+import { Box, Image, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, Text, useBreakpointValue, Button } from '@chakra-ui/react';
 function Operational_system() {
 
     const videoStyles1 = {
@@ -242,7 +242,7 @@ function Operational_system() {
 
 
             <Box h={{ base: "5vh", md: "10vh" }} w="100%"></Box> {/* space box added */}
-            <Box w="100%" h={{ base: "auto", md: "auto" }}  bg="#fff">
+            <Box w="100%" h={{ base: "auto", md: "auto" }} bg="#fff">
                 <Text textAlign={"center"} color="#000" fontWeight={"500"} fontSize={{ base: "4xl", md: "5xl" }}>DJI Inspire 3
 
                 </Text>
@@ -250,19 +250,20 @@ function Operational_system() {
 
                 </Text>
 
-                <Box w={{base:"90%" ,md:"40%"}} m="auto" h={{base:"30vh",md:"50vh"}} >
+                <Box w={{ base: "90%", md: "40%" }} m="auto" h={{ base: "30vh", md: "50vh" }} >
                     <Image w="100%" h="100%" src="https://dji-official-fe.djicdn.com/cms/uploads/afa366210665c77663733585d1e95aee.png" alt="inspire3" />
                 </Box>
                 <Text textAlign={"center"} bgGradient="linear(to-l,rgb(255,154,10),rgb(255,97,4))" bgClip="text" fontWeight={"500"} fontSize={{ base: "md", md: "2xl" }}>From 1,769,900  yen
 
                 </Text>
                 <Box w="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"}>
-                <Button borderRadius={"0px"} bg="#212121" textAlign={"center"} textColor={"#fff"} fontWeight={"100"} fontSize={{ base: "xl", md: "xl" }}>Buy now
+                    <Button borderRadius={"0px"} bg="#212121" textAlign={"center"} textColor={"#fff"} fontWeight={"100"} fontSize={{ base: "xl", md: "xl" }}>Buy now
 
-</Button>
+                    </Button>
                 </Box>
-               
+
             </Box>
+            <Box h={{ base: "5vh", md: "10vh" }} w="100%"></Box> {/* space box added */}
 
         </>
     )
