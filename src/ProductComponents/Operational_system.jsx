@@ -21,7 +21,7 @@ function Operational_system() {
 
             {/* Operational_system container starting here---------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
             <Box w="100%" h="auto" bg="#000">
-                <Box w="100%" h={{ base: "40vh", md: "120vh" }} border={"1px solid red"} >
+                <Box w="100%" h={{ base: "40vh", md: "120vh" }} >
                     <Image w="100%" h="100%" src="https://dji-official-fe.djicdn.com/dps/119eaa3b589be9feac21b9612839a53c.jpg" alt="" />
                 </Box>
 
