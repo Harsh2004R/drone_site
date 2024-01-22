@@ -1,10 +1,13 @@
 import React from 'react'
 
+import { Box } from '@chakra-ui/react'
 function Login() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <Box></Box>
+
+      {/* adding a simple comment just to commit  */}
+    </>
   )
 }
 

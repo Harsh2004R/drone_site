@@ -20,6 +20,7 @@ function Product() {
             <Imaging_system/>
             <Video_transmission/>
             <Operational_system/>
+            
             <Footer/>
 
         </>
