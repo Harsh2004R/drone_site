@@ -66,43 +66,6 @@ function FourImg() {
         <>
             <Box position="relative" w="100%" h="auto" >
                 <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}>
-                    {/* {ImageData.map((item, index) => (
-
-                        <Box
-                            key={index}
-                            w={{ base: "100%", md: "98%" }}
-                            m={{ base: "0%", md: "auto", lg: "auto" }}
-                            mt={{ base: "2%", md: "1%", lg: "1%" }}
-                            mb={{ base: "1%", md: "1%", lg: "1%" }}
-                            h={{ base: "65vh", md: "80vh" }}
-                            overflow="hidden"
-                        >
-                            <Image
-                                w="100%"
-                                h="100%"
-                                objectFit="cover"
-                                objectPosition={item.objectPosition}
-                                src={item[`image${index + 1}`]}
-                                alt={`Image ${index + 1}`}
-                            />
-                            {item.text1 && (
-                                <Text style={textStyle1} textAlign="center">
-                                    {item.text1}
-                                </Text>
-                            )}
-                            {item.text2 && (
-                                <Text style={textStyle2} textAlign="center">
-                                    {item.text2}
-                                </Text>
-                            )}
-                            {item.text3 && (
-                                <Text style={textStyle3} textAlign="center">
-                                    {item.text3}
-                                </Text>
-                            )}
-
-                        </Box>
-                    ))} */}
                     {ImageData.map((item, index) => (
                         <Box
                             key={index}
