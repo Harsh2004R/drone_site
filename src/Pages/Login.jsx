@@ -22,7 +22,7 @@ function Login() {
       >
 
         <Box position={"absolute"}
-          w={{ base: "98%", md: "31%" }} h={{ base: "80vh", md: "95vh" }} bg="rgba(225,225,225,0.5)" top={{ base: "10%", md: "2.5%" }} left={{ base: "1%", md: "33.9%" }}
+          w={{ base: "98%", md: "31%" }} h={{ base: "80vh", md: "95vh" }} bg="rgba(225,225,225,0.6)" top={{ base: "10%", md: "2.5%" }} left={{ base: "1%", md: "33.9%" }}
         >
 
           <Box w="100%" h="100%" p={"30px"}>
@@ -36,18 +36,19 @@ function Login() {
             </Box>
             <Text mt="10px" color="#000" fontSize={{ base: "xl", md: "22px" }} fontWeight={"500"}>Log in to your DJI account</Text>
             <Text mt="10px" color="#111" fontSize={{ base: "12px", md: "12px" }} fontWeight={"400"}>Please enter your email address</Text>
-            <Input mt="10px" type='text' border={"0.5px solid #dadada"} />
+            <Input mt="10px"  textColor={"#fff"} type='text' border={"0.5px solid #dadada"} />
             <Text mt="30px" color="#111" fontSize={{ base: "12px", md: "12px" }} fontWeight={"400"}>password</Text>
             <InputGroup mt="10px">
               <Input
                 type={showPassword ? 'text' : 'password'}
                 border={"0.5px solid #dadada"}
+                textColor={"#fff"}
               />
               <InputRightElement>
                 <IconButton
                   variant="ghost"
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
-                  icon={showPassword ? <HiEyeOff /> : <HiEye />}
+                  icon={showPassword ? <HiEye/> : <HiEyeOff/>}
                   onClick={handleTogglePassword}
                 />
               </InputRightElement>
