@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from "../Components/Navbar.jsx";
 import Footer from '../Components/Footer'
-import { Text, Box, Divider, Select, Stack, background } from "@chakra-ui/react"
+import { Text, Box, Divider } from "@chakra-ui/react"
 import Retail_store from '../BuysComponents.jsx/Retail_store.jsx';
 import Online_store from '../BuysComponents.jsx/Online_store.jsx';
 function BuyPage() {
