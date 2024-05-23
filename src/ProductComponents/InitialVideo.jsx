@@ -41,7 +41,7 @@ function InitialVideo() {
 
     const TextStyle = {
         color: "#fff",
-        fontSize: "",
+        // fontSize: "",
         position: "absolute",
         textAlign: "center",
         top: "0",

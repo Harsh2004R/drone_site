@@ -11,11 +11,11 @@ function AllRoutes() {
         <>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="product" element={<Product />} />
-                <Route path="signup" element={<Signup />} />
-                <Route path="login" element={<Login />} />
-                <Route path="buy" element={<BuyPage />} />
-                <Route path="buy/camera_drones" element={<CameraDrone />} />
+                <Route path="/product" element={<Product />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/buy" element={<BuyPage />} />
+                <Route path="/buy/camera_drones" element={<CameraDrone />} />
 
                 {/* <Route path="pro" element={<ProductSpecsSection />} />
                 <Route path="pro" element={<ProductSpecsSection />} />

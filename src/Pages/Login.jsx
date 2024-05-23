@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Box, Image, Input, Text, IconButton, InputGroup, InputRightElement, Checkbox, Button } from "@chakra-ui/react";
 import { HiEye, HiEyeOff } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 
 function Login() {
@@ -36,7 +37,7 @@ function Login() {
             </Box>
             <Text mt="10px" color="#000" fontSize={{ base: "xl", md: "22px" }} fontWeight={"500"}>Log in to your DJI account</Text>
             <Text mt="10px" color="#111" fontSize={{ base: "12px", md: "12px" }} fontWeight={"400"}>Please enter your email address</Text>
-            <Input mt="10px"  textColor={"#fff"} type='text' border={"0.5px solid #dadada"} />
+            <Input mt="10px" textColor={"#fff"} type='text' border={"0.5px solid #dadada"} />
             <Text mt="30px" color="#111" fontSize={{ base: "12px", md: "12px" }} fontWeight={"400"}>password</Text>
             <InputGroup mt="10px">
               <Input
@@ -48,7 +49,7 @@ function Login() {
                 <IconButton
                   variant="ghost"
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
-                  icon={showPassword ? <HiEye/> : <HiEyeOff/>}
+                  icon={showPassword ? <HiEye /> : <HiEyeOff />}
                   onClick={handleTogglePassword}
                 />
               </InputRightElement>
@@ -57,7 +58,7 @@ function Login() {
             <Text color="#000" mt="20px" fontSize={{ base: "12px", md: "12px" }} >Check it to receive exclusive benefites, latest updates and offers from DJI.</Text><Checkbox mt="5px"></Checkbox>
 
             <Box mt="30px"><Button _hover={{ bg: '#000' }} w="100%" bg="#212121" h="40px"><Text fontWeight={"400"} color={"#fff"}>Login</Text></Button></Box>
-            <Text mt="40px" color={"#000"} align={"center"} fontSize={{ base: "12px", md: "12px" }}>Are you a new user? <span style={{color:"#fff",fontSize:"12px",fontWeight:"300"}}>Create a new account</span></Text>
+            <Link to="/signup"><Text mt="40px" color={"#000"} align={"center"} fontSize={{ base: "12px", md: "12px" }}>Are you a new user? <span style={{ color: "#fff", fontSize: "12px", fontWeight: "300" }}>Create a new account</span></Text></Link>
           </Box>
         </Box>
       </Box>

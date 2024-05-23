@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Image, Input, Text, IconButton, InputGroup, InputRightElement, Checkbox, Button } from "@chakra-ui/react";
 import { HiEye, HiEyeOff } from 'react-icons/hi';
-
+import { Link } from 'react-router-dom';
 
 
 function Signup() {
@@ -77,7 +77,7 @@ function Signup() {
             <Text mt="15px" w="100%" fontSize={{ base: "12px", md: "12px" }} >Get announcements, recommendations and updates about DJI products, services , software, updates and more.</Text><Checkbox></Checkbox>
 
             <Box mt="30px"><Button onSubmit={handleSubmit} _hover={{ bg: '#000' }} w="100%" bg="#212121" h="40px"><Text fontWeight={"400"} color={"#fff"}>Submit</Text></Button></Box>
-            <Text mt="40px" color={"#000"} align={"center"} fontSize={{ base: "12px", md: "12px" }}>Need help with registration? <span style={{ color: "#fff", fontSize: "12px", fontWeight: "300" }}>FAQ Dji Support</span></Text>
+            <Text mt="40px" color={"#000"} align={"center"} fontSize={{ base: "12px", md: "12px" }}>Need help with registration? <Link to="/login"> <span style={{ color: "#fff", fontSize: "12px", fontWeight: "300" }}>Login</span></Link></Text>
           </Box>
 
 

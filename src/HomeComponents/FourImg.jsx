@@ -84,6 +84,7 @@ function FourImg() {
                                 src={item.image}
                                 alt={`Image ${index + 1}`}
                             />
+                           
 
                         </Box>
                     ))}
