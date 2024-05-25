@@ -1,20 +1,63 @@
-import React, { useState } from 'react'
-import { Box, Image, Input, Text, IconButton, InputGroup, InputRightElement, Checkbox, Button } from "@chakra-ui/react";
+import React, { useState,} from 'react'
+import axios from "axios";
+import { Box, Image, Input, Text, IconButton, InputGroup, InputRightElement, Checkbox, Button, Alert } from "@chakra-ui/react";
 import { HiEye, HiEyeOff } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 
 
 function Signup() {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
+  const [check, setCheck] = useState(false)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [re_password, setRe_Password] = useState("")
+
+
+  const handleEMAILChange = (e) => {
+    setEmail(e.target.value)
+  }
+  const handlePASSChange = (e) => {
+    setPassword(e.target.value)
+  }
+  const handleRePASSChange = (e) => {
+    setRe_Password(e.target.value)
+  }
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e) => {
+  const registerData = {
+    email: email,
+    password: password,
+    re_password: re_password
+  }
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your form submission logic here
+    console.log(registerData)
+
+    try {
+
+      const response = await axios.post('http://localhost:4000/users/register', registerData);
+
+      // Assuming your server responds with the newly created user
+      console.log('User created:', response.data);
+      // console.log('User created:');
+      if (response.status == 200) {
+        navigate(`/login`)
+      }
+    } catch (error) {
+      // Handle error here
+      console.error('Error creating user:', error);
+    }
   };
+
+
+
+
   return (
     <>
       <Box
@@ -40,13 +83,13 @@ function Signup() {
             </Box>
             <Text mt="10px" color="#000" fontSize={{ base: "xl", md: "22px" }} fontWeight={"500"}>Create your DJI account</Text>
             <Text mt="10px" color="#111" fontSize={{ base: "12px", md: "12px" }} fontWeight={"400"}>Email address</Text>
-            <Input mt="10px" textColor={"#fff"} type='email' border={"0.5px solid #dadada"} />
+            <Input mt="10px" textColor={"#fff"} type='email' border={"0.5px solid #dadada"} onChange={handleEMAILChange} />
             <Text mt="10px" color="#111" fontSize={{ base: "12px", md: "12px" }} fontWeight={"400"}>password</Text>
             <InputGroup mt="10px">
               <Input
                 type={showPassword ? 'text' : 'password'}
                 border={"0.5px solid #dadada"}
-                textColor={"#fff"}
+                textColor={"#fff"} onChange={handlePASSChange}
               />
               <InputRightElement>
                 <IconButton
@@ -62,7 +105,7 @@ function Signup() {
               <Input
                 type={showPassword ? 'text' : 'password'}
                 border={"0.5px solid #dadada"}
-                textColor={"#fff"}
+                textColor={"#fff"} onChange={handleRePASSChange}
               />
               <InputRightElement>
                 <IconButton
@@ -74,9 +117,9 @@ function Signup() {
               </InputRightElement>
             </InputGroup>
 
-            <Text mt="15px" w="100%" fontSize={{ base: "12px", md: "12px" }} >Get announcements, recommendations and updates about DJI products, services , software, updates and more.</Text><Checkbox></Checkbox>
+            <Text mt="15px" w="100%" fontSize={{ base: "12px", md: "12px" }} >Get announcements, recommendations and updates about DJI products, services , software, updates and more.</Text><Checkbox ></Checkbox>
 
-            <Box mt="30px"><Button onSubmit={handleSubmit} _hover={{ bg: '#000' }} w="100%" bg="#212121" h="40px"><Text fontWeight={"400"} color={"#fff"}>Submit</Text></Button></Box>
+            <Box mt="30px"><Button onClick={handleSubmit} _hover={{ bg: '#000' }} w="100%" bg="#212121" h="40px" ><Text fontWeight={"400"} color={"#fff"}>Submit</Text></Button></Box>
             <Text mt="40px" color={"#000"} align={"center"} fontSize={{ base: "12px", md: "12px" }}>Need help with registration? <Link to="/login"> <span style={{ color: "#fff", fontSize: "12px", fontWeight: "300" }}>Login</span></Link></Text>
           </Box>
 
@@ -85,6 +128,7 @@ function Signup() {
         </Box>
 
       </Box>
+
     </>
   )
 }

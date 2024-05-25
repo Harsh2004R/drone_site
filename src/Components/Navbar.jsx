@@ -1,16 +1,24 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box, Flex, Spacer, Button, useDisclosure, Image, Text, Icon } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { FiShoppingCart, FiSearch, FiUser } from 'react-icons/fi';
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate()
 
+  const handleCameraDrone = () => {
+    navigate(`/buy/camera_drones`)
+  }
+  const handleHome = () => {
+    navigate(`/`)
+  }
   return (
     <Flex
       //  border={"1px solid cyan"}
-    
-    
+
+
       w={{ base: "100%", md: "90%" }} m={{ base: "0%", md: "auot" }} h={{ base: "70px", md: "70px" }} bgColor="white" >
       <Box
         // border={"1px solid cyan"}
@@ -47,7 +55,7 @@ const Navbar = () => {
           // border={"1px solid red"} 
           w={{ base: "100%", md: "70%" }} m="auto" display={"flex"} alignContent={"center"} alignItems={"center"} flexDirection={{ base: "column", md: "row" }} >
           <Box w="55px" h={{ base: "55px", md: "55px" }} display={"flex"} alignContent={"center"} alignItems={"center"} >
-            <Image w="100%" h="100%"
+            <Image onClick={handleHome} w="100%" h="100%"
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pn
             y7AAAAaVBMVEX///8VFRUAAAALCwvLy8s8PDxpaWnj4+P7+/sSEhJ8fHzIyMj09PRsbGwG
             BgYzMzNxcXHd3d3X19fr6+tZWVlKSkqFhYVSUlKWlpZERETAwMCMjIysrKy5ubkuLi4nJyei
@@ -86,7 +94,7 @@ const Navbar = () => {
             RBEARBEARBEARBEARBEMT/kD91tWukUb8OYwAAAABJRU5ErkJggg==" />
           </Box>
 
-          <Text fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "25px" }} mr={{ base: "0px", md: "10px" }}  >
+          <Text onClick={handleCameraDrone} fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "25px" }} mr={{ base: "0px", md: "10px" }}  >
             Camera Drones
           </Text>
           <Text fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >

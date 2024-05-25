@@ -3,7 +3,8 @@
 
 import { useBreakpointValue, Image, Text, Box } from "@chakra-ui/react";
 import { Carousel } from "react-responsive-carousel";
-import { FiShoppingCart,FiArrowRight } from 'react-icons/fi';
+import { FiShoppingCart, FiArrowRight } from 'react-icons/fi';
+import { Link } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const slides = [
@@ -32,7 +33,7 @@ const slides = [
     text2: "DJI INSPIRE 3",
     text3: "Master the Unseen",
     link1: "1",
-    link2: "2",
+    link2: "http://localhost:5000/product",
   },
   {
     image:
@@ -78,9 +79,6 @@ const slides = [
     link2: "2",
   }
 ];
-
-
-
 
 // 1. https://www1.djicdn.com/cms/uploads/dc9e619bc6ac2bc59d17d0bcaff58b3f.webp
 // 1. https://www1.djicdn.com/cms/uploads/79944970c7d71630e6a98f34d1764670.svg
@@ -137,17 +135,17 @@ const HomeSlide = () => {
     left: useBreakpointValue({ base: "35%", md: "44%", lg: "44%" }),
     transform: "translateX(-50%)",
     color: "#ededed",
-    border:"1px solid #fff",
-    borderBottomRightRadius:"15px",
-    borderTopRightRadius:"15px",
-    borderBottomLeftRadius:"15px",
-    borderTopLeftRadius:"15px",
-    paddingLeft:"10px",
-    paddingRight:"10px",
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center",
-    fontSize:useBreakpointValue({ base: "12px", md: "", lg: "" }),
+    border: "1px solid #fff",
+    borderBottomRightRadius: "15px",
+    borderTopRightRadius: "15px",
+    borderBottomLeftRadius: "15px",
+    borderTopLeftRadius: "15px",
+    paddingLeft: "10px",
+    paddingRight: "10px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: useBreakpointValue({ base: "12px", md: "", lg: "" }),
 
 
   }
@@ -159,17 +157,17 @@ const HomeSlide = () => {
     left: "50%",
     transform: "translateX(+5%)",
     color: "#ededed",
-    border:"1px solid #fff",
-    borderBottomRightRadius:"15px",
-    borderTopRightRadius:"15px",
-    borderBottomLeftRadius:"15px",
-    borderTopLeftRadius:"15px",
-    paddingLeft:"10px",
-    paddingRight:"10px",
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center",
-    fontSize:useBreakpointValue({ base: "12px", md: "", lg: "" }),
+    border: "1px solid #fff",
+    borderBottomRightRadius: "15px",
+    borderTopRightRadius: "15px",
+    borderBottomLeftRadius: "15px",
+    borderTopLeftRadius: "15px",
+    paddingLeft: "10px",
+    paddingRight: "10px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: useBreakpointValue({ base: "12px", md: "", lg: "" }),
 
   }
 
@@ -195,12 +193,12 @@ const HomeSlide = () => {
           )}
           {slide.link1 && (
             <Box style={linkBox1} textAlign="center">
-               Learn more <FiArrowRight />
+              <Link to={slide.link1}>Learn more </Link><FiArrowRight />
             </Box>
           )}
           {slide.link2 && (
             <Box style={linkBox2} textAlign="center">
-             Buy now <FiShoppingCart />
+              <Link to={slide.link2}>Buy now </Link><FiShoppingCart />
             </Box>
           )}
 

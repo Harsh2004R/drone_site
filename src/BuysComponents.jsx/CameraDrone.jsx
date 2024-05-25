@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Text, Box, Divider, useBreakpointValue, Image, Grid, GridItem } from "@chakra-ui/react";
 import Navbar from '../Components/Navbar.jsx';
 import Footer from "../Components/Footer.jsx"
 import FourImg from "../HomeComponents/FourImg.jsx"
+import { AuthContext } from '../Contexts/AuthContextProvider.jsx';
 function CameraDrone() {
+  const { isAuth, token } = useContext(AuthContext)
+  console.log(isAuth, token)
   // Array of images
   const images = [
     { img_url: "https://dji-official-fe.djicdn.com/dps/3b7953435e791d6a56253d87584e34cf.png", pro_name: "Dji Mavic" },
@@ -68,42 +71,42 @@ function CameraDrone() {
 
 
       <Box w="100%" h="100vh" bg="#fff">
-        <Box w="100%" h={{ base: "21.5vh", md: "20vh" }} bg="#eee">
+        <Box w="100%" h={{ base: "21.5vh", md: "20vh" }} bg="#F5F5F5">
 
           <Box w={{ base: "100%", md: "80%" }} m="auto" h="100%" bg="#" style={{ overflow: "hidden" }}>
             {/* Render images based on currentIndex */}
             <Grid templateColumns={{ base: 'repeat(4, 1fr)', md: 'repeat(8, 1fr)' }} gap={1}>
               <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignContent={"center"} w='100%' h={{ base: "10vh", md: "95%" }}   >
                 <Image m="auto" src="https://dji-official-fe.djicdn.com/dps/3b7953435e791d6a56253d87584e34cf.png" w="80%" h="80%" alt="mini_drones" />
-                <Text fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Mavic</Text>
+                <Text _hover={{ textColor: "#26b0ee", cursor: "pointer" }} fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Mavic</Text>
               </Box>
               <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignContent={"center"} w='100%' h={{ base: "10vh", md: "95%" }}   >
                 <Image m="auto" src="https://dji-official-fe.djicdn.com/dps/77738ff32f7a228fc58b4f401261e481.png" w="80%" h="80%" alt="mini_drones" />
-                <Text fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Air</Text>
+                <Text _hover={{ textColor: "#26b0ee", cursor: "pointer" }} fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Air</Text>
               </Box>
               <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignContent={"center"} w='100%' h={{ base: "10vh", md: "95%" }}   >
                 <Image m="auto" src="https://dji-official-fe.djicdn.com/dps/5698cb42a9a1fdce69e22f30550d9767.png" w="80%" h="80%" alt="mini_drones" />
-                <Text fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Mini</Text>
+                <Text _hover={{ textColor: "#26b0ee", cursor: "pointer" }} fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Mini</Text>
               </Box>
               <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignContent={"center"} w='100%' h={{ base: "10vh", md: "95%" }}   >
                 <Image m="auto" src="https://dji-official-fe.djicdn.com/dps/97e1b5ab20211e739898969647666de1.png" w="80%" h="80%" alt="mini_drones" />
-                <Text fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Avata2</Text>
+                <Text _hover={{ textColor: "#26b0ee", cursor: "pointer" }} fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Avata2</Text>
               </Box>
               <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignContent={"center"} w='100%' h={{ base: "10vh", md: "95%" }}   >
                 <Image m="auto" src="https://dji-official-fe.djicdn.com/dps/d13ba498aecd93533f69bcd1500458af.png" w="80%" h="80%" alt="mini_drones" />
-                <Text fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Inspire2</Text>
+                <Text _hover={{ textColor: "#26b0ee", cursor: "pointer" }} fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Inspire2</Text>
               </Box>
               <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignContent={"center"} w='100%' h={{ base: "10vh", md: "95%" }}   >
                 <Image m="auto" src="https://dji-official-fe.djicdn.com/dps/445acaa272ac55184d736f9518c50b3c.png" w="80%" h="80%" alt="mini_drones" />
-                <Text fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji FPV</Text>
+                <Text _hover={{ textColor: "#26b0ee", cursor: "pointer" }} fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji FPV</Text>
               </Box>
               <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignContent={"center"} w='100%' h={{ base: "10vh", md: "95%" }}   >
                 <Image m="auto" src="https://dji-official-fe.djicdn.com/dps/b429552c65fa90e612204031c752b2e0.png" w="80%" h="80%" alt="mini_drones" />
-                <Text fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>RC</Text>
+                <Text _hover={{ textColor: "#26b0ee", cursor: "pointer" }} fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>RC</Text>
               </Box>
               <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignContent={"center"} w='100%' h={{ base: "10vh", md: "95%" }}   >
                 <Image m="auto" src="https://dji-official-fe.djicdn.com/dps/f14c7c1d91574014937b8f52e8226e1a.png" w="80%" h="80%" alt="mini_drones" />
-                <Text fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Power</Text>
+                <Text _hover={{ textColor: "#26b0ee", cursor: "pointer" }} fontSize={{ base: "xs", md: "sm" }} textAlign={"center"}>Dji Power</Text>
               </Box>
 
             </Grid>
@@ -127,11 +130,11 @@ function CameraDrone() {
         {/* camera drones heading box ends here-------------->>>>>>>>>> */}
 
         {/* Dji Avata 2 hero part starting from here------------->>>>>>>>>>>> */}
-        <Box className="hero_wrapper" w='100%' h={{ base: "80vh", md: "85vh" }} display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"}
+        <Box className="hero_wrapper" w='100%' h={{ base: "80vh", md: "90vh" }} display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"}
         >
           <Box
             position={"relative"}
-            w="96%" h={{ base: "100%", md: "100%" }}
+            w="99%" h={{ base: "100%", md: "100%" }}
             bgImage="url('https://dji-official-fe.djicdn.com/dps/a0078af5ca32445787d0f0ba5fdf10af@origin.jpg')"
             bgSize="cover" objectFit="cover"
             bgPosition="center" alt="Zoomable Image"
@@ -160,6 +163,8 @@ function CameraDrone() {
         <FourImg />
 
         {/* four image component imported above ...._____>>>>> */}
+
+
 
 
         {/* 

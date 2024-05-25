@@ -22,10 +22,16 @@ function AllRoutes() {
                         </PrivateRoute>
                     } ></Route>
 
-                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/signup" element={<Signup />} ></Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/buy" element={<BuyPage />} />
-                    <Route path="/buy/camera_drones" element={<CameraDrone />} />
+                    <Route path="/buy/camera_drones" element={
+                        <PrivateRoute>
+                            <CameraDrone />
+                        </PrivateRoute>
+                    } />
+
+
 
                     {/* <Route path="pro" element={<ProductSpecsSection />} />
                 <Route path="pro" element={<ProductSpecsSection />} />

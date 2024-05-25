@@ -1,16 +1,58 @@
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import axios from "axios";
 import { Box, Image, Input, Text, IconButton, InputGroup, InputRightElement, Checkbox, Button } from "@chakra-ui/react";
 import { HiEye, HiEyeOff } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from "../Contexts/AuthContextProvider"
 
 
 function Login() {
+  const { login,isAuth } = useContext(AuthContext)
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  console.log(isAuth)
+  const loginrData = {
+    email: email,
+    password: password
+  }
+  const handleEMAILChange = (e) => {
+    setEmail(e.target.value)
+  }
+  const handlePASSChange = (e) => {
+    setPassword(e.target.value)
+  }
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
+
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
+    // console.log(loginrData)
+    try {
+
+      const response = await axios.post('http://localhost:4000/users/login', loginrData);
+      // Assuming your server responds with the newly created user
+      console.log({ msg: "login success" }, { status: response.status });
+      // saving jwt token in local storage..
+      const { token } = response.data;
+      localStorage.setItem("token", token)
+      // console.log('User created:');
+
+      if (response.status == 200) {
+        login(token)
+        navigate(`/`)
+      }
+    } catch (error) {
+      // Handle error here
+      console.error('Error in login :', error);
+    }
+  }
 
   return (
     <>
@@ -37,13 +79,13 @@ function Login() {
             </Box>
             <Text mt="10px" color="#000" fontSize={{ base: "xl", md: "22px" }} fontWeight={"500"}>Log in to your DJI account</Text>
             <Text mt="10px" color="#111" fontSize={{ base: "12px", md: "12px" }} fontWeight={"400"}>Please enter your email address</Text>
-            <Input mt="10px" textColor={"#fff"} type='text' border={"0.5px solid #dadada"} />
+            <Input mt="10px" textColor={"#fff"} type='text' border={"0.5px solid #dadada"} onChange={handleEMAILChange} />
             <Text mt="30px" color="#111" fontSize={{ base: "12px", md: "12px" }} fontWeight={"400"}>password</Text>
             <InputGroup mt="10px">
               <Input
                 type={showPassword ? 'text' : 'password'}
                 border={"0.5px solid #dadada"}
-                textColor={"#fff"}
+                textColor={"#fff"} onChange={handlePASSChange}
               />
               <InputRightElement>
                 <IconButton
@@ -57,7 +99,7 @@ function Login() {
             <Text mt="10px" color="#fff" fontSize={{ base: "12px", md: "12px" }} fontWeight={"400"}>If you forget your password</Text>
             <Text color="#000" mt="20px" fontSize={{ base: "12px", md: "12px" }} >Check it to receive exclusive benefites, latest updates and offers from DJI.</Text><Checkbox mt="5px"></Checkbox>
 
-            <Box mt="30px"><Button _hover={{ bg: '#000' }} w="100%" bg="#212121" h="40px"><Text fontWeight={"400"} color={"#fff"}>Login</Text></Button></Box>
+            <Box mt="30px"><Button onClick={handleSubmit} _hover={{ bg: '#000' }} w="100%" bg="#212121" h="40px"><Text fontWeight={"400"} color={"#fff"}>Login</Text></Button></Box>
             <Link to="/signup"><Text mt="40px" color={"#000"} align={"center"} fontSize={{ base: "12px", md: "12px" }}>Are you a new user? <span style={{ color: "#fff", fontSize: "12px", fontWeight: "300" }}>Create a new account</span></Text></Link>
           </Box>
         </Box>
