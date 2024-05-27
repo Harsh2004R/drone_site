@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Text, Box, Divider, useBreakpointValue, Image, Grid, GridItem } from "@chakra-ui/react";
+import { Text, Box, Divider, Image, Button, useBreakpointValue, Grid, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, GridItem } from "@chakra-ui/react";
 import Navbar from '../Components/Navbar.jsx';
 import Footer from "../Components/Footer.jsx"
 import FourImg from "../HomeComponents/FourImg.jsx"
@@ -19,50 +19,14 @@ function CameraDrone() {
     { img_url: "https://dji-official-fe.djicdn.com/dps/f14c7c1d91574014937b8f52e8226e1a.png", pro_name: "" },
     { img_url: "https://dji-official-fe.djicdn.com/dps/ab660f7a8c5a5ab1b776f800c8cbc6ee.svg", pro_name: "" },
 
-
   ];
-  const textStyle1 = {
-    width: useBreakpointValue({ base: "80px", md: "90px", lg: "130px" }),
-    height: useBreakpointValue({ base: "35px", md: "90px", lg: "35px" }),
-    position: "absolute",
-    top: useBreakpointValue({ base: "50%", md: "65%", lg: "70%" }),
-    left: "50%",
-    transform: "translateX(+5%)",
-    color: "#ededed",
-    border: "1px solid #fff",
-    borderBottomRightRadius: "15px",
-    borderTopRightRadius: "15px",
-    borderBottomLeftRadius: "15px",
-    borderTopLeftRadius: "15px",
-    paddingLeft: "10px",
-    paddingRight: "10px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: useBreakpointValue({ base: "12px", md: "", lg: "" }),
-
+  const videoStyles = {
+    width: useBreakpointValue({ base: "100%", md: "80%", lg: "80%" }),
+    height: useBreakpointValue({ base: "30vh", md: "80vh", lg: "80vh" }),
+    objectFit: 'cover',
+    margin: "auto"
   }
-  const textStyle2 = {
-    width: useBreakpointValue({ base: "80px", md: "90px", lg: "130px" }),
-    height: useBreakpointValue({ base: "35px", md: "90px", lg: "35px" }),
-    position: "absolute",
-    top: useBreakpointValue({ base: "50%", md: "65%", lg: "70%" }),
-    left: "50%",
-    transform: "translateX(+5%)",
-    color: "#ededed",
-    border: "1px solid #fff",
-    borderBottomRightRadius: "15px",
-    borderTopRightRadius: "15px",
-    borderBottomLeftRadius: "15px",
-    borderTopLeftRadius: "15px",
-    paddingLeft: "10px",
-    paddingRight: "10px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: useBreakpointValue({ base: "12px", md: "", lg: "" }),
 
-  }
 
   return (
     <>
@@ -167,17 +131,247 @@ function CameraDrone() {
 
 
 
-        {/* 
-Aerial Imaging || Immersive Flight  system building starts here----------------->>>>>>>>>>>>>>>*/}
+        {/* Aerial Imaging || Immersive Flight  system building starts here----------------->>>>>>>>>>>>>>>*/}
 
-        <Box w={"100%"} h={{ base: "15vh", md: "35vh" }} justifyContent={"center"} display={"flex"} alignContent={"center"} alignItems={"center"}>
-          <Box w='80%' h='auto'  >
-            <Text textAlign={"center"} fontSize={{ base: "2xl", md: "5xl" }} fontWeight={"500"}>
+        <Box w={"100%"} h={{ base: "auto", md: "auto" }} flexDirection={"column"} justifyContent={"center"} display={"flex"} alignContent={"center"} alignItems={"center"}>
+          <Box w='80%' h={{ base: "20vh", md: "30vh" }} justifyContent={"center"} display={"flex"} alignContent={"center"} alignItems={"center"}>
+            <Text textAlign={"center"} fontSize={{ base: "30px", md: "5xl" }} fontWeight={"500"}>
               Which camera drone is right for you?
             </Text>
 
           </Box>
 
+
+
+          <Tabs
+            position="relative" variant="unstyled"
+          >
+            <Box
+              // border={"1px solid cyan"}
+              w="100%" h="15vh" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} flexDirection={"column"}>
+              <TabList>
+                <Tab fontSize={{ base: "12px", md: "15px" }}>Aerial Imaging</Tab>
+                <Tab fontSize={{ base: "12px", md: "15px" }}>Immersive Flight</Tab>
+              </TabList>
+              <TabIndicator
+                mt="30px"
+                height="1.65px"
+                bg="rgb(0,0,0,0.8)"
+                borderRadius="0.5px"
+              />
+            </Box>
+
+            <TabPanels>
+              <TabPanel w={{ base: "350px", md: "900px" }} h="auto">
+
+                {/* Aerial Imaging container here----------------------->>>>>>>>>>>> */}
+                <Box
+                  w={{ base: "100%", md: "100%" }} border="1px solid red" h="100%"
+                >
+                  <Grid templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }} gap={3} >
+                    {/* mapping all the Aerial Imagin data from backend here------>>>> */}
+                    <Box w="100%" h="auto" bg="fff">
+
+
+
+
+
+                      {/* product image */}
+                      <Box w={{ base: "90%", md: "90%" }} m="auto" h={{ base: "16vh", md: "30vh" }} >
+                        <Image src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="" />
+                      </Box>
+                      {/* product image */}
+
+
+
+
+
+                      <Text textAlign={"center"} fontSize={{ base: "10px", md: "12px" }} color={"#d0021b"}>Flagship</Text>
+
+
+
+
+
+                      {/* pro name */}
+                      <Text textAlign={"center"} fontWeight={"350"} fontSize={{ base: "16px", md: "25px" }} color={"#3a3738"}>DJI Mavic 3 Pro</Text>
+                      {/* pro name */}
+
+
+
+
+                      {/* where to buy  */}
+                      {/* learn more */}
+                      <Box
+                        display={"flex"}
+                        justifyContent={"space-evenly"}
+                        alignContent={"center"}
+                        alignItems={"center"}
+                        w="100%" h="100px"
+                        flexDirection={"column"}
+                      // border="1px solid red"
+                      >
+
+                        <Box
+                          display={"flex"}
+                          justifyContent={"center"}
+                          alignContent={"center"}
+                          alignItems={"center"}
+                          _hover={{ cursor: "pointer", bg: "#4897ef" }}
+                          w={{ base: "50%", md: "40%" }}
+                          height={{ base: "30px", md: "30px" }}
+                          borderTopRightRadius={"17px"}
+                          borderTopLeftRadius={"17px"}
+                          borderBottomRightRadius={"17px"}
+                          borderBottomLeftRadius={"17px"}
+                          bg="#2484ef">
+
+                          <Text textAlign={"center"} fontWeight={"400"} fontSize={{ base: "10px", md: "15px" }} color={"#fff"}>Where to buy</Text>
+                        </Box>
+                        <Box w="100%" h="auto" >
+                          <Text _hover={{ cursor: "pointer", textDecoration: "underline" }} textAlign={"center"} fontWeight={"500"} fontSize={{ base: "10px", md: "12px" }} color={"#4897ef"}>Learn more {">"}</Text>
+                          <Divider />
+                        </Box>
+                      </Box>
+                      {/* where to buy  */}
+                      {/* learn more */}
+
+
+
+
+
+
+
+
+                      {/*pro  weight */}
+                      {/* pro flight time */}
+                      <Box
+                        w="100%" h={{ base: "120px", md: "210px" }}
+                      // border={"1px solid cyan"}
+                      >
+                        <Text mt="10px" textAlign={"center"} fontWeight={"500"} fontSize={{ base: "24px", md: "42px" }} color={"#000"}>958 g</Text>
+                        <Text mt="-3px" textAlign={"center"} fontWeight={"300"} fontSize={{ base: "11px", md: "16px" }} color={"#000"}>Takeoff Weight</Text>
+
+                        <Box
+                          display={"flex"}
+                          justifyContent={"center"}
+                          alignContent={"center"}
+                          alignItems={"center"}
+                          flexDirection={"column"}
+                          mt="10px" w="100%" h="auto"
+                        // border="1px solid purple"
+                        >
+                          <Image w={{ base: "20%", md: "18%" }} h={"auto"} src="https://dji-official-fe.djicdn.com/dps/f9127d27145b69a9c196c225c91e4e32.svg" alt="svg" />
+                          <Text mt="3px" textAlign={"center"} fontWeight={"300"} fontSize={{ base: "11px", md: "16px" }} color={"#000"}>
+                            43 mins Max Flight Time
+                          </Text>
+                        </Box>
+                      </Box>
+                      {/*pro  weight */}
+                      {/* pro flight time */}
+
+
+
+
+
+
+
+
+
+                      {/* camera resolution */}
+                      <Box
+                        display={"flex"}
+                        justifyContent={"center"}
+                        alignContent={"center"}
+                        alignItems={"center"}
+                        flexDirection={"column"}
+                        mt="10px" w="100%" h="auto"
+                      // border="1px solid red"
+                      >
+                        <Image w={{ base: "20%", md: "18%" }} h="auto" src="https://dji-official-fe.djicdn.com/dps/cd0846ffff48ba7425dcb2a71b58f28c.svg" alt="svg" />
+                        <Text mt="3px" textAlign={"center"} fontWeight={"300"} fontSize={{ base: "11px", md: "16px" }} color={"#000"}>4/3 CMOS Hasselblad Camera
+                          1/1.3-inch CMOS Medium Tele Camera
+                          1/2-inch CMOS Tele Camera
+                        </Text>
+                      </Box>
+                      {/* camera resolution */}
+
+
+
+
+
+
+                      {/* photo resolution */}
+                      <Text mt="10px" textAlign={"center"} fontWeight={"500"} fontSize={{ base: "24px", md: "42px" }} color={"#000"}>48 MP</Text>
+                      <Text mt="-3px" textAlign={"center"} fontWeight={"300"} fontSize={{ base: "11px", md: "16px" }} color={"#000"}>Max Photo Resolution</Text>
+                      {/* photo resolution */}
+
+
+
+
+
+                      {/* transmiter range */}
+                      <Box
+                        display={"flex"}
+                        justifyContent={"center"}
+                        alignContent={"center"}
+                        alignItems={"center"}
+                        flexDirection={"column"}
+                        mt="10px" w="100%" h="auto"
+                        //  border="1px solid red"
+                         >
+                        <Image w={{ base: "20%", md: "18%" }} h="auto" src="https://dji-official-fe.djicdn.com/dps/3d0d77b212222ab4f20219cc95ca6d20.svg" alt="svg" />
+                        <Text mt="3px" textAlign={"center"} fontWeight={"300"} fontSize={{ base: "11px", md: "16px" }} color={"#000"}>DJI O3+ HD Digital Video Transmission
+
+                          Up to 15 km Transmission Distance
+                          1080p/60fps Live Feed
+                        </Text>
+                      </Box>
+                      {/* transmiter range */}
+
+
+
+
+
+                    </Box>
+                  </Grid>
+
+                </Box>
+              </TabPanel>
+              <TabPanel w={{ base: "350px", md: "900px" }} border="1px solid blue" h="150vh">
+                <Box
+                  w={{ base: "100%", md: "100%" }} border="1px solid blue" h="100%"
+                >
+                  <Grid templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }} gap={3} >
+                    {/* mapping all the Aerial Imagin data from backend here------>>>> */}
+                    <Box w="100%" h="120vh" bg="#eee">
+
+
+                      <Box w={{ base: "90%", md: "90%" }} m="auto" h={{ base: "16vh", md: "30vh" }} border={"1px solid lime"}>
+                        <Image src="https://dji-official-fe.djicdn.com/cms/uploads/ae5d8b9987be8d5ecdeb5d502a1e887c.png" alt="" />
+                      </Box>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </Box>
+                  </Grid>
+                </Box>
+
+              </TabPanel>
+            </TabPanels>
+
+          </Tabs>
 
         </Box>
 
@@ -217,7 +411,7 @@ Aerial Imaging || Immersive Flight  system building starts here-----------------
         <Footer />
 
 
-      </Box>
+      </Box >
 
 
 
