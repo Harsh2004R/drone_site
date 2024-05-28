@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Text, Box, Divider, Image, Button, useBreakpointValue, Grid, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, GridItem, } from "@chakra-ui/react";
+import { Box} from "@chakra-ui/react";
 import Navbar from '../Components/Navbar.jsx';
 import Footer from "../Components/Footer.jsx"
 import FourImg from "../HomeComponents/FourImg.jsx"

@@ -3,17 +3,19 @@ import axios from "axios";
 import { Text, Box, Divider, Image, Grid, Tab, TabIndicator, TabList, TabPanel, TabPanels, Tabs, GridItem, } from "@chakra-ui/react";
 
 
+
 function Aerial_Immersive() {
     const [drones, setDrones] = useState([]);
     const [immersive, setImmersive] = useState([]);
+    const baseURL = "http://192.168.1.8:4000/"
     const fetchDroneData = async () => {
         try {
 
-            const response1 = await axios.get('http://localhost:4000/camera_drones/get/aerial');
+            const response1 = await axios.get(`${baseURL}camera_drones/get/get/aerial`);
             setDrones(response1.data.get_data[0].drones)
             // console.log(drones)
 
-            const response2 = await axios.get('http://localhost:4000/camera_drones/get/immersive');
+            const response2 = await axios.get(`${baseURL}camera_drones/get/get/immersive`);
             setImmersive(response2.data.get_data[0].drones)
             // console.log(immersive)
 
@@ -55,11 +57,11 @@ function Aerial_Immersive() {
                     </Box>
 
                     <TabPanels>
-                        <TabPanel border="1px solid blue" w={{ base: "350px", md: "900px" }} h="auto">
+                        <TabPanel w={{ base: "350px", md: "900px" }} h="auto">
 
                             {/* Aerial Imaging container here----------------------->>>>>>>>>>>> */}
                             <Box
-                                w={{ base: "100%", md: "100%" }} border="1px solid red" h="100%"
+                                w={{ base: "100%", md: "100%" }} h="100%"
                             >
                                 <Grid templateColumns={{ base: 'repeat(3, 1fr)', md: 'repeat(3, 1fr)' }} gap={3} >
 
@@ -231,11 +233,13 @@ function Aerial_Immersive() {
                             </Box>
                         </TabPanel>
 
-                        <TabPanel w={{ base: "350px", md: "900px" }} border="1px solid blue" h="auto">
+                        <TabPanel w={{ base: "350px", md: "900px" }} h="auto">
                             <Box
-                                w={{ base: "100%", md: "100%" }} border="1px solid blue" h="100%"
+                                w={{ base: "100%", md: "100%" }} h="100%"
                             >
-                                <Grid templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }} gap={3} >
+
+
+                                <Grid templateColumns={{ base: 'repeat(3, 1fr)', md: 'repeat(3, 1fr)' }} gap={3} >
                                     {/* mapping all the Aerial Imagin data from backend here------>>>> */}
                                     {immersive.map((drone, index) => (
                                         <Box w="100%" h="auto" key={index} bg="fff">
@@ -399,6 +403,8 @@ function Aerial_Immersive() {
                                         </Box>
                                     ))}
                                 </Grid>
+
+
                             </Box>
 
                         </TabPanel>
@@ -414,3 +420,5 @@ function Aerial_Immersive() {
 }
 
 export default Aerial_Immersive
+
+
