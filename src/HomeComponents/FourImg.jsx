@@ -1,9 +1,8 @@
-
+import React, { useState, useEffect } from 'react';
 import { Box, Grid, Image, useBreakpointValue, Text } from '@chakra-ui/react';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const ImageData1 = [
+const Home_Four_images = [
     {
         image: "https://www1.djicdn.com/cms/uploads/dc9e619bc6ac2bc59d17d0bcaff58b3f.webp",
         text_svg: "https://www1.djicdn.com/cms/uploads/79944970c7d71630e6a98f34d1764670.svg",
@@ -44,7 +43,7 @@ const ImageData1 = [
 
 
 
-const ImageData2 = [
+const Camera_drones_Four_images = [
     {
         image: "https://dji-official-fe.djicdn.com/dps/c2cf5f3b8c738ee773a4035a4da36214.jpg",
         text_svg: "https://dji-official-fe.djicdn.com/dps/53f699de8bfca9acdc59281f81121913.svg",
@@ -84,8 +83,62 @@ const ImageData2 = [
 
 
 
+const Hand_Held_Four_images = [
+    {
+        image: "https://dji-official-fe.djicdn.com/dps/95c5432751f3357789cc85cfaa16a5b8.jpg",
+        text_svg: "https://dji-official-fe.djicdn.com/dps/46bb9d21173deadeff052e78fe7f322b.svg",
+        url: "",
+        learn_url: "",
+        buy_url: "",
+        objectPosition: "50% 50%",
+
+    },
+    {
+        image: "https://dji-official-fe.djicdn.com/dps/4da7adda2e30246082f72437eb9423ff.jpg",
+        text_svg: "https://dji-official-fe.djicdn.com/dps/aa3dff8a18e1cfd57487523d5b9b10d9.svg",
+        url: "",
+        learn_url: "",
+        buy_url: "",
+        objectPosition: "28% 72%",
+
+    },
+    {
+        image: "https://dji-official-fe.djicdn.com/dps/18a3ca578b5178c8ac7c432f820c3d00.jpg",
+        text_svg: "https://dji-official-fe.djicdn.com/dps/5086b4aa705f909f103008bbf75b43f1.svg",
+        url: "",
+        objectPosition: "60% 30%",
+
+    },
+    {
+        image: "https://dji-official-fe.djicdn.com/dps/390af4904d4c36673e6a9da1f2a083c3.jpg",
+        text_svg: "https://dji-official-fe.djicdn.com/dps/c5c9efc48e7711acf2cb1c3a8da9651a.svg",
+        url: "",
+        learn_url: "",
+        buy_url: "",
+        objectPosition: "50% 50%",
+
+    },
+];
+
+
+
+
 function FourImg() {
-    const imageData = location.pathname === "/buy/camera_drones" ? ImageData2 : ImageData1;
+    const location = useLocation();
+    const [target, setTarget] = useState([]);
+
+    // const imageData = location.pathname === "/buy/camera_drones" ? Camera_drones_Four_images : Home_Four_images;
+
+    useEffect(() => {
+        // Seting the appropriate image data based on the routes...
+        if (location.pathname === "/buy/camera_drones") {
+            setTarget(Camera_drones_Four_images);
+        } else if (location.pathname === "/buy/handheld") {
+            setTarget(Hand_Held_Four_images);
+        } else {
+            setTarget(Home_Four_images);
+        }
+    }, [location.pathname]);
 
     const svgStyle = {
         position: "absolute",
@@ -122,7 +175,7 @@ function FourImg() {
         <>
             <Box position="relative" w="100%" h="auto" >
                 <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}>
-                    {imageData.map((item, index) => (
+                    {target.map((item, index) => (
                         <Box
                             // border={"1px solid red"}
                             key={index}
@@ -133,9 +186,9 @@ function FourImg() {
                             h={{ base: "65vh", md: "85vh" }}
                             overflow="hidden"
                         >
-                            <Box 
-                            // border={"1px solid red"}
-                            zIndex={"999"} position={"absolute"} w={{ base: "99%", md: "49%" }} h={{ base: "10%", md: "20%" }}>
+                            <Box
+                                // border={"1px solid red"}
+                                zIndex={"999"} position={"absolute"} w={{ base: "99%", md: "49%" }} h={{ base: "10%", md: "20%" }}>
                                 {/* svg box here... */}
                                 {item.text_svg && (
                                     <Link to={item.url}>
@@ -144,7 +197,7 @@ function FourImg() {
                                             as="img"
                                             src={item.text_svg}
                                             alt={`SVG ${index + 1}`}
-                                            style={svgStyle}
+                                            style={{...svgStyle}}
                                             zIndex="999"
                                             width={"40%"}
                                         />

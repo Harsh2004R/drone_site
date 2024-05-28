@@ -8,6 +8,7 @@ import Login from '../Pages/Login'
 import BuyPage from '../Pages/BuyPage'
 import CameraDrone from '../BuysComponents.jsx/CameraDrone'
 import AuthContextProvider from '../Contexts/AuthContextProvider'
+import HandHeld from '../BuysComponents.jsx/HandHeld'
 function AllRoutes() {
     return (
         <>
@@ -33,8 +34,8 @@ function AllRoutes() {
 
 
 
-                    {/* <Route path="pro" element={<ProductSpecsSection />} />
-                <Route path="pro" element={<ProductSpecsSection />} />
+                    <Route path="/buy/handheld" element={<HandHeld />} />
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} />
                 <Route path="pro" element={<ProductSpecsSection />} />
                 <Route path="pro" element={<ProductSpecsSection />} /> */}
 

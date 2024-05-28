@@ -1,13 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Box} from "@chakra-ui/react";
+import React, { useContext, } from 'react';
+import { Box } from "@chakra-ui/react";
 import Navbar from '../Components/Navbar.jsx';
 import Footer from "../Components/Footer.jsx"
 import FourImg from "../HomeComponents/FourImg.jsx"
 import EightImage from '../SubBuyComponents.jsx/EightImage.jsx';
 import Aerial_Immersive from '../SubBuyComponents.jsx/Aerial_Immersive.jsx';
 import { AuthContext } from '../Contexts/AuthContextProvider.jsx';
-
 import Hero from '../SubBuyComponents.jsx/Hero.jsx';
+
 function CameraDrone() {
 
   const { isAuth, token } = useContext(AuthContext)

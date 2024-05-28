@@ -7,15 +7,16 @@ import { Text, Box, Divider, Image, Grid, Tab, TabIndicator, TabList, TabPanel, 
 function Aerial_Immersive() {
     const [drones, setDrones] = useState([]);
     const [immersive, setImmersive] = useState([]);
-    const baseURL = "http://192.168.1.8:4000/"
+    const baseURL = "http://192.168.1.8:4000/"  
+    const localURL = "http://localhost:4000/"
     const fetchDroneData = async () => {
         try {
 
-            const response1 = await axios.get(`${baseURL}camera_drones/get/get/aerial`);
+            const response1 = await axios.get(`${baseURL}camera_drones/get/aerial`);
             setDrones(response1.data.get_data[0].drones)
             // console.log(drones)
 
-            const response2 = await axios.get(`${baseURL}camera_drones/get/get/immersive`);
+            const response2 = await axios.get(`${baseURL}camera_drones/get/immersive`);
             setImmersive(response2.data.get_data[0].drones)
             // console.log(immersive)
 

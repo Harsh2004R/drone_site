@@ -11,9 +11,13 @@ const Navbar = () => {
   const handleCameraDrone = () => {
     navigate(`/buy/camera_drones`)
   }
+  const handleHandHeld = () => {
+    navigate("/buy/handheld")
+  }
   const handleHome = () => {
     navigate(`/`)
   }
+
   return (
     <Flex
       //  border={"1px solid cyan"}
@@ -97,7 +101,7 @@ const Navbar = () => {
           <Text onClick={handleCameraDrone} fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "25px" }} mr={{ base: "0px", md: "10px" }}  >
             Camera Drones
           </Text>
-          <Text fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
+          <Text onClick={handleHandHeld} fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
             Handheld
           </Text>
           <Text fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
