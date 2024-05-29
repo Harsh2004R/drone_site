@@ -5,8 +5,9 @@ import Footer from "../Components/Footer.jsx"
 import FourImg from "../HomeComponents/FourImg.jsx"
 import EightImage from '../SubBuyComponents.jsx/EightImage.jsx';
 import Aerial_Immersive from '../SubBuyComponents.jsx/Aerial_Immersive.jsx';
-import { AuthContext } from '../Contexts/AuthContextProvider.jsx';
+import Quiz from "../Pages/Quiz.jsx"
 import Hero from '../SubBuyComponents.jsx/Hero.jsx';
+import { AuthContext } from '../Contexts/AuthContextProvider.jsx';
 
 function CameraDrone() {
 
@@ -39,7 +40,9 @@ function CameraDrone() {
         <Aerial_Immersive />
         {/* ----------------------------------------------- */}
 
-
+        {/* Quiz component importing here..._____>>>>> */}
+        <Quiz />
+        {/* ----------------------------------------------- */}
 
         <Footer />
 

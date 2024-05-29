@@ -9,6 +9,10 @@ import BuyPage from '../Pages/BuyPage'
 import CameraDrone from '../BuysComponents.jsx/CameraDrone'
 import AuthContextProvider from '../Contexts/AuthContextProvider'
 import HandHeld from '../BuysComponents.jsx/HandHeld'
+import Quiz from '../Pages/Quiz.jsx'
+import Page2 from '../QuizComponents/Page2.jsx'
+import Page3 from '../QuizComponents/Page3.jsx'
+import Page4 from '../QuizComponents/Page4.jsx'
 function AllRoutes() {
     return (
         <>
@@ -35,9 +39,24 @@ function AllRoutes() {
 
 
                     <Route path="/buy/handheld" element={<HandHeld />} />
-                    {/*  <Route path="pro" element={<ProductSpecsSection />} />
-                <Route path="pro" element={<ProductSpecsSection />} />
-                <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    <Route path="/quiz" element={<Quiz />} />
+                    <Route path="/page2" element={<Page2 />} />
+                    <Route path="/page3" element={<Page3 />} />
+                     <Route path="/page4" element={<Page4 />} />
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+
 
                 </Routes>
             </AuthContextProvider>

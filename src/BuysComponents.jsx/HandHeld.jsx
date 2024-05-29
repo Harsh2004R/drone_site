@@ -6,6 +6,7 @@ import FourImg from "../HomeComponents/FourImg.jsx"
 import EightImage from '../SubBuyComponents.jsx/EightImage.jsx';
 import Aerial_Immersive from '../SubBuyComponents.jsx/Aerial_Immersive.jsx';
 import Hero from '../SubBuyComponents.jsx/Hero.jsx';
+import Quiz from "../Pages/Quiz.jsx"
 function HandHeld() {
   return (
     <>
@@ -29,6 +30,10 @@ function HandHeld() {
 
         {/* Aerial Imaging || Immersive Flight  system building starts here----------------->>>>>>>>>>>>>>>*/}
         <Aerial_Immersive />
+        {/* ----------------------------------------------- */}
+
+        {/* Quiz component importing here..._____>>>>> */}
+        <Quiz />
         {/* ----------------------------------------------- */}
 
 
