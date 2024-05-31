@@ -2,19 +2,25 @@
 import React, { useState } from 'react'
 import Footer from "../Components/Footer.jsx"
 import Navbar from "../Components/Navbar.jsx"
-import { Box, Stack, RadioGroup, Radio, Heading, Text, Container } from '@chakra-ui/react'
+import { Box, Stack, RadioGroup, Radio, Heading, Text, Container, useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom';
+import CustomAlert from '../Components/CustomAlert.jsx';
 const Page3 = () => {
   const navigate = useNavigate();
-  const [value, setValue] = useState('0');
+  const [value, setValue] = useState('');
   console.log(value)
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const handlePage2 = () => {
-
+    navigate("/page2")
   }
   const handleNext = () => {
-    navigate("/page4")
-}
+    if (value == "") {
+      onOpen()
+    } else {
+      navigate("/page4")
+
+    }
+  }
   return (
     <>
 
@@ -31,7 +37,7 @@ const Page3 = () => {
                 w={{ base: "100%", md: "100%" }}
                 h="auto" px={5} py={5} mt="10px" borderRadius={"md"} display={"flex"}
               >
-                <Radio value='1' px={2} size='lg'></Radio> <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
+                <Radio value='software_based' px={2} size='lg'></Radio> <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
                   Yes. I edit using professional software.</Text>
               </Box>
 
@@ -40,7 +46,7 @@ const Page3 = () => {
                 w={{ base: "100%", md: "100%" }}
                 h="auto" px={5} py={5} mt="10px" borderRadius={"md"} display={"flex"}
               >
-                <Radio value='2' px={2} size='lg'></Radio>  <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
+                <Radio value='non_software_based' px={2} size='lg'></Radio>  <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
                   Rarely. I prefer to share content directly or use quick editing software/apps.</Text>
               </Box>
 
@@ -84,7 +90,7 @@ const Page3 = () => {
           </RadioGroup>
         </Container>
       </Box>
-
+      <CustomAlert isOpen={isOpen} onClose={onClose} />
 
       <Footer />
 

@@ -13,6 +13,7 @@ import Quiz from '../Pages/Quiz.jsx'
 import Page2 from '../QuizComponents/Page2.jsx'
 import Page3 from '../QuizComponents/Page3.jsx'
 import Page4 from '../QuizComponents/Page4.jsx'
+import AdminSide from '../Admin/AdminSide.jsx'
 function AllRoutes() {
     return (
         <>
@@ -42,8 +43,8 @@ function AllRoutes() {
                     <Route path="/quiz" element={<Quiz />} />
                     <Route path="/page2" element={<Page2 />} />
                     <Route path="/page3" element={<Page3 />} />
-                     <Route path="/page4" element={<Page4 />} />
-                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                    <Route path="/page4" element={<Page4 />} />
+
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
@@ -57,7 +58,7 @@ function AllRoutes() {
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
 
-
+                    <Route path="/admin" element={<AdminSide />} />
                 </Routes>
             </AuthContextProvider>
 

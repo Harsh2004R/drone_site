@@ -2,19 +2,25 @@
 import React, { useState } from 'react'
 import Footer from "../Components/Footer.jsx"
 import Navbar from "../Components/Navbar.jsx"
-import { Box, Stack, RadioGroup, Radio, Heading, Text, Container } from '@chakra-ui/react'
+import { Box, Stack, RadioGroup, Radio, Heading, Text, Container, useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom';
+import CustomAlert from '../Components/CustomAlert.jsx';
 const Page4 = () => {
   const navigate = useNavigate();
-
-  const [value, setValue] = useState('0');
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [value, setValue] = useState('');
   console.log(value)
   const handleBack = () => {
     navigate("/page3")
   }
   const handleNext = () => {
-    navigate("/quiz/final/result")
+    if (value == "") {
+      onOpen()
+    } else {
+      navigate("/quiz/final/result")
+    }
   }
+
   return (
     <>
 
@@ -31,7 +37,7 @@ const Page4 = () => {
                 w={{ base: "100%", md: "100%" }}
                 h="auto" px={5} py={5} mt="10px" borderRadius={"md"} display={"flex"}
               >
-                <Radio value='1' px={2} size='lg'></Radio> <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
+                <Radio value='$800' px={2} size='lg'></Radio> <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
                   I want something to start creating professionally that fits my price range under $800 USD.
                 </Text>
               </Box>
@@ -41,7 +47,7 @@ const Page4 = () => {
                 w={{ base: "100%", md: "100%" }}
                 h="auto" px={5} py={5} mt="10px" borderRadius={"md"} display={"flex"}
               >
-                <Radio value='2' px={2} size='lg'></Radio>  <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
+                <Radio value='$800 - $1,300' px={2} size='lg'></Radio>  <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
                   I want high quality yet affordable, fitting a price range between $800 - $1,300 USD.
                 </Text>
               </Box>
@@ -52,7 +58,7 @@ const Page4 = () => {
                 w={{ base: "100%", md: "100%" }}
                 h="auto" px={5} py={5} mt="10px" borderRadius={"md"} display={"flex"}
               >
-                <Radio value='3' px={2} size='lg'></Radio> <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
+                <Radio value='$1,300 - $1,800' px={2} size='lg'></Radio> <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
                   I want something with an advanced comprehensive experience, price range between $1,300 - $1,800 USD.
                 </Text>
               </Box>
@@ -62,7 +68,7 @@ const Page4 = () => {
                 w={{ base: "100%", md: "100%" }}
                 h="auto" px={5} py={5} mt="10px" borderRadius={"md"} display={"flex"}
               >
-                <Radio value='4' px={2} size='lg'></Radio>  <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
+                <Radio value='$1,800' px={2} size='lg'></Radio>  <Text textAlign={"justify"} fontSize={{ base: "14px", md: "16px" }}>
                   I want a top-tier choice, price can be over $1,800 USD.
                 </Text>
               </Box>
@@ -112,7 +118,7 @@ const Page4 = () => {
           </RadioGroup>
         </Container>
       </Box>
-
+      <CustomAlert isOpen={isOpen} onClose={onClose} />
 
       <Footer />
 

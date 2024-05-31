@@ -9,9 +9,16 @@ import {
     Container,
     useColorModeValue,
     Radio,
-    RadioGroup
+    RadioGroup,
+    useDisclosure,
 } from '@chakra-ui/react';
+
 import { useNavigate } from 'react-router-dom';
+import CustomAlert from '../Components/CustomAlert';
+
+
+
+
 
 const Testimonial = ({ children }) => {
     return <Box>{children}</Box>;
@@ -64,16 +71,19 @@ const TestimonialText = ({ children }) => {
 
 
 
-
-
-// second page starting here.....
-
 export default function Quiz() {
     const navigate = useNavigate()
-    const [nextVal, setNextVal] = React.useState('0');
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [nextVal, setNextVal] = React.useState('');
     console.log(nextVal)
     const handleNext = () => {
-        navigate("/page2")
+        if (nextVal == "") {
+            // calling the custom Alert function here.....
+            onOpen();
+        } else {
+            navigate("/page2")
+
+        }
     }
 
     return (
@@ -104,7 +114,7 @@ export default function Quiz() {
                                     I'm a professional involved in aerial photography.
 
                                 </TestimonialText>
-                                <Radio value='1' size='lg'></Radio>
+                                <Radio value='professional' size='lg'></Radio>
                             </TestimonialContent>
 
                         </Testimonial>
@@ -123,7 +133,7 @@ export default function Quiz() {
                                 <TestimonialText>
                                     I'm passionate about photography and want to record moments with camera drones.
                                 </TestimonialText>
-                                <Radio value='2' size='lg'></Radio>
+                                <Radio value='photography' size='lg'></Radio>
                             </TestimonialContent>
 
                         </Testimonial>
@@ -142,7 +152,7 @@ export default function Quiz() {
                                 <TestimonialText>
                                     I'm interested in new technology, want to experience the thrill and fun of flight.
                                 </TestimonialText>
-                                <Radio value='3' size='lg'></Radio>
+                                <Radio value='toy' size='lg'></Radio>
                             </TestimonialContent>
 
                         </Testimonial>
@@ -165,18 +175,9 @@ export default function Quiz() {
                     <Text textAlign={"center"} color="#fff">Next</Text>
                 </Box>
             </Container>
+            <CustomAlert isOpen={isOpen} onClose={onClose} />
         </Box>
     );
 }
 
 
-
-
-// 1   Landscapes, wildlife, or city views
-// 2   Personal travel
-// 3   Family activities and daily moments
-// 4   Outdoors and sports activities
-
-
-// what I want to do is when user select one option from given radio
-// and click on next button in same page he will get 
