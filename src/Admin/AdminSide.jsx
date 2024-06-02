@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Text, Box, Heading } from '@chakra-ui/react'
 import Navbar from "../Components/Navbar.jsx"
+import AdminContent from './AdminContent.jsx'
 const AdminSide = () => {
 
 
@@ -27,7 +28,7 @@ const AdminSide = () => {
                 >
                     {/*  sliding box here   */}
 
-                    <Box
+                    <Box 
                         // transition="transform 1s"
                         _hover={{
                             // transform: 'scale(1.05)',
@@ -59,18 +60,20 @@ const AdminSide = () => {
                         </Container>
 
                         {/* content starts here*/}
-                        <Box m="auto" w={{ base: "95%", md: "95%" }} h="auto"
-                            // border="2px solid red"
+                        <Box m="auto" w={{ base: "95%", md: "95%" }}  h="auto"
+                        // border="2px solid red"
                         >
-                            <Box w={{ base: "50%", md: "100%" }} position="sticky" bg="rgb(0,0,0)"
+                            <Box w={{ base: "35%", md: "100%" }} position="sticky" bg="rgb(0,0,0)"
                                 top="0">
-                                <Heading textAlign={"left"} color="#F44336" fontFamily={"dogica-lite"} >AdminSide</Heading>
+                                <Text textAlign={"left"} fontSize={{base:"20px",md:"35px"}} color="#4caf50" fontFamily={"dogica-lite"} >AdminSide</Text>
+                            </Box>
+
+                            <Box>
+                                <AdminContent />
                             </Box>
 
 
-                           
 
-                            
 
                         </Box>
                         {/* scroll content ends here*/}
