@@ -1,10 +1,15 @@
-import { Container, Input, Text, Button, Box, Image, Divider, Select, Grid } from '@chakra-ui/react'
-import React from 'react'
-
+import React, { useState } from 'react'
+import { Container, Input, Text, Button, Box, Image, Divider, Select, Grid, useDisclosure, Spinner } from '@chakra-ui/react'
+import AdminAlert from './AdminAlert.jsx'
+import axios from "axios"
 const defaultImage = "data:image/png;base64,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"
 
 
+
 const AdminContent = () => {
+
+    const [customAlert, setCustomAlert] = useState("")
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const [values, setValues] = React.useState({
         cover_img: '',
         background_img: '',
@@ -13,7 +18,9 @@ const AdminContent = () => {
         price: 0,
         category: '',
         video_url: '',
-        images: []
+        images: [],
+        drone_category: '',
+        imageUrl: '',
 
     });
 
@@ -41,18 +48,75 @@ const AdminContent = () => {
             ...values,
             [name]: value
         });
-
     };
-    const handleSubmit = () => {
-        // handleChange()
-        console.log(values)
+
+    const handleSubmit = async () => {
+        if (values.cover_img === "") {
+            setCustomAlert("Please give a valid cover image url😥")
+            onOpen()
+        } else if (values.background_img === "") {
+            setCustomAlert("Please give a valid background image url😥")
+            onOpen()
+        } else if (values.discription === "") {
+            setCustomAlert("Discription required😥...")
+            onOpen()
+        } else if (values.background_title === "") {
+            setCustomAlert("Discription required for background image😥....")
+            onOpen()
+        } else if (values.price === "" || values.price <= 0) {
+            setCustomAlert("Invalid Product Price...😥")
+            onOpen()
+        }
+        else if (values.category === "") {
+            setCustomAlert("Please choose a category which you want to add...😃")
+            onOpen()
+        } else if (values.images.length < 2) {
+            setCustomAlert("Minimum two images required😥...")
+            onOpen()
+        } else {
+            try {
+                const base_url = "http://192.168.93.120:4000/"
+                const response = await axios.post(`${base_url}admin/add/product`, values);
+
+                console.log({ msg: "add success" }, { status: response.status });
+                if (response.status === 200) {
+                    setCustomAlert('Product added to data base successfully...🥳😇')
+                    onOpen()
+                    setValues({
+                        cover_img: '',
+                        background_img: '',
+                        discription: '',
+                        background_title: '',
+                        price: 0,
+                        category: '',
+                        video_url: '',
+                        images: [],
+                        drone_category: '',
+                        imageUrl: '', // Reset the imageUrl field too
+                    });
+                    console.log(values)
+                } else {
+                    setCustomAlert('Product failed to add in data base...😓😔')
+                    onOpen()
+                }
+
+
+            } catch (error) {
+
+                console.log("post denied!!!")
+            }
+        }
+
+
+
+
     }
     const selectCSS = {
         color: "#eee",
         backgroundColor: "rgba(0,0,0,0.5)",
-
-
     }
+
+
     return (
         <>
             <Container maxW={"8xl"}   >
@@ -266,28 +330,19 @@ const AdminContent = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         </Box>
 
                     </Box>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -323,7 +378,7 @@ const AdminContent = () => {
                                     value={values.imageUrl || ''}
                                     type="text"
                                     onChange={handleImageUrlChange}
-                                    placeholder='Enter image URLs(optionsal)...'
+                                    placeholder='More product image URLs(optionsal)...'
                                     size='20px'
                                     fontSize={{ base: "12px", md: "15px" }}
                                     variant={"unstyled"}
@@ -367,20 +422,20 @@ const AdminContent = () => {
 
 
 
-                <Box p={{base:"2",md:"5"}} mt="20px" w="100%" h="auto" 
+                <Box p={{ base: "2", md: "5" }} mt="20px" w="100%" h="auto"
                 // border={"0.5px solid lime"}
                 >
-                    <Text textAlign={{base:"justify",md:"center"}} fontSize={{ base: "13px", md: "15px" }} color={"#56b9f1"}>Are you shure want to add above detailes? Please check it once again before adding to it in Data Base....</Text>
+                    <Text textAlign={{ base: "justify", md: "center" }} fontSize={{ base: "13px", md: "15px" }} color={"#56b9f1"}>Are you shure want to add above detailes? Please check it once again before adding to it in Data Base....</Text>
 
                 </Box>
-                <Box m="auto" w="50%" h="auto" p={5} 
-                // border={"1px solid coral"} 
-                display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"}>
-                    <Button textColor={"#fff"} _hover={{ bgColor: "#3a9be6" }} bgColor={"#3d6be6"} w={{base:""}} h={{base:"30px",md:"25px"}} onClick={handleSubmit}>Add</Button>
+                <Box m="auto" w="50%" h="auto" p={5}
+                    // border={"1px solid coral"} 
+                    display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"}>
+                    <Button textColor={"#fff"} _hover={{ bgColor: "#3a9be6" }} bgColor={"#3d6be6"} w={{ base: "" }} h={{ base: "30px", md: "25px" }} onClick={handleSubmit}>Add</Button>
 
                 </Box>
 
-
+                <AdminAlert isOpen={isOpen} alert_msg={customAlert} onClose={onClose} />
             </Container>
         </>
     )

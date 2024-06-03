@@ -152,7 +152,7 @@ export default function Quiz() {
                                 <TestimonialText>
                                     I'm interested in new technology, want to experience the thrill and fun of flight.
                                 </TestimonialText>
-                                <Radio value='toy' size='lg'></Radio>
+                                <Radio value='sport' size='lg'></Radio>
                             </TestimonialContent>
 
                         </Testimonial>

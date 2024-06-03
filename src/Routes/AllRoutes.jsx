@@ -14,6 +14,7 @@ import Page2 from '../QuizComponents/Page2.jsx'
 import Page3 from '../QuizComponents/Page3.jsx'
 import Page4 from '../QuizComponents/Page4.jsx'
 import AdminSide from '../Admin/AdminSide.jsx'
+import Clint from '../Admin/Clint.jsx'
 function AllRoutes() {
     return (
         <>
@@ -45,7 +46,7 @@ function AllRoutes() {
                     <Route path="/page3" element={<Page3 />} />
                     <Route path="/page4" element={<Page4 />} />
 
-                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                     <Route path="clint" element={<Clint />} />
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
