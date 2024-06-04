@@ -27,7 +27,7 @@ function BuyPage() {
 
         {/* Where To Buy Options part here----------------->>> */}
         <Box display={"flex"} alignContent={"center"} alignItems={"center"} justifyContent={"center"} m="auto" w={{ base: "90%", md: "90%", lg: "100%" }} h={{ base: "10vh", md: "15vh", lg: "15vh" }} borderTop="1px solid #CFD8DC" borderBottom="1px solid #CFD8DC" >
-          <Box display={"flex"} alignContent={"left"} gap={"20px"} alignItems={"center"} justifyContent={"left"} w="100%" h={{ base: "40%", md: "35%", lg: "33%" }}
+          <Box display={"flex"} alignContent={"left"} gap={"20px"} alignItems={"center"} justifyContent={"left"} w="100%" h={{ base: "30%", md: "35%", lg: "33%" }}
           // border={"1px solid red"}
           >
             <Box  onClick={() => handleOptionClick("online")}
@@ -35,14 +35,14 @@ function BuyPage() {
             backgroundColor={selectedOption === "online" ? "#000" : "transparent"}
             color={selectedOption === "online" ? "#fff" : "#000"}
               border={"0.5px solid #bbb"} _hover={{ bg: "#000", textColor: "#fff" }} display={"flex"} alignContent={"center"} alignItems={"center"} justifyContent={"center"} w="auto" h="100%" borderTopRightRadius={"15px"} borderTopLeftRadius={"15px"} borderBottomRightRadius={"15px"} borderBottomLeftRadius={"15px"}>
-              <Text ml={"4px"} mr="4px" fontSize={{ base: "10px", md: "12px", lg: "12px" }}>Official Online store</Text>
+              <Text p={1} ml={"4px"} mr="4px" fontSize={{ base: "10px", md: "12px", lg: "12px" }}>Official Online store</Text>
             </Box>
             <Box  onClick={() => handleOptionClick("retail")}
             cursor="pointer"
             backgroundColor={selectedOption === "retail" ? "#000" : "transparent"}
             color={selectedOption === "retail" ? "#fff" : "#000"}
               border={"0.5px solid #bbb"} _hover={{ bg: "#000", textColor: "#fff" }} display={"flex"} alignContent={"center"} alignItems={"center"} justifyContent={"center"} w="auto" h="100%" borderTopRightRadius={"15px"} borderTopLeftRadius={"15px"} borderBottomRightRadius={"15px"} borderBottomLeftRadius={"15px"}>
-              <Text ml={"4px"} mr="4px" fontSize={{ base: "10px", md: "12px", lg: "12px" }}>Retail store</Text>
+              <Text p={1} ml={"4px"} mr="4px" fontSize={{ base: "10px", md: "12px", lg: "12px" }}>Retail store</Text>
             </Box>
           </Box>
         </Box>
