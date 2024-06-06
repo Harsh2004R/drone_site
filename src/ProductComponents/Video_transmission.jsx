@@ -39,7 +39,6 @@ function Video_transmission() {
         transform: "translateX(-50%)",
         color: "white",
         fontSize: useBreakpointValue({ base: "28px", md: "58px", lg: "70px" }),
-        fontWeight: "400",
         width: "100%"
     };
     const textStyle3 = {
