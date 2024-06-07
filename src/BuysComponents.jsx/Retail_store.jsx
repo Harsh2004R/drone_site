@@ -96,13 +96,13 @@ function Retail_store() {
     useEffect(() => {
         if (category === "") {
             fetchProductData()
-            console.log("sort value",sort)
+            console.log("sort value", sort)
         } else {
             categoryFetch()
             // console.log(`Radio Value: ${category}`);
-           
+
         }
-    }, [category,sort])
+    }, [category, sort])
 
     return (
         <div>
@@ -230,7 +230,7 @@ function Retail_store() {
 
                                         <MenuItem
                                             _hover={{ textColor: "#0693e3" }}
-                                            onClick={() =>  setSort("low to Heigh") }
+                                            onClick={() => setSort("low to Heigh")}
                                         >
                                             <Radio name={"menu.radioName"} value={"low to Heigh"} m="5px"></Radio>
                                             Price from low to Heigh
@@ -238,7 +238,7 @@ function Retail_store() {
                                         </MenuItem>
                                         <MenuItem
                                             _hover={{ textColor: "#0693e3" }}
-                                            onClick={() =>  setSort("Heigh to low") }
+                                            onClick={() => setSort("Heigh to low")}
                                         >
                                             <Radio name={"menu.radioName"} value={"Heigh to low"} m="5px"></Radio>
                                             Price from Heigh to low
@@ -263,6 +263,7 @@ function Retail_store() {
 
                         <Grid gap={5} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }} w="100%" h="auto">
                             {droneData.map((el, i) => (
+                                 <Link to={el._id}>
                                 <Box
                                     key={i}
                                     w={{ base: "100%", md: "100%" }}
@@ -327,11 +328,12 @@ function Retail_store() {
                                         <Box w="15%" h="100%"
                                             //  border={"1px solid yellow"} 
                                             position={"relative"}>
-                                            <Link to={el._id}><Box
+                                           <Box
                                                 className="hover-box" visibility={"visible"} transition="visibility 0.5s, opacity 0.5s"
                                                 opacity={{ base: "1", md: "1", lg: "0" }} display={"flex"} alignContent={"center"} justifyContent={"center"} alignItems={"center"} w="35px" h="35px" borderRadius={"50%"} position={"absolute"} bottom="20%" bg="#1273de">
                                                 <ChevronRightIcon color="#fff" />
-                                            </Box></Link>
+                                            </Box>
+                                           
                                         </Box>
 
 
@@ -340,6 +342,7 @@ function Retail_store() {
                                     </Box>
 
                                 </Box>
+                                </Link>
                             ))}
 
 

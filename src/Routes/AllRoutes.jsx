@@ -15,6 +15,7 @@ import Page3 from '../QuizComponents/Page3.jsx'
 import Page4 from '../QuizComponents/Page4.jsx'
 import AdminSide from '../Admin/AdminSide.jsx'
 import Clint from '../Admin/Clint.jsx'
+import Product_Info from '../Pages/Product_Info.jsx'
 function AllRoutes() {
     return (
         <>
@@ -23,7 +24,7 @@ function AllRoutes() {
                 <Routes>
                     <Route path="/" element={<Home />} />
 
-                    <Route path="/product" element={
+                    <Route path="/abc" element={
                         <PrivateRoute>
                             <Product />
                         </PrivateRoute>
@@ -32,6 +33,7 @@ function AllRoutes() {
                     <Route path="/signup" element={<Signup />} ></Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/buy" element={<BuyPage />} />
+                    <Route path="/buy/:id" element={<Product_Info />} />
                     <Route path="/buy/camera_drones" element={
                         <PrivateRoute>
                             <CameraDrone />
@@ -46,7 +48,7 @@ function AllRoutes() {
                     <Route path="/page3" element={<Page3 />} />
                     <Route path="/page4" element={<Page4 />} />
 
-                     <Route path="clint" element={<Clint />} />
+                    <Route path="clint" element={<Clint />} />
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
