@@ -1,54 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import { Carousel } from "react-responsive-carousel";
-import { Box, Container, Text, useBreakpointValue, Image, border, Grid } from "@chakra-ui/react"
+import { Box, Container, Text, useBreakpointValue, Image, SkeletonCircle, SkeletonText, Spinner, Slide, AspectRatio } from "@chakra-ui/react"
+import axios from "axios";
+import { useParams } from 'react-router-dom';
 
-
-const slides = [
-    {
-        image:
-            "https://stormsend1.djicdn.com/tpc/uploads/carousel/image/36e6316fa6fd325c68b950b30a192138@ultra.jpg",
-
-    },
-    {
-        image:
-            "https://stormsend1.djicdn.com/tpc/uploads/carousel/image/852e505bb7a82270234b15058d96868d@ultra.jpg",
-
-    },
-    {
-        image:
-            "https://stormsend1.djicdn.com/tpc/uploads/carousel/image/56f9c91eaeacbec6de9ed8e7c467637d@ultra.jpg",
-
-    },
-    {
-        image:
-            "https://stormsend1.djicdn.com/tpc/uploads/carousel/image/c54c054b1e2f6710b44e70a34eab81bf@ultra.jpg",
-
-    },
-    {
-        image:
-            "https://stormsend1.djicdn.com/tpc/uploads/carousel/image/05dcf9d62bffe45e38f82391e9a9e012@ultra.jpg",
-
-    },
-    {
-        image:
-            "https://stormsend1.djicdn.com/tpc/uploads/carousel/image/a73cb58ff813f58113514e22221ba428@ultra.jpg",
-
-    }, {
-        image:
-            "https://stormsend1.djicdn.com/tpc/uploads/carousel/image/8326489362003949f8b5a249087a5110@ultra.jpg",
-
-    }, {
-        image:
-            "https://stormsend1.djicdn.com/tpc/uploads/carousel/image/11053cf9abb202575e1e86edb22126fd@ultra.jpg",
-
-
-    }
-];
 
 
 const Product_Info = () => {
+    const baseURL = "http://192.168.148.120:4000/"
+    const { id } = useParams();
 
+    const [random, setRandom] = useState([])
+    const [product, setProduct] = useState(
+        {
+            background_img: "",
+            background_title: "",
+            category: "",
+            cover_img: "",
+            createdAt: "2024-06-03T14:47:49.856Z",
+            discription: "DJI Mavic 3 Pro Fly More Combo (DJI RC)",
+            images: [],
+            price: "",
+            updatedAt: "",
+            video_url: "",
+            _id: "",
+
+        }
+    );
     const [selectedOption, setSelectedOption] = useState("image");
     const handleOptionClick = (option) => {
         setSelectedOption(option);
@@ -65,6 +44,61 @@ const Product_Info = () => {
         objectFit: 'cover',
 
     }
+
+
+    async function getSingleData() {
+
+        try {
+            const response = await axios.get(`${baseURL}api/all/data/${id}`)
+            const details = response.data.Target;
+            setProduct({
+                background_img: details.background_img,
+                background_title: details.background_title,
+                category: details.category,
+                cover_img: details.cover_img,
+                createdAt: details.createdAt,
+                discription: details.discription,
+                images: details.images,
+                price: details.price,
+                updatedAt: details.updatedAt,
+                video_url: details.video_url,
+                _id: details._id,
+            })
+
+
+            const result = await axios.get(`${baseURL}api/all/data/${id}/random`)
+            // console.log("Random_Fetch result:", result.data.Data);
+            setRandom(result.data.Data);
+            console.log("random array",random)
+        } catch (error) {
+            console.log("unknown error accure while fetching data from server via id using params", error)
+        }
+    }
+
+
+    useEffect(() => {
+        if (id) {
+            getSingleData();
+        }
+    }, [id])
+
+
+    // useEffect(() => {
+
+    // }, [product])
+
+   
+
+    if (!product) {
+        return <>
+
+            <Box display={"flex"} flexDirection={{ base: "column", md: "column" }} w="100%" h={"auto"} padding='6' bg='white'>
+                <SkeletonCircle borderRadius={"none"} ml={{ base: "7%", md: "13%" }} size={{ base: "270px", md: "300px" }} />
+                <SkeletonText startColor="#B0BEC5" mt='0' endColor="#81D4FA" noOfLines={4} spacing='50px' p={{ base: "5", md: "200px" }} skeletonHeight='2' />
+            </Box>
+
+        </>;
+    }
     return (
         <>
             <Navbar />
@@ -77,15 +111,17 @@ const Product_Info = () => {
 
 
                     {/* /////////////////////////////////// image slides , video player container here /////////////////////////////////////////////// */}
-                    <Box w="100%" h={{ base: "100vh", md: "100vh" }} border={"1px solid coral"} >
+                    <Box w="100%" h={{ base: "100vh", md: "100vh" }}
+                    //  border={"1px solid coral"} 
+                    >
 
 
                         {selectedOption === "image" &&
 
                             <Carousel infiniteLoop showThumbs={false}>
-                                {slides.map((slide, index) => (
+                                {product.images.map((product, index) => (
                                     <Box key={index} position="relative">
-                                        <Image style={imageStyle} w="100%" h="100%" src={slide.image} />
+                                        <Image style={imageStyle} w="100%" h="100%" src={product} />
 
                                     </Box>
                                 ))}
@@ -94,17 +130,22 @@ const Product_Info = () => {
                         }
                         {selectedOption === "video" &&
                             <Box w="100%" h={{ base: "50vh", md: "75vh" }}>
-                                <video style={videoStyles} autoPlay={true} muted={true}
-                                >
-                                    <source src="https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E5%9F%8E%209%20%E5%91%A8%E5%B9%B4%E5%BD%B1%E5%83%8F%E5%A4%A7%E8%B5%9B/1124.mp4" />
-                                </video>
+                                <AspectRatio style={videoStyles} ratio={1}>
+                                    <iframe
+                                        title='naruto'
+                                        src={product.video_url}
+                                        allowFullScreen
+                                    />
+                                </AspectRatio>
                             </Box>
 
                         }
 
 
 
-                        <Box bg="#eee" border="1px solid lime">
+                        <Box
+                        //  border="1px solid lime"
+                        >
                             <Box display={"flex"} alignContent={"center"} alignItems={"center"} justifyContent={"center"} m="auto" w={{ base: "90%", md: "90%", lg: "100%" }} h={{ base: "10vh", md: "15vh", lg: "15vh" }} borderTop="1px solid #CFD8DC" borderBottom="1px solid #CFD8DC" >
                                 <Box display={"flex"} alignContent={"center"} gap={"20px"} alignItems={"center"} justifyContent={"center"} w="100%" h={{ base: "30%", md: "35%", lg: "33%" }}
                                 // border={"1px solid red"}
@@ -155,16 +196,20 @@ const Product_Info = () => {
 
 
 
-                    <Box w="100%" h="100vh" border={"1px solid blue"} overflow={"auto"} css={{ scrollbarWidth: "none", msOverflowStyle: "none" }} _webkit={{ overflowScrolling: "touch", "&::-webkit-scrollbar": { display: "none" } }}>
+                    <Box
+                        // border={"1px solid blue"}
+                        w="100%" h="100vh" overflow={"auto"} css={{ scrollbarWidth: "none", msOverflowStyle: "none" }} _webkit={{ overflowScrolling: "touch", "&::-webkit-scrollbar": { display: "none" } }}>
 
-                        <Box w="100%" p={5} h="auto" border={"1px solid red"} overflow={"hidden"} m={2} >
+                        <Box
+                            //  border={"1px solid red"}
+                            w="100%" p={5} h="auto" overflow={"hidden"} m={2} >
 
                             <Text fontSize={{ base: "2xl", md: "32px" }} fontWeight={{ base: "500", md: "500" }}>
-                                DJI Mavic 3 Pro (DJI RC)
+                                {product.discription}
                             </Text>
 
                             <Text color="#000" fontSize={{ base: "xl", md: "25px" }} fontWeight={{ base: "500", md: "500" }}>USD $
-                                <Text color="#30a4e5" as="span">2,199</Text>
+                                <Text color="#30a4e5" as="span">{product.price}</Text>
                             </Text>
 
                             <Box mt="20px" borderRadius={"xl"} p={5} bg="#ECEFF1" w="100%" h="auto">
@@ -186,15 +231,15 @@ const Product_Info = () => {
 
 
                             <Text mt={10} mb={5} color="#000" fontWeight={{ base: "500", md: "500" }} fontSize={{ base: "xl", md: "xl" }}>Select Options</Text>
-                            <Box w="100%" h={{ base: "15vh", md: "20vh" }} borderRadius={"lg"} border={"2px solid #94a3ac"} _hover={{border:"3px solid #008eff"}}>
-                               
+                            <Box w="100%" h={{ base: "15vh", md: "20vh" }} borderRadius={"lg"} border={"2px solid #94a3ac"} _hover={{ border: "3px solid #008eff" }}>
+
                                 <Box p={5} display={"flex"} flexDirection="row" w="100%" h="100%">
-                                    <Box w={{ base: "30%", md: "25%" }}  h={{ base: "100%", md: "100%" }}>
+                                    <Box w={{ base: "30%", md: "25%" }} h={{ base: "100%", md: "100%" }}>
                                         <Image pl={2} pr={2} w="100%" h="100%" src="https://stormsend1.djicdn.com/tpc/uploads/carousel/image/8326489362003949f8b5a249087a5110@ultra.jpg" alt="drone.png" />
                                     </Box>
-                                    <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} w={{ base: "70%", md: "75%" }}  h={{ base: "100%", md: "100%" }}>
+                                    <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} w={{ base: "70%", md: "75%" }} h={{ base: "100%", md: "100%" }}>
                                         <Text fontWeight={"500"} fontSize={{ base: "14px", md: "18px" }}>DJI Mavic 3 Pro Fly More Combo (DJI RC) </Text>
-                                        <Text fontWeight={"500"} fontSize={{ base: "12px", md: "14px" }}>USD $<Text color="#30a4e5" as="span">2,199</Text></Text>
+                                        <Text fontWeight={"500"} fontSize={{ base: "12px", md: "14px" }}>USD $<Text color="#30a4e5" as="span">{product.price}</Text></Text>
                                     </Box>
                                 </Box>
 
@@ -207,11 +252,11 @@ const Product_Info = () => {
                 </Container>
             </Box>
 
-            {/* <Box boxShadow="rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px" position={"sticky"} bottom={0} w="100%" h={{ base: "15vh", md: "15vh" }} bg="#FFF">
+            <Box boxShadow="rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px" position={"sticky"} bottom={0} w="100%" h={{ base: "15vh", md: "15vh" }} bg="#FFF">
 
-            </Box> */}
-        
-        
+            </Box>
+
+
         </>
     )
 }
