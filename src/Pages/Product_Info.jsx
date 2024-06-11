@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar'
 import { Carousel } from "react-responsive-carousel";
-import { Box, Container, Text, useBreakpointValue, Image, SkeletonCircle, SkeletonText, Spinner, Slide, AspectRatio } from "@chakra-ui/react"
+import { Box, Container, Text, useBreakpointValue, Image, SkeletonCircle, SkeletonText, Spinner, Slide, AspectRatio, Button } from "@chakra-ui/react"
 import axios from "axios";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
 
 
 const Product_Info = () => {
-    const baseURL = "http://192.168.148.120:4000/"
+    const baseURL = "http://192.168.118.120:4000/"
     const { id } = useParams();
+    const Navigate = useNavigate()
 
     const [random, setRandom] = useState([])
     const [product, setProduct] = useState(
@@ -29,9 +30,15 @@ const Product_Info = () => {
         }
     );
     const [selectedOption, setSelectedOption] = useState("image");
+
     const handleOptionClick = (option) => {
         setSelectedOption(option);
     };
+
+    const changeProductId = (newID) => {
+        Navigate(`/buy/${newID}`)
+        console.log("click---------------123")
+    }
     const imageStyle = {
         width: useBreakpointValue({ base: "100%", md: "100%" }),
         height: useBreakpointValue({ base: "50vh", md: "75vh" }),
@@ -69,11 +76,13 @@ const Product_Info = () => {
             const result = await axios.get(`${baseURL}api/all/data/${id}/random`)
             // console.log("Random_Fetch result:", result.data.Data);
             setRandom(result.data.Data);
-            console.log("random array",random)
+            // console.log("random array",random)
         } catch (error) {
             console.log("unknown error accure while fetching data from server via id using params", error)
         }
     }
+
+
 
 
     useEffect(() => {
@@ -83,11 +92,15 @@ const Product_Info = () => {
     }, [id])
 
 
-    // useEffect(() => {
+    useEffect(() => {
+        console.log("random array", random)
+    }, [random])
 
-    // }, [product])
 
-   
+
+    const handleCart = () => {
+        Navigate(`/cart/${id}`)
+    }
 
     if (!product) {
         return <>
@@ -231,19 +244,36 @@ const Product_Info = () => {
 
 
                             <Text mt={10} mb={5} color="#000" fontWeight={{ base: "500", md: "500" }} fontSize={{ base: "xl", md: "xl" }}>Select Options</Text>
-                            <Box w="100%" h={{ base: "15vh", md: "20vh" }} borderRadius={"lg"} border={"2px solid #94a3ac"} _hover={{ border: "3px solid #008eff" }}>
 
-                                <Box p={5} display={"flex"} flexDirection="row" w="100%" h="100%">
-                                    <Box w={{ base: "30%", md: "25%" }} h={{ base: "100%", md: "100%" }}>
-                                        <Image pl={2} pr={2} w="100%" h="100%" src="https://stormsend1.djicdn.com/tpc/uploads/carousel/image/8326489362003949f8b5a249087a5110@ultra.jpg" alt="drone.png" />
+                            {random.map((el, i) => (
+
+
+
+
+                                <Box onClick={() => changeProductId(el._id)} key={i} mt={{ base: "5", md: "5" }} w="100%" h={{ base: "auto", md: "auto" }} borderRadius={"lg"} border={"2px solid #94a3ac"} _hover={{ border: "3px solid #008eff" }}>
+
+                                    <Box p={5} display="flex" flexDirection="row" w="100%" h="100%">
+                                        <Box w={{ base: "30%", md: "25%" }} h={{ base: "100%", md: "100%" }}>
+                                            <Image pl={2} pr={2} w="100%" h="100%" src={el.cover_img} alt="drone.png" />
+                                        </Box>
+                                        <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} w={{ base: "70%", md: "75%" }} h={{ base: "100%", md: "100%" }}>
+                                            <Text fontWeight={"500"} fontSize={{ base: "14px", md: "18px" }}>{el.discription}</Text>
+                                            <Text fontWeight={"500"} fontSize={{ base: "12px", md: "14px" }}>USD $<Text color="#30a4e5" as="span">{el.price}</Text></Text>
+                                            <Text fontWeight={"500"} fontSize={{ base: "10px", md: "12px" }}>{el.background_title}</Text>
+
+
+
+
+                                        </Box>
+
                                     </Box>
-                                    <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} w={{ base: "70%", md: "75%" }} h={{ base: "100%", md: "100%" }}>
-                                        <Text fontWeight={"500"} fontSize={{ base: "14px", md: "18px" }}>DJI Mavic 3 Pro Fly More Combo (DJI RC) </Text>
-                                        <Text fontWeight={"500"} fontSize={{ base: "12px", md: "14px" }}>USD $<Text color="#30a4e5" as="span">{product.price}</Text></Text>
-                                    </Box>
+
                                 </Box>
 
-                            </Box>
+
+                            ))}
+
+
 
                         </Box>
 
@@ -252,7 +282,73 @@ const Product_Info = () => {
                 </Container>
             </Box>
 
-            <Box boxShadow="rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px" position={"sticky"} bottom={0} w="100%" h={{ base: "15vh", md: "15vh" }} bg="#FFF">
+            <Box boxShadow="rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px" position={"sticky"} bottom={0} w="100%" h={{ base: "auto", md: "15vh" }} bg="#FFF">
+
+                <Box
+                    // border={"1px solid lime"}
+                    w={{ base: "100%", md: "80%" }} h={{ base: "100%", md: "100%" }} m="auto" p={{ base: "2", md: "5" }}>
+                    <Box w="100%" h="auto"
+                        // border="1px solid grey"
+                        display={"flex"}
+                        alignContent={"center"} alignItems={"center"}>
+
+                        <Box>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8.3H6.46497" stroke="#8C8C8C" strokeWidth="1.25" strokeLinecap="round"></path>
+                                <path d="M2.07007 10.6H6.46497" stroke="#8C8C8C" strokeWidth="1.25" strokeLinecap="round"></path>
+                                <path
+                                    fillRule="evenodd"
+                                    clipRule="evenodd"
+                                    d="M2.83436 3.375C2.17258 3.375 1.63611 3.91147 1.63611 4.57325V6.5C1.63611 6.84518 1.91593 7.125 2.26111 7.125C2.60629 7.125 2.88611 6.84518 2.88611 6.5V4.625H6.8471H12.3367V14.0756L9.52222 14.0756H8.67177C8.72793 14.2743 8.75798 14.484 8.75798 14.7006C8.75798 14.9173 8.72793 15.127 8.67177 15.3256H9.52222L12.9617 15.3256H13.5867H13.8123C13.7561 15.127 13.7261 14.9173 13.7261 14.7006C13.7261 14.484 13.7561 14.2743 13.8123 14.0756H13.5867V7.68233H16.1069C16.248 7.68233 16.3831 7.73953 16.4813 7.84088L18.2279 9.64289C18.3222 9.74018 18.3749 9.87035 18.3749 10.0058V14.0756H18.2259C18.282 14.2743 18.3121 14.484 18.3121 14.7006C18.3121 14.9173 18.282 15.127 18.2258 15.3256H18.6178C19.174 15.3256 19.6249 14.8747 19.6249 14.3185V10.0058C19.6249 9.54559 19.4458 9.10341 19.1255 8.77293L17.3789 6.97091C17.0452 6.62665 16.5863 6.43233 16.1069 6.43233H13.5867V4.57325C13.5867 3.91147 13.0503 3.375 12.3885 3.375H6.8471H2.83436ZM4.25821 15.3256C4.20205 15.127 4.172 14.9173 4.172 14.7006C4.172 14.484 4.20205 14.2743 4.25821 14.0756H2.88611V12.4C2.88611 12.0548 2.60629 11.775 2.26111 11.775C1.91593 11.775 1.63611 12.0548 1.63611 12.4V14.3185C1.63611 14.8747 2.08703 15.3256 2.64328 15.3256H4.25821Z"
+                                    fill="#8C8C8C"
+                                ></path>
+                                <path
+                                    d="M17.6871 14.7006C17.6871 15.6218 16.9403 16.3686 16.0191 16.3686C15.0979 16.3686 14.3511 15.6218 14.3511 14.7006C14.3511 13.7794 15.0979 13.0326 16.0191 13.0326C16.9403 13.0326 17.6871 13.7794 17.6871 14.7006Z"
+                                    stroke="#8C8C8C"
+                                    strokeWidth="1.25"
+                                ></path>
+                                <path
+                                    d="M8.13298 14.7006C8.13298 15.6218 7.3862 16.3686 6.46499 16.3686C5.54378 16.3686 4.797 15.6218 4.797 14.7006C4.797 13.7794 5.54378 13.0326 6.46499 13.0326C7.3862 13.0326 8.13298 13.7794 8.13298 14.7006Z"
+                                    stroke="#8C8C8C"
+                                    strokeWidth="1.25"
+                                ></path>
+                            </svg>
+                        </Box>
+                        <Box ml="2">
+                            <Text color="#1E88E5" fontSize={{ base: "12px", md: "15px" }}>Deliver to :</Text>
+                        </Box>
+                    </Box>
+                    <Box w="100%" h="auto"
+                        // border="1px solid grey"
+                        display={"flex"}
+                        alignContent={"center"} alignItems={"center"}>
+
+                        <Box w={{ base: "50%", md: "70%" }}
+                        // border={"1px solid red"}
+                        >
+                            <Text fontSize={{ base: "10px", md: "15px" }} color="#666666">Standard shipping arrival date: {Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric' }).format(new Date(Date.now() + 3 * 24 * 60 * 60 * 1000))} , Express shipping arrival date: {Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric' }).format(new Date(Date.now() + 5 * 24 * 60 * 60 * 1000))} </Text>
+                        </Box>
+                        <Box
+                            // border={"1px solid red"}
+                            w={{ base: "50%", md: "30%" }} alignItems={"center"} justifyContent={"space-evenly"} ml="2" display={"flex"} >
+                            <Text color="#000" fontSize={{ base: "sm", md: "25px" }} fontWeight={{ base: "500", md: "500" }}>USD $
+                                <Text color="#30a4e5" as="span">{product.price}</Text>
+                            </Text>
+                            <Box >
+                                <Box onClick={handleCart} _hover={{ cursor: "pointer" }} p="2" borderTopRightRadius={"12px"} borderTopLeftRadius={"12px"} borderBottomRightRadius={"12px"} borderBottomLeftRadius={"12px"} alignContent={"center"} alignItems={"center"} display={"flex"} w={{ base: "auto", md: "auto" }} h={{ base: "25px", md: "25px" }} bg="#03A9F4">
+                                    <Text color='#fff' fontSize={{ base: "10px", md: "13px" }}>
+                                        Add to cart
+                                    </Text>
+                                </Box>
+                            </Box>
+                        </Box>
+
+                    </Box>
+
+
+                </Box>
+
+
 
             </Box>
 
