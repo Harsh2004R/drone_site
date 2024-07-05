@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Footer from "../Components/Footer.jsx"
 import Navbar from '../Components/Navbar';
-import { Box, Center, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Center, Flex, Heading, Text, Image } from '@chakra-ui/react';
 
 
 
@@ -35,8 +36,30 @@ const Cart = () => {
                             <Text w="10%" color="#6C7073">Price</Text>
                         </Flex>
                     </Box>
+
+                    <Box mt={{ base: "5", md: "5" }} w="100%" h={{ base: "auto", md: "auto" }} borderRadius={"lg"} border={"2px solid #94a3ac"} _hover={{cursor:"pointer", border: "3px solid #008eff" }}>
+
+                        <Box transition={"0.3s ease"} p={5} display="flex" flexDirection="row" w="100%" h="100%">
+                            <Box  w={{ base: "60px", md: "150px" }} h={{ base: "60px", md: "120px" }}>
+                                <Image pl={2} pr={2} w="100%" h="100%" src={"https://stormsend1.djicdn.com/tpc/uploads/spu/cover/4ea419b081f38056785ae8665d473190@small.png"} alt="drone.png" />
+                            </Box>
+                            <Box w="auto" display={"flex"} flexDirection={"column"} justifyContent={"center"} h={{ base: "auto", md: "auto" }}>
+                                <Text fontWeight={"500"} fontSize={{ base: "14px", md: "18px" }}>{"DJI Mini 4 Pro (DJI RC-N2)"}</Text>
+                                <Text fontWeight={"500"} fontSize={{ base: "12px", md: "14px" }}>USD $<Text color="#30a4e5" as="span">{"999"}</Text></Text>
+                                {/* <Text fontWeight={"500"} fontSize={{ base: "10px", md: "12px" }}>{"Includes the new DJI RC with a built-ncludes the new DJI RC with a built-in 5.5-inch HD display for clear viewing in strong light and the DJI Fly app pre-installed."}</Text> */}
+
+                            </Box>
+                            <Box flex={1} h="auto" border={"1px solid yellow"}></Box>
+
+                        </Box>
+
+                    </Box>
+
                 </Box>
             </Box>
+
+            <Footer />
+
         </>
     )
 }
