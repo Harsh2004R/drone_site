@@ -4,11 +4,12 @@ import { Carousel } from "react-responsive-carousel";
 import { Box, Container, Text, useBreakpointValue, Image, SkeletonCircle, SkeletonText, Spinner, Slide, AspectRatio, Button } from "@chakra-ui/react"
 import axios from "axios";
 import { useNavigate, useParams, Link } from 'react-router-dom';
-
+import useStore from '../Zustand/store';
 
 
 const Product_Info = () => {
-    const baseURL = "http://192.168.118.120:4000/"
+
+    const baseURL = "http://192.168.205.120:4000/"
     const { id } = useParams();
     const Navigate = useNavigate()
 
@@ -97,10 +98,22 @@ const Product_Info = () => {
     }, [random])
 
 
+    // const { id } = useParams(); 
+    const addCart = useStore((state) => state.addCart);
+
+    const handleAddToCart = () => {
+        addCart(id);
+    };
+
+
 
     const handleCart = () => {
-        Navigate(`/cart/${id}`)
+        handleAddToCart()
+        Navigate(`/add_to_cart/${id}`)
     }
+
+
+
 
     if (!product) {
         return <>

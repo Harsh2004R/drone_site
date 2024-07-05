@@ -12,7 +12,7 @@ export const SlideData = [
         text2: "DJI MAVIC 3 pro",
         text3: "Inspiration in Focus",
         link1: "https://www.dji.com/mavic-3-pro?site=brandsite&from=homepage",
-        link2: "https://store.dji.com/product/dji-mavic-3-pro?site=brandsite&from=homepage",
+        link2: "/buy",
     }
     ,
     {
@@ -22,7 +22,7 @@ export const SlideData = [
         text2: "OSMO POCKET 3",
         text3: "For Moving Moments",
         link1: "1",
-        link2: "2",
+        link2: "/buy",
     },
     {
         video_url:
@@ -31,7 +31,7 @@ export const SlideData = [
         text2: "DJI INSPIRE 3",
         text3: "Master the Unseen",
         link1: "1",
-        link2: "2",
+        link2: "/buy",
     },
     {
         video_url:
@@ -40,7 +40,7 @@ export const SlideData = [
         text2: "MAVIC 3",
         text3: "Your Everyday Commercial Drones",
         link1: "1",
-        link2: "2",
+        link2: "/buy",
     },
     {
         video_url:
@@ -49,7 +49,7 @@ export const SlideData = [
         text2: "DJI MAVIC 3M",
         text3: "See More, Work Smarter",
         link1: "1",
-        link2: "2",
+        link2: "/buy",
     },
     {
         video_url:
@@ -58,7 +58,7 @@ export const SlideData = [
         text2: "AGRAS T40",
         text3: "One For All",
         link1: "1",
-        link2: "2",
+        link2: "/buy",
     }, {
         video_url:
             "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/Shot%20on%20%E8%A7%86%E9%A2%91%E8%B0%83%E6%95%B4/169%20shot%20on-pc-1_AfterCodecs.mp4",
@@ -66,7 +66,7 @@ export const SlideData = [
         text2: "UP TO 30% OFF",
         text3: "Discover exclusive gifts and discounts at the DJI store",
         link1: "1",
-        link2: "2",
+        link2: "/buy",
     }, {
         video_url:
             "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/Shot%20on%20%E8%A7%86%E9%A2%91%E8%B0%83%E6%95%B4/F09_HG330Flex_ShotOn_V4_2400x1440_AfterCodecs.mp4",
@@ -74,7 +74,7 @@ export const SlideData = [
         text2: "DJI RONIN 4D-8D",
         text3: " Imagin Excilence Redefined",
         link1: "1",
-        link2: "2",
+        link2: "/buy",
     }
 
 ];

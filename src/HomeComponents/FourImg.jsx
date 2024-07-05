@@ -203,7 +203,7 @@ function FourImg() {
                                         />
                                         <Box display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"}>
                                             <Text style={textStyle1} > Learn More</Text>
-                                            <Text style={textStyle2}>Where to Buy</Text>
+                                           <Link to="/buy"><Text style={textStyle2}>Where to Buy</Text></Link> 
                                         </Box>
                                     </Link>
                                 )}

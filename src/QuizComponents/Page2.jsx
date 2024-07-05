@@ -13,7 +13,7 @@ import {
 import Navbar from "../Components/Navbar.jsx"
 import Footer from "../Components/Footer.jsx"
 import { useNavigate } from 'react-router-dom';
-import CustomAlert from "../Components/CustomAlert.jsx"
+import CustomAlert from "../Alerts/CustomAlert.jsx"
 
 
 

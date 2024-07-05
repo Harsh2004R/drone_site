@@ -4,7 +4,7 @@ import Footer from "../Components/Footer.jsx"
 import Navbar from "../Components/Navbar.jsx"
 import { Box, Stack, RadioGroup, Radio, Heading, Text, Container, useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom';
-import CustomAlert from '../Components/CustomAlert.jsx';
+import CustomAlert from '../Alerts/CustomAlert.jsx';
 const Page3 = () => {
   const navigate = useNavigate();
   const [value, setValue] = useState('');

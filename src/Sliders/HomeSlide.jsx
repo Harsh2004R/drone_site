@@ -15,7 +15,7 @@ const slides = [
     text2: "DJI MAVIC 3 pro",
     text3: "Inspiration in Focus",
     link1: "https://www.dji.com/mavic-3-pro?site=brandsite&from=homepage",
-    link2: "https://store.dji.com/product/dji-mavic-3-pro?site=brandsite&from=homepage",
+    link2: "/buy",
   },
   {
     image:
@@ -24,7 +24,7 @@ const slides = [
     text2: "OSMO POCKET 3",
     text3: "For Moving Moments",
     link1: "1",
-    link2: "2",
+    link2: "/buy",
   },
   {
     image:
@@ -33,7 +33,7 @@ const slides = [
     text2: "DJI INSPIRE 3",
     text3: "Master the Unseen",
     link1: "1",
-    link2: "http://localhost:5000/product",
+    link2: "/buy",
   },
   {
     image:
@@ -42,7 +42,7 @@ const slides = [
     text2: "MAVIC 3",
     text3: "Your Everyday Commercial Drones",
     link1: "1",
-    link2: "2",
+    link2: "/buy",
   },
   {
     image:
@@ -51,7 +51,7 @@ const slides = [
     text2: "DJI MAVIC 3M",
     text3: "See More, Work Smarter",
     link1: "1",
-    link2: "2",
+    link2: "/buy",
   },
   {
     image:
@@ -60,7 +60,7 @@ const slides = [
     text2: "AGRAS T40",
     text3: "One For All",
     link1: "1",
-    link2: "2",
+    link2: "/buy",
   }, {
     image:
       "https://dji-official-fe.djicdn.com/cms/uploads/6f10c62aeb91090cf4cc4577ccef7feb@1x.jpg",
@@ -68,7 +68,7 @@ const slides = [
     text2: "UP TO 30% OFF",
     text3: "Discover exclusive gifts and discounts at the DJI store",
     link1: "1",
-    link2: "2",
+    link2: "/buy",
   }, {
     image:
       "https://dji-official-fe.djicdn.com/cms/uploads/7bb8eb7615a19c1ed4824f6dc58cea13.jpg",
@@ -76,7 +76,7 @@ const slides = [
     text2: "DJI RONIN 4D-8D",
     text3: " Imagin Excilence Redefined",
     link1: "1",
-    link2: "2",
+    link2: "/buy",
   }
 ];
 

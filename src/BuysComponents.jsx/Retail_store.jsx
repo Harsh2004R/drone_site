@@ -69,7 +69,7 @@ function Retail_store() {
         setCategory(value)
 
     };
-    const baseURL = "http://192.168.118.120:4000/"
+    const baseURL = "http://192.168.205.120:4000/"
     const fetchProductData = async () => {
         try {
             const response = await axios.get(`${baseURL}api/all/data/get?sort=Price from ${sort}`);
@@ -96,7 +96,7 @@ function Retail_store() {
     useEffect(() => {
         if (category === "") {
             fetchProductData()
-            console.log("sort value", sort)
+            // console.log("sort value", sort)
         } else {
             categoryFetch()
             // console.log(`Radio Value: ${category}`);
@@ -263,9 +263,9 @@ function Retail_store() {
 
                         <Grid gap={5} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }} w="100%" h="auto">
                             {droneData.map((el, i) => (
-                                 <Link to={el._id}>
+                                 <Link to={el._id}  key={i}>
                                 <Box
-                                    key={i}
+                                   
                                     w={{ base: "100%", md: "100%" }}
                                     h={{ base: "350px", md: "420px" }}
                                     bg='#EEEEEE'

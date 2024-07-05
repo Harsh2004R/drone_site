@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 
 import { useNavigate } from 'react-router-dom';
-import CustomAlert from '../Components/CustomAlert';
+import CustomAlert from '../Alerts/CustomAlert';
 
 
 
