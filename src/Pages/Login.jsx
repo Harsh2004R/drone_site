@@ -1,20 +1,19 @@
 
 import React, { useState, useContext } from 'react';
 import axios from "axios";
-import { Box, Image, Input, Text, IconButton, InputGroup, InputRightElement, Checkbox, Button } from "@chakra-ui/react";
+import { Box, Image, Input, Text, IconButton, InputGroup, InputRightElement, Checkbox, Button, useToast } from "@chakra-ui/react";
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../Contexts/AuthContextProvider"
 
-
 function Login() {
-  const { login,isAuth } = useContext(AuthContext)
+  const { login, isAuth } = useContext(AuthContext)
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
-  console.log(isAuth)
+  const toast = useToast()
+  // console.log(isAuth)
   const loginrData = {
     email: email,
     password: password
@@ -36,8 +35,8 @@ function Login() {
     // console.log(loginrData)
     try {
 
-      const response = await axios.post('http://localhost:4000/users/login', loginrData);
-      // Assuming your server responds with the newly created user
+      const response = await axios.post('http://192.168.111.120:4000/users/login', loginrData);
+
       console.log({ msg: "login success" }, { status: response.status });
       // saving jwt token in local storage..
       const { token } = response.data;
@@ -45,15 +44,26 @@ function Login() {
       // console.log('User created:');
 
       if (response.status == 200) {
-        login(token)
-        navigate(`/`)
+        toast({
+          title: 'Login successfull.',
+          description: "Welcome to DJI.com",
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+
+        })
+        setTimeout(
+          () => {
+            login(token)
+            navigate(`/`)
+          }, 1500)
       }
     } catch (error) {
-      // Handle error here
       console.error('Error in login :', error);
+      alert('Login failed. Wrong email or password.');
     }
   }
-
+  console.log(isAuth)
   return (
     <>
       <Box

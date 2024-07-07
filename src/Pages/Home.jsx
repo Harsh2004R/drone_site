@@ -5,11 +5,13 @@ import HomeSlide from "../Sliders/HomeSlide.jsx"
 import FourImg from '../HomeComponents/FourImg'
 import VideoSlider from '../HomeComponents/VideoSlider'
 import DJI_Products from '../HomeComponents/DJI_Products'
+
 function Home() {
+
     return (
         <>
             <Navbar />
-            <HomeSlide  />
+            <HomeSlide />
             <FourImg />
             <VideoSlider />
             <DJI_Products />
