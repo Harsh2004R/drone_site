@@ -6,20 +6,20 @@ export const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
     const [isAuth, setIsAuth] = useState(false);
     const [token, setToken] = useState(null);
-    const [loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     const login = (newToken) => {
         setToken(newToken);
         setIsAuth(true);
-        localStorage.setItem('token', newToken);
+        localStorage.setItem('USER_TOKEN', newToken);
     };
     useEffect(() => {
         // Check for token in local storage when the app initializes
-        const storedToken = localStorage.getItem('token');
+        const storedToken = localStorage.getItem('USER_TOKEN');
         console.log("token comming from ", storedToken);
         if (storedToken) {
             setIsAuth(true);
             setToken(storedToken);
-        }else{
+        } else {
             setIsAuth(false);
         }
         setLoading(false);

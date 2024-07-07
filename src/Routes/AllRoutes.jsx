@@ -34,7 +34,11 @@ function AllRoutes() {
 
                     <Route path="/signup" element={<Signup />} ></Route>
                     <Route path="/login" element={<Login />} />
-                    <Route path="/buy" element={<BuyPage />} />
+                    <Route path="/buy" element={
+                        <PrivateRoute>
+                            <BuyPage />
+                        </PrivateRoute>
+                    } ></Route>
                     <Route path="/buy/:id" element={<Product_Info />} />
                     <Route path="/buy/camera_drones" element={
                         <PrivateRoute>

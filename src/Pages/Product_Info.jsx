@@ -9,7 +9,7 @@ import useStore from '../Zustand/store';
 
 const Product_Info = () => {
 
-    const baseURL = "http://192.168.40.120:4000/"
+    const baseURL = "http://192.168.111.120:4000/"
     const { id } = useParams();
     const Navigate = useNavigate()
 
@@ -103,6 +103,10 @@ const Product_Info = () => {
 
     const handleAddToCart = () => {
         addCart(id);
+        // making a post request to server to update user's cart array.
+        // By default it will be cart = [];
+        // I need to post all product id present in cart: {} object present in justand -> store.js
+        
     };
 
 
