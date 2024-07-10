@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Footer from "../Components/Footer.jsx"
 import Navbar from '../Components/Navbar';
-import { Box, Center, Flex, Heading, Text, Image, ButtonGroup, Button, IconButton, Spinner } from '@chakra-ui/react';
+import { Box, Center, Flex, Heading, Text, Image, ButtonGroup, Button, IconButton, Spinner, Radio, Checkbox } from '@chakra-ui/react';
 import { AddIcon, DeleteIcon, MinusIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 
@@ -14,6 +14,7 @@ const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isChecked, setIsChecked] = useState(true);
     const navigate = useNavigate()
     useEffect(() => {
         // Fetch cart items from local storage
@@ -141,6 +142,17 @@ const Cart = () => {
 
 
 
+    // This function will reflect final price before proceding to CheckOut page......
+    const handleCheckOut = (element) => {
+        setIsChecked(!isChecked);
+        if (isChecked) {
+            console.log(element);
+        } else {
+            console.log('uncheked');
+        }
+    };
+
+
     return (
         <>
             <Navbar />
@@ -191,7 +203,7 @@ const Cart = () => {
 
                                 <Box transition={"0.3s ease"} p={{ base: '2', md: "5" }} display="flex" flexDirection="row" w="100%" h="100%">
                                     <Box display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} w={{ base: "100px", md: "150px" }} h="auto">
-                                        <Image pl={2} pr={2} w="100%" h={{ base: "80px", md: "120px" }} src={el.cover_img} alt="drone.png" />
+                                        <Checkbox onChange={() => { handleCheckOut(el) }}></Checkbox> <Image pl={2} pr={2} w="100%" h={{ base: "80px", md: "120px" }} src={el.cover_img} alt="drone.png" />
                                     </Box>
                                     <Box w={{ base: "50%", md: "45%" }} display={"flex"} flexDirection={"column"} justifyContent={"center"} h={{ base: "auto", md: "auto" }}>
                                         <Text fontWeight={"500"} fontSize={{ base: "14px", md: "18px" }}>{"DJI Mini 4 Pro (DJI RC-N2)"}</Text>
@@ -209,7 +221,7 @@ const Cart = () => {
                                             <IconButton onClick={() => handleIncrement(el._id)} _hover={{ color: "blue" }} aria-label='increament' icon={<AddIcon />} />
                                         </ButtonGroup>
                                         <Text display={{ base: "none", md: "block" }} fontWeight={'500'} fontSize={{ base: "16px", md: "16px" }} color="#000000">
-                                            USD ${el.price*el.quantity}
+                                            USD ${el.price * el.quantity}
                                         </Text>
                                         <IconButton onClick={() => handleRemoveItem(el._id)} display={{ base: "none", md: "block" }} ml="2" mr="2" bg="transparent" transition={"0s ease"} _hover={{ color: "#f22847", borderRadius: "50%", bg: "#dadada" }} aria-label='Add to friends' icon={<DeleteIcon />} />
                                     </Center>
