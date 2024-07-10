@@ -40,8 +40,6 @@ function Login() {
       console.log({ msg: "login success" }, { status: response.status });
       // saving jwt token in local storage..
       const { token, user } = response.data;
-      console.log("here is your user id", user.userId)
-      console.log("here is your user email", user.email)
       localStorage.setItem("USER_TOKEN", token,);
       localStorage.setItem("USER_ID", user.userId);
       localStorage.setItem("USER_CART", user.cart);

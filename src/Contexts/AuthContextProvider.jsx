@@ -15,7 +15,7 @@ const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         // Check for token in local storage when the app initializes
         const storedToken = localStorage.getItem('USER_TOKEN');
-        console.log("token comming from ", storedToken);
+        console.log("token comming from authContext ", storedToken);
         if (storedToken) {
             setIsAuth(true);
             setToken(storedToken);

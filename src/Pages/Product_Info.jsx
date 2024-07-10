@@ -98,7 +98,6 @@ const Product_Info = () => {
     }, [random])
 
 
-    // const { id } = useParams(); 
     const addCart = useStore((state) => state.addCart);
 
     const handleAddToCart = () => {

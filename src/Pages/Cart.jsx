@@ -1,18 +1,32 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from "../Components/Footer.jsx"
 import Navbar from '../Components/Navbar';
 import { Box, Center, Flex, Heading, Text, Image, ButtonGroup, Button, IconButton } from '@chakra-ui/react';
 import { AddIcon, DeleteIcon, MinusIcon } from '@chakra-ui/icons';
+import axios from 'axios';
 
 
 
 const Cart = () => {
 
+    const Zustand_state = localStorage.getItem("cart-items");
+    const parsed_Zustand_state = JSON.parse(Zustand_state)
+    const cartItems = parsed_Zustand_state.state.cart;
+    const cartArray = Object.keys(cartItems).map(productID => {
+        return {
+            product_id: productID,
+            quantity: cartItems[productID]
+        }
+    })
+    // console.log(cartArray)
+
+
 
     return (
         <>
             <Navbar />
+
             <Center w="100%" h="auto" bg="#F7F9FA">
                 <Text pt={"2"} fontWeight={"700"} textAlign={"justify"} pb={"2"} pl={{ base: "2.5%", md: "10%" }} pr={{ base: "2.5%", md: "10%" }}
                     fontSize={{ base: "10px", md: "12px" }} color="#000000" >
