@@ -18,12 +18,12 @@ const droneData = [
 
 
 const Add_to_cart = () => {
-   
+
     const Navigate = useNavigate()
 
     const handleAddtoCart = () => {
-       
-        Navigate(`/cart`);  
+
+        Navigate(`/cart`);
     }
 
 
@@ -67,12 +67,13 @@ const Add_to_cart = () => {
                             borderTopLeftRadius={{ base: "20px", md: "30px" }}
                             borderBottomRightRadius={{ base: "20px", md: "30px" }}
                             borderBottomLeftRadius={{ base: "20px", md: "30px" }}
-                            _hover={{cursor:"pointer",bg:"#165fdc"}}
+                            _hover={{ cursor: "pointer", bg: "#165fdc" }}
+                            onClick={handleAddtoCart}
                         >
-                            <Text onClick={handleAddtoCart} px={{ base: "10px", md: "25px" }} color="#FFFFFF" fontSize={{ base: "13px", md: "17px" }}>View Cart</Text>
+                            <Text px={{ base: "10px", md: "25px" }} color="#FFFFFF" fontSize={{ base: "13px", md: "17px" }}>View Cart</Text>
                         </Box>
                     </Box>
-                   
+
                 </Flex>
 
 
