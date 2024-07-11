@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Footer from "../Components/Footer.jsx"
 import Navbar from '../Components/Navbar';
-import { Box, Center, Flex, Heading, Text, Image, ButtonGroup, Button, IconButton, Spinner, Radio, Checkbox } from '@chakra-ui/react';
+import { Box, Center, Flex, Heading, Text, Image, ButtonGroup, Button, IconButton, Spinner, Radio, Checkbox, RadioGroup, Stack, Switch } from '@chakra-ui/react';
 import { AddIcon, DeleteIcon, MinusIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 
@@ -14,7 +14,13 @@ const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [isChecked, setIsChecked] = useState(true);
+    const [isChecked, setIsChecked] = useState(false);
+    const [price, setPrice] = useState({
+        ID:"",
+        price:"" || 0,
+        discription:"",
+        image:""
+    })
     const navigate = useNavigate()
     useEffect(() => {
         // Fetch cart items from local storage
@@ -141,33 +147,49 @@ const Cart = () => {
     }
 
 
-
     // This function will reflect final price before proceding to CheckOut page......
     const handleCheckOut = (element) => {
         setIsChecked(!isChecked);
-        if (isChecked) {
-            console.log(element);
+        if (!isChecked) {
+           setPrice({
+           ID:element._id,
+            price:element.price,
+            discription:element.discription,
+            image:element.cover_img
+           })
+           localStorage.setItem("Cart-price",price)
         } else {
-            console.log('uncheked');
+            setPrice({
+                ID:element._id,
+                 price:0,
+                 discription:element.discription,
+                 image:element.cover_img
+                })
+
         }
     };
 
 
     return (
         <>
-            <Navbar />
 
-            <Center w="100%" h="auto" bg="#F7F9FA">
-                <Text pt={"2"} fontWeight={"700"} textAlign={"justify"} pb={"2"} pl={{ base: "2.5%", md: "10%" }} pr={{ base: "2.5%", md: "10%" }}
-                    fontSize={{ base: "10px", md: "12px" }} color="#000000" >
-                    Due to safe transport and handling procedures, orders containing
-                    batteries cannot be shipped to Guam addresses. Orders containing
-                    power stations and related accessories can not be shipped to island
-                    addresses such as Hawaii, Alaska, Guam, American Samoa, United States
-                    Minor Outlying Islands, and Virgin Islands. Thank you for your understanding.
-                </Text>
-            </Center>
-            <Box w="100%" h="auto" >
+            <Box
+                // border={"5px solid green"}
+                w="100%" h="auto"
+                position={"relative"}
+            >
+                <Navbar />
+
+                <Center w="100%" h="auto" bg="#F7F9FA">
+                    <Text pt={"2"} fontWeight={"700"} textAlign={"justify"} pb={"2"} pl={{ base: "2.5%", md: "10%" }} pr={{ base: "2.5%", md: "10%" }}
+                        fontSize={{ base: "10px", md: "12px" }} color="#000000" >
+                        Due to safe transport and handling procedures, orders containing
+                        batteries cannot be shipped to Guam addresses. Orders containing
+                        power stations and related accessories can not be shipped to island
+                        addresses such as Hawaii, Alaska, Guam, American Samoa, United States
+                        Minor Outlying Islands, and Virgin Islands. Thank you for your understanding.
+                    </Text>
+                </Center>
                 {/* My Shopping Cart Header here............ */}
                 <Box
                     // border="1px solid lime"
@@ -205,7 +227,7 @@ const Cart = () => {
                                     <Box display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} w={{ base: "100px", md: "150px" }} h="auto">
                                         <Checkbox onChange={() => { handleCheckOut(el) }}></Checkbox> <Image pl={2} pr={2} w="100%" h={{ base: "80px", md: "120px" }} src={el.cover_img} alt="drone.png" />
                                     </Box>
-                                    <Box w={{ base: "50%", md: "45%" }} display={"flex"} flexDirection={"column"} justifyContent={"center"} h={{ base: "auto", md: "auto" }}>
+                                    <Box ml={1} w={{ base: "50%", md: "45%" }} display={"flex"} flexDirection={"column"} justifyContent={"center"} h={{ base: "auto", md: "auto" }}>
                                         <Text fontWeight={"500"} fontSize={{ base: "14px", md: "18px" }}>{"DJI Mini 4 Pro (DJI RC-N2)"}</Text>
                                         <Text fontWeight={"500"} fontSize={{ base: "12px", md: "14px" }} display={{ base: "block", md: "none" }}>USD $<Text color="#30a4e5" as="span">{el.price}</Text></Text>
                                         <Text fontWeight={"500"} color="#30a4e5" display={{ base: "block", md: "none" }} fontSize={{ base: "10px", md: "12px" }} onClick={() => handleRemoveItem(el._id)}>Remove</Text>
@@ -233,13 +255,81 @@ const Cart = () => {
                     )}
 
 
-
-
-
-
-
                 </Box>
+
+
+                {/* Cart Total section here------------------- */}
+                <Box w={{ base: "100%", md: "80%" }} p="3" m="auto" h="30vh">
+                    <Box w="100%" h="auto" display={{ base: "none", md: "block" }}>
+                        <Text color="#000000" fontSize={"2xl"} fontWeight={"300"} textAlign={"right"}>CART SUBTOTAL:
+                            <Text fontWeight={"400"} as="span">{" "}USD ${price.price}</Text>
+                        </Text>
+                    </Box>
+                    <Center justifyContent={"space-between"} w="100%" h="auto" display={{ base: "flex", md: "none" }}>
+                        <Text color="#6C7073" fontSize={"15px"} textAlign={"left"}>Subtotal:</Text>
+                        <Text color="#000000" fontSize={"20px"} fontWeight={'500'} textAlign={"right"}>USD $0</Text>
+                    </Center>
+                    <Text pt="2" color={price.price===0? "#F44336" : "#00C853"} fontSize={{ base: "12px", md: "15px" }} textAlign={"right"}>{price.price === 0? "Please select an item before you proceed to checkout." : "Tax: Calculated at checkout"}</Text>
+                    <Text pt="2" color="#6C7073" fontSize={{ base: "12px", md: "15px" }} textAlign={"right"}>Shipping: Free</Text>
+
+                    <Box mt="20px" w="100%" h="auto" >
+                        <Flex w="100%" h="auto" justifyContent={"space-between"}>
+                            <Link ><Button w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
+                                borderTopLeftRadius={"30px"} bg="#FFCA28" borderTopRightRadius={"30px"}
+                                borderBottomLeftRadius={"30px"} borderBottomRightRadius={"30px"}
+                                justifyContent={"center"} alignItems={"center"} alignContent={"center"} transition={"0.3s ease"}
+                               
+                            >
+                                <Text fontSize={{ base: "14px", md: "16px" }} color="#6C7073">Continue Shopping</Text>
+                            </Button></Link>
+                            <Link to="/checkout"><Button isDisabled={price.price === 0} w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
+                                borderTopLeftRadius={"30px"} borderTopRightRadius={"30px"}
+                                borderBottomLeftRadius={"30px"} borderBottomRightRadius={"30px"} bg="#2196F3" transition={"0.3s ease"}
+                                justifyContent={"center"} alignItems={"center"} alignContent={"center"}
+                               
+
+                            >
+                                <Text fontSize={{ base: "14px", md: "16px" }} color="#FFFFFF">Check Out</Text>
+                            </Button>
+                            </Link>
+                        </Flex>
+                    </Box>
+                </Box>
+                {/* Cart Total section ends here------------------- */}
+
+
+                <Box mb="50px" mt="50px" borderTop="1px solid #eee" borderBottom="1px solid #eee" w="100%" h={{ base: "20vh", md: "30vh" }} >
+                    <Flex justifyContent={"space-evenly"} w={{ base: "100%", md: "80%" }} h="100%" m="auto">
+                        <Center display={"flex"} flexDirection={"column"} w={{ base: "100%", md: "20%" }} h="100%">
+                            <Image src="https://stormsend1.djicdn.com/stormsend/uploads/55676c93bab3a517108fb7c9eb16ad1f.svg" alt="delivery.svg" />
+                            <Text color="#6C7073" textAlign={"center"} fontSize={{ base: "10px", md: "14px" }}>
+                                Free Shipping over USD $149
+                                Fast-Delivery Guarantee
+                            </Text>
+                        </Center>
+                        <Center display={"flex"} flexDirection={"column"} w={{ base: "100%", md: "20%" }} h="100%">
+                            <Image src="https://stormsend1.djicdn.com/stormsend/uploads/48b0bc00-98af-0136-ac46-1237445f15bc/credit-card.svg" alt="CreditCard.svg" />
+                            <Text color="#6C7073" textAlign={"center"} fontSize={{ base: "10px", md: "14px" }}>
+                                We accept credit cards, PayPal, and bank wires
+                            </Text>
+                        </Center>
+                        <Center display={"flex"} flexDirection={"column"} w={{ base: "100%", md: "20%" }} h="100%">
+                            <Image src="https://stormsend1.djicdn.com/stormsend/uploads/4b8c3060-98af-0136-ac47-1237445f15bc/comment-alt-smile.svg" alt="ChatLogo.svg" />
+                            <Text color="#6C7073" textAlign={"center"} fontSize={{ base: "10px", md: "14px" }}
+                            >Order Service:
+                                <Text _hover={{ cursor: "pointer" }} color="#1E88E5" as="span">
+                                    {" "} Live Chat
+                                </Text>
+                            </Text>
+                        </Center>
+                    </Flex>
+                </Box>
+
+
+                {/* Conditionaly rendering CheckOut Box here.............*/}
+
             </Box>
+
 
             <Footer />
 

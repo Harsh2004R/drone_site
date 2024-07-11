@@ -21,9 +21,7 @@ const Navbar = () => {
     navigate(`/`)
   }
 
-  // const handleHome = () => {
-  //   navigate(`/`)
-  // }
+  
 
   return (
     <Flex
@@ -56,7 +54,7 @@ const Navbar = () => {
       <Spacer />
 
       <Box
-        display={{ base: isOpen ? 'block' : 'none', md: 'block' }}
+       position={"relative"} display={{ base: isOpen ? 'block' : 'none', md: 'block' }}
         w="80%" h={{ base: "100vh", md: "70px" }} bgColor="#fff"
       // border={"1px solid red"} 
       >
@@ -65,7 +63,9 @@ const Navbar = () => {
         <Box
           // border={"1px solid red"} 
           w={{ base: "100%", md: "70%" }} m="auto" display={"flex"} alignContent={"center"} alignItems={"center"} flexDirection={{ base: "column", md: "row" }} >
-          <Box _hover={{ cursor: "pointer" }} w="55px" h={{ base: "55px", md: "55px" }} display={"flex"} alignContent={"center"} alignItems={"center"} >
+          <Box
+          //  border={"1px solid red"}
+           _hover={{ cursor: "pointer" }} w="55px" h={{ base: "55px", md: "55px" }} display={"flex"} alignContent={"center"} alignItems={"center"} >
             <Image onClick={handleHome} w="100%" h="100%"
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pn
             y7AAAAaVBMVEX///8VFRUAAAALCwvLy8s8PDxpaWnj4+P7+/sSEhJ8fHzIyMj09PRsbGwG
