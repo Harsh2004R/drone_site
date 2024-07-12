@@ -69,7 +69,7 @@ function Retail_store() {
         setCategory(value)
 
     };
-    const baseURL = "http://192.168.111.120:4000/"
+    const baseURL = "http://192.168.102.120:4000/"
     const fetchProductData = async () => {
         try {
             const response = await axios.get(`${baseURL}api/all/data/get?sort=Price from ${sort}`);

@@ -9,7 +9,7 @@ import useStore from '../Zustand/store';
 
 const Product_Info = () => {
 
-    const baseURL = "http://192.168.111.120:4000/"
+    const baseURL = "http://192.168.102.120:4000/"
     const { id } = useParams();
     const Navigate = useNavigate()
 

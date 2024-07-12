@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Footer from "../Components/Footer.jsx"
 import Navbar from '../Components/Navbar';
@@ -10,17 +10,10 @@ import axios from 'axios';
 
 const Cart = () => {
 
-    const BASE_URL = "http://192.168.111.120:4000/"
+    const BASE_URL = "http://192.168.102.120:4000/"
     const [cartItems, setCartItems] = useState([]);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [isChecked, setIsChecked] = useState(false);
-    const [price, setPrice] = useState({
-        ID:"",
-        price:"" || 0,
-        discription:"",
-        image:""
-    })
     const navigate = useNavigate()
     useEffect(() => {
         // Fetch cart items from local storage
@@ -28,7 +21,7 @@ const Cart = () => {
         const parsedState = JSON.parse(Zustand_state);
         const cartItems = parsedState.state.cart;
 
-        // Transform the cart items into the desired format
+        // Transform the cart items into the required format here...
         const cartArray = Object.keys(cartItems).map(productID => {
             return {
                 product_id: productID,
@@ -146,30 +139,13 @@ const Cart = () => {
         // console.log("new function called")
     }
 
-
     // This function will reflect final price before proceding to CheckOut page......
-    const handleCheckOut = (element) => {
-        setIsChecked(!isChecked);
-        if (!isChecked) {
-           setPrice({
-           ID:element._id,
-            price:element.price,
-            discription:element.discription,
-            image:element.cover_img
-           })
-           localStorage.setItem("Cart-price",price)
-        } else {
-            setPrice({
-                ID:element._id,
-                 price:0,
-                 discription:element.discription,
-                 image:element.cover_img
-                })
 
-        }
-    };
-
-
+    const totalSum = products.reduce((sum, product) => {
+        const totalProductPrice = (product.price || 0) * (product.quantity || 0);
+        return sum + totalProductPrice;
+    }, 0);
+    console.log('Grand Sum of Prices:', totalSum);
     return (
         <>
 
@@ -225,7 +201,7 @@ const Cart = () => {
 
                                 <Box transition={"0.3s ease"} p={{ base: '2', md: "5" }} display="flex" flexDirection="row" w="100%" h="100%">
                                     <Box display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"} w={{ base: "100px", md: "150px" }} h="auto">
-                                        <Checkbox onChange={() => { handleCheckOut(el) }}></Checkbox> <Image pl={2} pr={2} w="100%" h={{ base: "80px", md: "120px" }} src={el.cover_img} alt="drone.png" />
+                                        <Image pl={2} pr={2} w="100%" h={{ base: "80px", md: "120px" }} src={el.cover_img} alt="drone.png" />
                                     </Box>
                                     <Box ml={1} w={{ base: "50%", md: "45%" }} display={"flex"} flexDirection={"column"} justifyContent={"center"} h={{ base: "auto", md: "auto" }}>
                                         <Text fontWeight={"500"} fontSize={{ base: "14px", md: "18px" }}>{"DJI Mini 4 Pro (DJI RC-N2)"}</Text>
@@ -262,31 +238,31 @@ const Cart = () => {
                 <Box w={{ base: "100%", md: "80%" }} p="3" m="auto" h="30vh">
                     <Box w="100%" h="auto" display={{ base: "none", md: "block" }}>
                         <Text color="#000000" fontSize={"2xl"} fontWeight={"300"} textAlign={"right"}>CART SUBTOTAL:
-                            <Text fontWeight={"400"} as="span">{" "}USD ${price.price}</Text>
+                            <Text fontWeight={"400"} as="span">{" "}USD ${totalSum}</Text>
                         </Text>
                     </Box>
                     <Center justifyContent={"space-between"} w="100%" h="auto" display={{ base: "flex", md: "none" }}>
                         <Text color="#6C7073" fontSize={"15px"} textAlign={"left"}>Subtotal:</Text>
                         <Text color="#000000" fontSize={"20px"} fontWeight={'500'} textAlign={"right"}>USD $0</Text>
                     </Center>
-                    <Text pt="2" color={price.price===0? "#F44336" : "#00C853"} fontSize={{ base: "12px", md: "15px" }} textAlign={"right"}>{price.price === 0? "Please select an item before you proceed to checkout." : "Tax: Calculated at checkout"}</Text>
-                    <Text pt="2" color="#6C7073" fontSize={{ base: "12px", md: "15px" }} textAlign={"right"}>Shipping: Free</Text>
+                    <Text pt="2" color={totalSum === 0 ? "#F44336" : "#00C853"} fontSize={{ base: "12px", md: "15px" }} textAlign={{ base: "left", md: "right" }}>{totalSum === 0 ? "Please select an item before you proceed to checkout." : "Tax: Calculated at checkout"}</Text>
+                    <Text pt="2" color="#6C7073" fontSize={{ base: "12px", md: "15px" }} textAlign={{ base: "left", md: "right" }}>Shipping: Free</Text>
 
                     <Box mt="20px" w="100%" h="auto" >
                         <Flex w="100%" h="auto" justifyContent={"space-between"}>
                             <Link ><Button w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
-                                borderTopLeftRadius={"30px"} bg="#FFCA28" borderTopRightRadius={"30px"}
+                                borderTopLeftRadius={"30px"} bg="#eee" borderTopRightRadius={"30px"}
                                 borderBottomLeftRadius={"30px"} borderBottomRightRadius={"30px"}
                                 justifyContent={"center"} alignItems={"center"} alignContent={"center"} transition={"0.3s ease"}
-                               
+                                _hover={{ bg: '#CFD8DC' }}
                             >
                                 <Text fontSize={{ base: "14px", md: "16px" }} color="#6C7073">Continue Shopping</Text>
                             </Button></Link>
-                            <Link to="/checkout"><Button isDisabled={price.price === 0} w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
+                            <Link to="/checkout"><Button isDisabled={totalSum === 0} w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
                                 borderTopLeftRadius={"30px"} borderTopRightRadius={"30px"}
                                 borderBottomLeftRadius={"30px"} borderBottomRightRadius={"30px"} bg="#2196F3" transition={"0.3s ease"}
                                 justifyContent={"center"} alignItems={"center"} alignContent={"center"}
-                               
+                                _hover={{ bg: '#1976D2' }}
 
                             >
                                 <Text fontSize={{ base: "14px", md: "16px" }} color="#FFFFFF">Check Out</Text>
