@@ -121,9 +121,9 @@ const Navbar = () => {
             zIndex="9999"
             position={isOpen ? "fixed" : "absolute"}
 
-            w={{ base: "100%", md: "80%" }} justifyContent={"space-evenly"} display={"flex"} alignContent={"center"} alignItems={"center"} flexDirection={{ base: "column", md: "row" }} >
+            w={{ base: "100%", md: "80%" }} h={{ base: "80vh", md: "auto" }} justifyContent={"space-evenly"} display={"flex"} alignContent={"center"} alignItems={"center"} flexDirection={{ base: "column", md: "row" }} >
 
-            <CloseIcon pos={{ base: "relative" }} right={"45%"} mt="20px" display={{ base: isOpen ? 'block' : 'none', md: 'block' }} onClick={handleCloseNav} />
+            <CloseIcon pos={{ base: "relative" }} right={"45%"} display={{ base: isOpen ? 'block' : 'none', md: 'block' }} onClick={handleCloseNav} />
             <Box
               //  border={"1px solid red"} 
               _hover={{ cursor: "pointer" }} w="55px" h={{ base: "55px", md: "55px" }} display={"flex"} alignContent={"center"} alignItems={"center"} >
@@ -169,22 +169,22 @@ const Navbar = () => {
 
 
 
-            <Text _hover={{ cursor: "pointer" }} onClick={handleCameraDrone} fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "25px" }} mr={{ base: "0px", md: "10px" }}  >
+            <Text _hover={{ cursor: "pointer" }} textAlign={"left"} onClick={handleCameraDrone} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "25px" }} mr={{ base: "0px", md: "10px" }}  >
               Camera Drones
             </Text>
-            <Text _hover={{ cursor: "pointer" }} onClick={handleHandHeld} fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
+            <Text _hover={{ cursor: "pointer" }} onClick={handleHandHeld} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
               Handheld
             </Text>
-            <Text _hover={{ cursor: "pointer" }} fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
+            <Text _hover={{ cursor: "pointer" }} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
               Specialize
             </Text>
-            <Text _hover={{ cursor: "pointer" }} fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
+            <Text _hover={{ cursor: "pointer" }} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
               Explore
             </Text>
-            <Text _hover={{ cursor: "pointer" }} fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }} >
+            <Text _hover={{ cursor: "pointer" }} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }} >
               Support
             </Text>
-            <Text _hover={{ cursor: "pointer" }} onClick={handleWhereToBuy} fontWeight={"400"} fontSize={{ base: "14px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }} >
+            <Text _hover={{ cursor: "pointer" }} onClick={handleWhereToBuy} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }} >
               Where to buy
             </Text>
             {/* <Box w={{base:"0px",md:"15%"}}   h="auto" border={"1px solid green"}>
