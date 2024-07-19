@@ -257,7 +257,7 @@ function Operational_system() {
 
                 </Text>
                 <Box w="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"}>
-                    <Button borderRadius={"0px"} bg="#212121" textAlign={"center"} textColor={"#fff"} fontWeight={"100"} fontSize={{ base: "xl", md: "xl" }}>Buy now
+                    <Button  _hover={{textColor:"#fff",bgColor:"#2196F3",}} transition={"0.5s ease"} borderRadius={"0px"} bg="#212121" textAlign={"center"} textColor={"#fff"} fontWeight={"100"} fontSize={{ base: "xl", md: "xl" }}>Buy now
 
                     </Button>
                 </Box>
@@ -270,3 +270,12 @@ function Operational_system() {
 }
 
 export default Operational_system
+
+
+
+
+
+
+
+// final product :- 
+// Mavic 3 pro :- https://dji-official-fe.djicdn.com/cms/uploads/7a47e78d9544ac4d7f83a9f840c50b67.png

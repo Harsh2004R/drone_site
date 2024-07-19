@@ -30,7 +30,7 @@ function Flight_system() {
                             <Text fontSize={{ base: "30px", md: "60px" }} textAlign={"left"} fontWeight={"500"} bgGradient="linear(to-l,rgb(255,154,10),rgb(255,97,4))" bgClip="text">accuracy</Text>
                             <Text fontSize={{ base: "30px", md: "60px" }} textAlign={"left"} fontWeight={"500"} bgGradient="linear(to-l,rgb(0,0,0),rgb(0,0,0))" bgClip="text">RTK positioning</Text>
                             <Text fontSize={{ base: "15px", md: "22.5px" }} fontWeight={"500"} textAlign={"left"} textColor="grey">
-                                Inspire 3 is equipped with RTK high-precision positioning technology used in the fields
+                                <Text as="span">Inspire 3{" "}</Text>Inspire 3 is equipped with RTK high-precision positioning technology used in the fields
                                 of architecture and surveying, and boasts cm-level accuracy . [4] Compared with traditional
                                 meter-level positioning using Global Navigation Satellite System (GNSS), positioning using
                                 RTK not only increases flight stability but also enables more accurate flight route planning,
@@ -102,8 +102,8 @@ function Flight_system() {
                 <Box h={{ base: "5vh", md: "10vh" }} w="100%"></Box> {/* space box added */}
 
                 <Text fontSize={{ base: "30px", md: "60px" }} textAlign={"center"} fontWeight={"500"} bgGradient="linear(to-l,rgb(255,154,10),rgb(255,97,4))" bgClip="text">Waypoint Pro</Text>
-                <Text fontSize={{ base: "15px", md: "22.5px" }} m="auto" w={{base:"95%" ,md:"60%"}} fontWeight={"500"} textAlign={"center"} textColor="grey"> Specifically designed for aerial photography, the Waypoint Pro feature allows you to plan flight routes and capture shots with a wide range of custom settings. New repeatable route mode and 3D dolly mode make it easy to perform innovative automatic shooting .
-                In addition, centimeter-level positioning using RTK enables more accurate flight route planning and execution. Whether it's a one-off shoot or a professional film crew, Waypoint Pro allows you to capture even the most complex scenes with ease.</Text>
+                <Text fontSize={{ base: "15px", md: "22.5px" }} m="auto" w={{ base: "95%", md: "60%" }} fontWeight={"500"} textAlign={"center"} textColor="grey"> Specifically designed for aerial photography, the Waypoint Pro feature allows you to plan flight routes and capture shots with a wide range of custom settings. New repeatable route mode and 3D dolly mode make it easy to perform innovative automatic shooting .
+                    In addition, centimeter-level positioning using RTK enables more accurate flight route planning and execution. Whether it's a one-off shoot or a professional film crew, Waypoint Pro allows you to capture even the most complex scenes with ease.</Text>
 
                 <Box h={{ base: "5vh", md: "10vh" }} w="100%"></Box> {/* space box added */}
 
@@ -143,3 +143,11 @@ function Flight_system() {
 }
 
 export default Flight_system
+
+
+// half box video :-
+// mavic 3 pro :- https://dji-official-fe.djicdn.com/reactor/assets/_next/static/videos/3b1057aa-7bdf-46b8-a310-f6c3e98ad8e8.mp4
+// video second :-
+// mavic 3 pro :- https://dji-official-fe.djicdn.com/reactor/assets/_next/static/videos/379f7815-59f6-42ce-a13e-e0d936e61e89.mp4
+// last video :-
+// mavic 3 pro :- https://dji-official-fe.djicdn.com/reactor/assets/_next/static/videos/cc05d9cf-6eb4-4374-bfe9-786d190fa2d8.webm

@@ -110,10 +110,10 @@ function Video_transmission() {
                 <Text mb={{ base: "-10px", md: "-25px" }} fontSize={{ base: "30px", md: "60px" }} textAlign={"center"} fontWeight={"500"} bgGradient="linear(to-l,rgb(255,154,10),rgb(255,97,4))" bgClip="text">connections for dual</Text>
                 <Text fontSize={{ base: "30px", md: "60px" }} textAlign={"center"} fontWeight={"500"} bgGradient="linear(to-l,rgb(255,154,10),rgb(255,97,4))" bgClip="text">control [18]</Text>
                 <Text fontSize={{ base: "15px", md: "22.5px" }} m="auto" w={{ base: "95%", md: "60%" }} fontWeight={"500"} textAlign={"center"} textColor="grey">
-                    Inspire 3's dual control experience is a significant upgrade over its predecessor.
+                    control experience is a significant upgrade over its predecessor.
                     Two transmitters can each receive live video and control the drone, so pilots and
                     gimbal operators in the field can work in separate locations. This eliminates the
-                    need to link and control the main and sub transmitters on Inspire 2 via WiFi.
+                    need to link and control the main and sub transmitters via WiFi.
 
                 </Text>
                 <Text fontSize={{ base: "15px", md: "22.5px" }} m="auto" w={{ base: "95%", md: "60%" }} fontWeight={"500"} textAlign={"center"} textColor="grey">
@@ -142,4 +142,6 @@ function Video_transmission() {
 
 export default Video_transmission
 
+
+// images :- https://dji-official-fe.djicdn.com/dps/60cbc17ddfe6f8857365dc1b5d2677da.jpg
 

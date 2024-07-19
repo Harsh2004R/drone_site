@@ -119,7 +119,7 @@ function InitialVideo() {
                     Your browser does not support the video tag.
                 </video>
                 {slides.map((slide, index) => (
-                    <>
+                    <Box key={index}>
 
                         {slide.heading && (
                             <Text style={headingStyle} textAlign="center">
@@ -136,7 +136,7 @@ function InitialVideo() {
                                 Buy now <FiShoppingCart />
                             </Box>
                         )}
-                    </>
+                    </Box>
 
                 ))}
 
@@ -182,3 +182,6 @@ function InitialVideo() {
 }
 
 export default InitialVideo
+
+
+
