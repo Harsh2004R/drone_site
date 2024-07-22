@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Text, Box, Heading } from '@chakra-ui/react'
-import Navbar from "../Components/Navbar.jsx"
+import AdminNav from "./AdminNav.jsx"
 import AdminContent from './AdminContent.jsx'
 const AdminSide = () => {
 
@@ -56,7 +56,7 @@ const AdminSide = () => {
                         }}
                     >
                         <Container maxW={"100%"} bg="#fff" centerContent>
-                            <Navbar />
+                            <AdminNav />
                         </Container>
 
                         {/* content starts here*/}
@@ -71,9 +71,6 @@ const AdminSide = () => {
                             <Box>
                                 <AdminContent />
                             </Box>
-
-
-
 
                         </Box>
                         {/* scroll content ends here*/}

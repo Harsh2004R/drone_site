@@ -1,8 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { Box, useBreakpointValue, Text, Image, Tabs, TabPanels, TabPanel, Tab, TabIndicator,TabList, Button } from '@chakra-ui/react'
+import { Box, useBreakpointValue, Text, Image, Tabs, TabPanels, TabPanel, Tab, TabIndicator, TabList, Button } from '@chakra-ui/react'
 import { FiShoppingCart, FiArrowRight } from 'react-icons/fi';
 import Navbar from "../Components/Navbar.jsx"
 import Imaging_system from '../ProductComponents/Imaging_system.jsx';
+
+
+
+const dynamic_data = {
+    PRODUCT_NAME: "",
+    RKT_VIDEO1: "",
+    RKT_VIDEO2: "",
+    ACTUAL_PRO_IMAGE: "",
+    WAYPOINT_PRO_IMAGE: "",
+
+
+
+}
 
 
 
@@ -306,15 +319,15 @@ const Hero = () => {
                 <Box h={{ base: "5vh", md: "10vh" }} w="100%"></Box> {/* space box added */}
 
                 <Box w={{ base: "100%", md: "100%" }} h={"auto"}>
-                     <Tabs position="relative" variant="unstyled">
+                    <Tabs position="relative" variant="unstyled">
                         <TabPanels>
                             <TabPanel>
                                 <video
                                     style={videoStyles}
                                     loop
 
-                                    autoPlay={true} 
-                                    muted 
+                                    autoPlay={true}
+                                    muted
                                 >
                                     <source src={"https://dji-official-fe.djicdn.com/reactor/assets/_next/static/videos/7a6f1d33-10e2-401c-8411-a1a68d264b8f.webm"} />
                                     Your browser does not support the video tag.
@@ -325,8 +338,8 @@ const Hero = () => {
                                     style={videoStyles}
                                     loop
 
-                                    autoPlay={true} 
-                                    muted 
+                                    autoPlay={true}
+                                    muted
                                 >
                                     <source src={"https://dji-official-fe.djicdn.com/reactor/assets/_next/static/videos/01a4546e-45fb-4e4f-bc49-17615eae14a0.webm"} />
                                     Your browser does not support the video tag.
@@ -338,7 +351,7 @@ const Hero = () => {
                                     loop
 
                                     autoPlay={true}
-                                    muted 
+                                    muted
                                 >
                                     <source src={"https://dji-official-fe.djicdn.com/reactor/assets/_next/static/videos/adb62f1f-a31f-4918-8187-f3465059eff6.mp4"} />
                                     Your browser does not support the video tag.
@@ -374,7 +387,7 @@ const Hero = () => {
                             style={Operational_videoStyles1}
                             loop
                             autoPlay={true}
-                            muted 
+                            muted
                         >
                             <source src={"https://dji-official-fe.djicdn.com/reactor/assets/_next/static/videos/a7f21224-9441-4730-9007-6af24bca75e5.webm"} />
                             Your browser does not support the video tag.

@@ -25,6 +25,8 @@ import IndustrialDesign from '../ProductComponents/IndustrialDesign.jsx'
 import Video_transmission from '../ProductComponents/Video_transmission.jsx'
 import Operational_system from '../ProductComponents/Operational_system.jsx'
 import Combinator from '../Dynamic-product-pages/Combinator.jsx'
+import Auth from "../Admin/Auth.jsx"
+import AdminNav from "../Admin/AdminNav.jsx"
 function AllRoutes() {
     return (
         <>
@@ -68,7 +70,7 @@ function AllRoutes() {
 
 
 
-                     <Route path="/dynamic/combinator/:id" element={<Combinator />} />
+                    <Route path="/dynamic/combinator/:id" element={<Combinator />} />
 
 
                     <Route path="/flight" element={<Flight_system />} />
@@ -80,7 +82,12 @@ function AllRoutes() {
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
 
-                    <Route path="/admin" element={<AdminSide />} />
+
+
+                    <Route path="/admin/auth" element={<Auth />} />
+                    <Route path="/admin/add/products" element={<AdminSide />} />
+
+
                 </Routes>
             </AuthContextProvider>
 
