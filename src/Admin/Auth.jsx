@@ -24,7 +24,10 @@ import { SmallCloseIcon } from '@chakra-ui/icons'
 export default function UserProfileEdit() {
     const [clicked, setClicked] = useState(false)
     const [loading, setLoading] = useState(false)
-    const handleAuth = () => {
+    
+
+
+    const handleAuth = async() => {
 
     }
     const toggleForms = () => {
