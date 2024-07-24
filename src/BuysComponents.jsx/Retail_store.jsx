@@ -8,6 +8,8 @@ import {
     Radio,
     Button,
     Grid,
+    Spinner,
+    Center
 } from "@chakra-ui/react"
 import axios from 'axios';
 import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons'
@@ -60,9 +62,10 @@ const MenuArray = [
 ];
 
 function Retail_store() {
-    const [droneData, setDroneData] = useState([])
-    const [category, setCategory] = useState("")
-    const [sort, setSort] = useState("")
+    const [droneData, setDroneData] = useState([]);
+    const [category, setCategory] = useState("");
+    const [sort, setSort] = useState("");
+    const [loading, setLoading] = useState(true);
 
     const handleMenuItemClick = (radioName, radioValue) => {
         const value = radioValue
@@ -73,9 +76,16 @@ function Retail_store() {
     const fetchProductData = async () => {
         try {
             const response = await axios.get(`${baseURL}api/all/data/get?sort=Price from ${sort}`);
-            const allProducts = response.data.Products;
-            setDroneData(allProducts);
-            // console.log(droneData)
+            if (response && response.data) {
+                setLoading(false);
+                const allProducts = response.data.Products;
+                setDroneData(allProducts);
+                // console.log(droneData)
+            } else {
+                setLoading(true);
+                setDroneData([]);
+            }
+
         } catch (error) {
             console.log("errorMSG", error)
 
@@ -259,95 +269,104 @@ function Retail_store() {
 
 
 
+                        {loading ? (
+                            <Center flexDirection={"row"} w="100%" h={{base:"20vh",md:"10vh"}} >
 
+                                <Text color="#000">Loading...</Text>
+                                <Spinner ml='10px' color="red.500"/>
 
-                        <Grid gap={5} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }} w="100%" h="auto">
-                            {droneData.map((el, i) => (
-                                 <Link to={el._id}  key={i}>
-                                <Box
-                                   
-                                    w={{ base: "100%", md: "100%" }}
-                                    h={{ base: "350px", md: "420px" }}
-                                    bg='#EEEEEE'
-                                    _hover={{
-                                        cursor: "pointer",
-                                        ".hover-box": { visibility: "visible", opacity: 1, },
-                                    }}
+                            </Center>
+                        ) : (
 
-                                >
-                                    <Box
-                                        w={{ base: "100%", md: "100%" }}
-                                        h={{ base: "250px", md: "320px" }}
-                                        // border={"1px solid yellow"}
-                                        className=".hover-img"
-                                        position={"relative"}
-                                        bgImage={`url(${el.cover_img})`}
-                                        bgSize="cover"
-                                        bgRepeat="no-repeat"
-                                        bgPosition={"center"}
-                                        transition="background-image 0.5s ease-in-out"
-                                        _hover={{ bgImage: `url(${el.background_img})`, bgColor: "rgba(0,0,0,0.9)", ".hover-text": { visibility: "visible", opacity: 1, textColor: "#FFFFFF", fontWeight: "500" }, }}
-
-
-                                    >
-
-                                        <Text className="hover-text"
-                                            position="absolute"
-                                            visibility="hidden"
-                                            opacity={0}
-                                            w={{ base: "100%", md: "100%" }}
-                                            h="auto"
-                                            bottom={0}
-                                            p={{ base: "0", md: "5" }}
-                                            color={{ base: "#999", md: "#EEEEEE" }}
-                                            fontSize={{ base: "0.0px", md: "13.5px" }}
-                                            transition="visibility 0.5s, opacity 0.5s"
-                                        >
-                                            {el.background_title}
-                                        </Text>
-
-                                    </Box>
-
-                                    <Box
-                                        m="auto"
-                                        w={{ base: "100%", md: "100%" }}
-                                        h={{ base: "100px", md: "100px" }}
-                                        // border={"1px solid yellow"}
-                                        display={"flex"}
-                                    >
+                            <Grid gap={5} gridTemplateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }} w="100%" h="auto">
+                                {droneData.map((el, i) => (
+                                    <Link to={el._id} key={i}>
                                         <Box
-                                            //  border={"1px solid red"}
-                                            w="85%">
-                                            <Text pl={5} fontSize={{ base: "16px", md: "17px", lg: "18px" }} color={"#000000"} textAlign={"left"}>
-                                                {el.discription}
-                                            </Text>
 
-                                            <Text fontSize={{ base: "12px", md: "13px", lg: "13px" }} pl={5} >USD $ <Text as="span" fontWeight={"500"} fontSize={{ base: "20px", md: "23px" }}>{el.price}</Text></Text>
-                                        </Box>
+                                            w={{ base: "100%", md: "100%" }}
+                                            h={{ base: "350px", md: "420px" }}
+                                            bg='#EEEEEE'
+                                            _hover={{
+                                                cursor: "pointer",
+                                                ".hover-box": { visibility: "visible", opacity: 1, },
+                                            }}
 
-                                        <Box w="15%" h="100%"
-                                            //  border={"1px solid yellow"} 
-                                            position={"relative"}>
-                                           <Box
-                                                className="hover-box" visibility={"visible"} transition="visibility 0.5s, opacity 0.5s"
-                                                opacity={{ base: "1", md: "1", lg: "0" }} display={"flex"} alignContent={"center"} justifyContent={"center"} alignItems={"center"} w="35px" h="35px" borderRadius={"50%"} position={"absolute"} bottom="20%" bg="#1273de">
-                                                <ChevronRightIcon color="#fff" />
+                                        >
+                                            <Box
+                                                w={{ base: "100%", md: "100%" }}
+                                                h={{ base: "250px", md: "320px" }}
+                                                // border={"1px solid yellow"}
+                                                className=".hover-img"
+                                                position={"relative"}
+                                                bgImage={`url(${el.cover_img})`}
+                                                bgSize="cover"
+                                                bgRepeat="no-repeat"
+                                                bgPosition={"center"}
+                                                transition="background-image 0.5s ease-in-out"
+                                                _hover={{ bgImage: `url(${el.background_img})`, bgColor: "rgba(0,0,0,0.9)", ".hover-text": { visibility: "visible", opacity: 1, textColor: "#FFFFFF", fontWeight: "500" }, }}
+
+
+                                            >
+
+                                                <Text className="hover-text"
+                                                    position="absolute"
+                                                    visibility="hidden"
+                                                    opacity={0}
+                                                    w={{ base: "100%", md: "100%" }}
+                                                    h="auto"
+                                                    bottom={0}
+                                                    p={{ base: "0", md: "5" }}
+                                                    color={{ base: "#999", md: "#EEEEEE" }}
+                                                    fontSize={{ base: "0.0px", md: "13.5px" }}
+                                                    transition="visibility 0.5s, opacity 0.5s"
+                                                >
+                                                    {el.background_title}
+                                                </Text>
+
                                             </Box>
-                                           
+
+                                            <Box
+                                                m="auto"
+                                                w={{ base: "100%", md: "100%" }}
+                                                h={{ base: "100px", md: "100px" }}
+                                                // border={"1px solid yellow"}
+                                                display={"flex"}
+                                            >
+                                                <Box
+                                                    //  border={"1px solid red"}
+                                                    w="85%">
+                                                    <Text pl={5} fontSize={{ base: "16px", md: "17px", lg: "18px" }} color={"#000000"} textAlign={"left"}>
+                                                        {el.discription}
+                                                    </Text>
+
+                                                    <Text fontSize={{ base: "12px", md: "13px", lg: "13px" }} pl={5} >USD $ <Text as="span" fontWeight={"500"} fontSize={{ base: "20px", md: "23px" }}>{el.price}</Text></Text>
+                                                </Box>
+
+                                                <Box w="15%" h="100%"
+                                                    //  border={"1px solid yellow"} 
+                                                    position={"relative"}>
+                                                    <Box
+                                                        className="hover-box" visibility={"visible"} transition="visibility 0.5s, opacity 0.5s"
+                                                        opacity={{ base: "1", md: "1", lg: "0" }} display={"flex"} alignContent={"center"} justifyContent={"center"} alignItems={"center"} w="35px" h="35px" borderRadius={"50%"} position={"absolute"} bottom="20%" bg="#1273de">
+                                                        <ChevronRightIcon color="#fff" />
+                                                    </Box>
+
+                                                </Box>
+
+
+
+
+                                            </Box>
+
                                         </Box>
+                                    </Link>
+                                ))}
 
 
 
+                            </Grid>
+                        )}
 
-                                    </Box>
-
-                                </Box>
-                                </Link>
-                            ))}
-
-
-
-                        </Grid>
 
 
 

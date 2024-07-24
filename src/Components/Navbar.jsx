@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Flex, Spacer, Button, useDisclosure, Image, Text, Icon } from '@chakra-ui/react';
+import { Box, Flex, Spacer, Button, useDisclosure, Image, Text, VStack } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { FiShoppingCart, FiSearch, FiUser } from 'react-icons/fi';
 import { CloseIcon } from '@chakra-ui/icons';
@@ -9,6 +9,7 @@ import { scroller } from 'react-scroll';
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate()
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -197,7 +198,30 @@ const Navbar = () => {
         </Box>
         <Box display={{ base: "none", md: "flex" }} alignItems={"center"} justifyContent={"space-evenly"} w={{ base: "0%", md: "10%" }} h="55px" >
           <Box w="70px" display={"flex"} alignItems={"center"} justifyContent={"space-evenly"} h="35px" borderRadius={"2xl"}>
-            <FiSearch style={{ fontSize: '20px', strokeWidth: '1.4px' }} /> <FiUser style={{ fontSize: '20px', strokeWidth: '1.4px' }} />
+            <FiSearch style={{ fontSize: '20px', strokeWidth: '1.4px' }} />
+            <FiUser style={{ fontSize: '20px', strokeWidth: '1.4px' }}
+              position="relative"
+              onMouseEnter={() => setShowDropdown(true)}
+              onMouseLeave={() => setShowDropdown(false)}
+            />
+            {showDropdown && (
+              <VStack
+                position="absolute"
+                top="35px"
+                right="18%"
+                bg="white"
+                shadow="md"
+                borderRadius="md"
+                p="2"
+                spacing="2"
+                zIndex="1"
+                onMouseEnter={() => setShowDropdown(true)}
+                onMouseLeave={() => setShowDropdown(false)}
+              >
+                <Button w="full" size="sm">Login</Button>
+                <Button w="full" size="sm">Signup</Button>
+              </VStack>
+            )}
           </Box>
         </Box>
         <Box onClick={handleWhereToBuy} _hover={{ cursor: "pointer" }} display={{ base: "none", md: "flex" }} alignItems={"center"} justifyContent={"space-evenly"} w={{ base: "0%", md: "10%" }} h="55px" >

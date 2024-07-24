@@ -35,7 +35,7 @@ function AllRoutes() {
                 <Routes>
                     <Route path="/" element={<Home />} />
 
-                    <Route path="/abc" element={
+                    <Route path="/dynamic/combinator/INSPIRE3" element={
                         <PrivateRoute>
                             <Product />
                         </PrivateRoute>

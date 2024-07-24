@@ -78,7 +78,7 @@ function Signup() {
           toast({
             title: error.message === "Request failed with status code 400" ? "Email already exist in data base...😬" : "We are enable to creat your account...😥",
             description: `${error.message}`,
-            status: 'success',
+            status: 'error',
             duration: 5000,
             isClosable: true,
           })

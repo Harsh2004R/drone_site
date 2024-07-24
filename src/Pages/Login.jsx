@@ -62,7 +62,16 @@ function Login() {
       }
     } catch (error) {
       console.error('Error in login :', error);
-      alert('Login failed. Wrong email or password.');
+      // alert('Login failed. Wrong email or password.');
+      setTimeout(() => {
+          toast({
+            title: error.message === "Request failed with status code 400" ? "Wrong email or password...😬" : "We are enable to login your account...😥",
+            description: `${error.message}`,
+            status: 'error',
+            duration: 5000,
+            isClosable: true,
+          })
+      }, 500);
     }
   }
   console.log(isAuth)

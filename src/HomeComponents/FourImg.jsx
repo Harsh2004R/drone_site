@@ -152,22 +152,22 @@ function FourImg() {
     const textStyle1 = {
         position: "absolute",
         textAlign: "center",
-        textDecoration: "underline", fontSize: "15px",
-        top: useBreakpointValue({ base: "10%", md: "10vh", lg: "18vh" }),
+        fontSize: "15px",
+        top: useBreakpointValue({ base: "25%", md: "15vh", lg: "18vh" }),
         left: "42%",
-        transform: "translateX(-50%)",
-        color: "#26b0ee",
+        transform: useBreakpointValue({ base: "translateX(-80%)", md: "translateX(-65%)", lg: "translateX(-50%)" }),
+        color: "#546E7A",
 
 
     };
     const textStyle2 = {
         position: "absolute",
         textAlign: "center",
-        textDecoration: "underline", fontSize: "15px",
-        top: useBreakpointValue({ base: "10%", md: "10vh", lg: "18vh" }),
+        fontSize: "15px",
+        top: useBreakpointValue({ base: "25%", md: "15vh", lg: "18vh" }),
         left: "58%",
-        transform: "translateX(-50%)",
-        color: "#26b0ee",
+        transform: useBreakpointValue({ base: "translateX(-20%)", md: "translateX(-35%)", lg: "translateX(-50%)" }),
+        color: "#546E7A",
 
 
     };
@@ -197,13 +197,13 @@ function FourImg() {
                                             as="img"
                                             src={item.text_svg}
                                             alt={`SVG ${index + 1}`}
-                                            style={{...svgStyle}}
+                                            style={{ ...svgStyle }}
                                             zIndex="999"
                                             width={"40%"}
                                         />
                                         <Box display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"}>
-                                            <Text style={textStyle1} > Learn More</Text>
-                                           <Link to="/buy"><Text style={textStyle2}>Where to Buy</Text></Link> 
+                                            <Text style={textStyle1} _hover={{ textDecoration: "underline" }}> Learn More {">"}</Text>
+                                            <Link to="/buy"><Text style={textStyle2} _hover={{ textDecoration: "underline" }}>Where to Buy {">"}</Text></Link>
                                         </Box>
                                     </Link>
                                 )}
