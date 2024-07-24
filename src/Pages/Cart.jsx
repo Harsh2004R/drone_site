@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const Cart = () => {
 
-    const BASE_URL = "http://192.168.102.120:4000/"
+    const BASE_URL = "http://192.168.124.120:4000/"
     const [cartItems, setCartItems] = useState([]);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -51,6 +51,7 @@ const Cart = () => {
         };
 
         fetchProductDetails();
+        // console.log(products)
 
 
     }, []);
@@ -140,11 +141,13 @@ const Cart = () => {
     }
 
     // This function will reflect final price before proceding to CheckOut page......
-
     const totalSum = products.reduce((sum, product) => {
         const totalProductPrice = (product.price || 0) * (product.quantity || 0);
         return sum + totalProductPrice;
     }, 0);
+
+
+
     console.log('Grand Sum of Prices:', totalSum);
     return (
         <>
