@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const Cart = () => {
 
-    const BASE_URL = "http://192.168.124.120:4000/"
+    const BASE_URL = "http://192.168.188.120:4000/"
     const [cartItems, setCartItems] = useState([]);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -149,6 +149,48 @@ const Cart = () => {
 
 
     console.log('Grand Sum of Prices:', totalSum);
+
+    const handleCheckOut = async () => {
+          // making a get req to server ...
+        const { data: { key } } = await axios.get(`${BASE_URL}api/get/key`)
+        console.log(key);
+        // making post req to server ...
+        // this req will create a order via razorpay ...
+        try {
+            const amount = totalSum;
+            const { data: { order } } = await axios.post(`${BASE_URL}api/checkout`, {amount})
+            console.log(order.id);
+            const options = {
+                key: key,
+                amount: order.amount,
+                currency: "INR",
+                name: "DJI Global",
+                description: "Paying to dji global",
+                image: "https://avatars.githubusercontent.com/u/115461808?v=4",
+                order_id: order.id,
+                callback_url: "http://192.168.188.120:4000/api/paymentVerification",
+                prefill: {
+                    name: null,
+                    email: "gaurav.kumar@example.com",
+                    contact: "9000090000"
+                },
+                notes: {
+                    address: "Razorpay Corporate Office"
+                },
+                theme: {
+                    color: "#3399cc"
+                }
+            };
+            const rzp1 = new Razorpay(options);
+            rzp1.open();
+        } catch (error) {
+            console.log("error is posting amount to server", error.message)
+        }
+    }
+
+
+
+
     return (
         <>
 
@@ -261,7 +303,7 @@ const Cart = () => {
                             >
                                 <Text fontSize={{ base: "14px", md: "16px" }} color="#6C7073">Continue Shopping</Text>
                             </Button></Link>
-                            <Link to="/checkout"><Button isDisabled={totalSum === 0} w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
+                            <Button onClick={handleCheckOut} isDisabled={totalSum === 0} w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
                                 borderTopLeftRadius={"30px"} borderTopRightRadius={"30px"}
                                 borderBottomLeftRadius={"30px"} borderBottomRightRadius={"30px"} bg="#2196F3" transition={"0.3s ease"}
                                 justifyContent={"center"} alignItems={"center"} alignContent={"center"}
@@ -270,7 +312,6 @@ const Cart = () => {
                             >
                                 <Text fontSize={{ base: "14px", md: "16px" }} color="#FFFFFF">Check Out</Text>
                             </Button>
-                            </Link>
                         </Flex>
                     </Box>
                 </Box>

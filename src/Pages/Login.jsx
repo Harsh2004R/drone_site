@@ -35,7 +35,7 @@ function Login() {
     // console.log(loginrData)
     try {
 
-      const response = await axios.post('http://192.168.124.120:4000/users/login', loginrData);
+      const response = await axios.post('http://192.168.188.120:4000/users/login', loginrData);
 
       console.log({ msg: "login success" }, { status: response.status });
       // saving jwt token in local storage..
@@ -43,6 +43,7 @@ function Login() {
       localStorage.setItem("USER_TOKEN", token,);
       localStorage.setItem("USER_ID", user.userId);
       localStorage.setItem("USER_CART", user.cart);
+      localStorage.setItem("USER_EMAIL", user.email);
 
 
       if (response.status == 200) {

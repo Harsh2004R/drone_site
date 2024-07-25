@@ -27,6 +27,7 @@ import Operational_system from '../ProductComponents/Operational_system.jsx'
 import Combinator from '../Dynamic-product-pages/Combinator.jsx'
 import Auth from "../Admin/Auth.jsx"
 import AdminNav from "../Admin/AdminNav.jsx"
+import Success_Payment from '../Pages/Success_Payment.jsx'
 function AllRoutes() {
     return (
         <>
@@ -79,7 +80,7 @@ function AllRoutes() {
                     <Route path="/design" element={<IndustrialDesign />} />
                     <Route path="/video" element={<Video_transmission />} />
                     <Route path="/opt" element={<Operational_system />} />
-                    {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
+                     <Route path="/success/payment" element={<Success_Payment />} />
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
 
 
