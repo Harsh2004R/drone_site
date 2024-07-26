@@ -16,7 +16,7 @@ function Signup() {
   const [error, setError] = useState(false);
 
   const handleEMAILChange = (e) => {
-    setEmail(e.target.value);
+    setEmail(e.target.value.toLowerCase());
   };
 
   const handlePASSChange = (e) => {
@@ -53,7 +53,7 @@ function Signup() {
     simulateProgress([1, 15, 29, 42], 1000); // Initial progress steps
 
     try {
-      const response = await axios.post('http://192.168.114.120:4000/users/register', registerData);
+      const response = await axios.post('http://192.168.188.120:4000/users/register', registerData);
 
       if (response.status === 200) {
           toast({

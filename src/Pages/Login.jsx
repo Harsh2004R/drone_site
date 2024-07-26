@@ -19,7 +19,7 @@ function Login() {
     password: password
   }
   const handleEMAILChange = (e) => {
-    setEmail(e.target.value)
+    setEmail(e.target.value.toLowerCase())
   }
   const handlePASSChange = (e) => {
     setPassword(e.target.value)
@@ -65,13 +65,13 @@ function Login() {
       console.error('Error in login :', error);
       // alert('Login failed. Wrong email or password.');
       setTimeout(() => {
-          toast({
-            title: error.message === "Request failed with status code 400" ? "Wrong email or password...😬" : "We are enable to login your account...😥",
-            description: `${error.message}`,
-            status: 'error',
-            duration: 5000,
-            isClosable: true,
-          })
+        toast({
+          title: error.message === "Request failed with status code 400" ? "Wrong email or password...😬" : "We are enable to login your account...😥",
+          description: `${error.message}`,
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        })
       }, 500);
     }
   }

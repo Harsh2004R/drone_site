@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Flex, Button, useDisclosure, Image, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, Button, useDisclosure, Image, Text, VStack, useToast } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { FiShoppingCart, FiSearch, FiUser } from 'react-icons/fi';
 import { CloseIcon } from '@chakra-ui/icons';
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate()
+  const toast = useToast()
   const isAuth = localStorage.getItem("USER_ID")
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -46,7 +47,23 @@ const Navbar = () => {
     navigate("/login")
   }
   const handleLogout = () => {
-    localStorage.clear()
+    // localStorage.clear()
+    const examplePromise = new Promise((resolve, reject) => {
+      setTimeout(() => resolve(200), 2000)
+    })
+    toast.promise(examplePromise, {
+      success: { title: 'You are logged out', description: 'Login again to get full access...' },
+      error: { title: 'logging out rejected', description: `Something wrong to logout user UID :- ${isAuth}` },
+      loading: { title: 'status pending..', description: 'kindly wait' },
+    })
+    examplePromise.then(() => {
+      localStorage.clear()
+    }).catch((error) => {
+      console.error(`An error occurred: to logging out user :-  ${isAuth}`, error);
+    })
+  }
+  const handleSignup = () => {
+    navigate("/signup")
   }
 
 
@@ -228,8 +245,8 @@ const Navbar = () => {
                 onMouseEnter={() => setShowDropdown(true)}
                 onMouseLeave={() => setShowDropdown(false)}
               >
-                <Button w="full" size="sm" backgroundColor={"#fff"} _hover={{ bgColor: "#fff", textColor: "blue.500" }}>Signup</Button>
-                <Button w="full" onClick={isAuth !== null ? handleLogout : handleLogin }  backgroundColor={"#fff"} _hover={{ bgColor: "#fff", textColor: "blue.500" }} size="sm">{isAuth == null ? "Login" : "Logout"}</Button>
+                <Button w="full" onClick={handleSignup} size="sm" backgroundColor={"#fff"} _hover={{ bgColor: "#fff", textColor: "blue.500" }}>Signup</Button>
+                <Button w="full" onClick={isAuth !== null ? handleLogout : handleLogin} backgroundColor={"#fff"} _hover={{ bgColor: "#fff", textColor: "blue.500" }} size="sm">{isAuth == null ? "Login" : "Logout"}</Button>
               </VStack>
             )}
           </Box>
