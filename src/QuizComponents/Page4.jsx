@@ -2,11 +2,12 @@
 import React, { useState } from 'react'
 import Footer from "../Components/Footer.jsx"
 import Navbar from "../Components/Navbar.jsx"
-import { Box, Stack, RadioGroup, Radio, Heading, Text, Container, useDisclosure } from '@chakra-ui/react'
+import { useToast, Box, Stack, RadioGroup, Radio, Heading, Text, Container, useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom';
 import CustomAlert from '../Alerts/CustomAlert.jsx';
 const Page4 = () => {
   const navigate = useNavigate();
+  const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [value, setValue] = useState('');
   console.log(value)
@@ -17,7 +18,19 @@ const Page4 = () => {
     if (value == "") {
       onOpen()
     } else {
-      navigate("/quiz/final/result")
+      const examplePromise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve(200), 5000)
+      })
+      toast.promise(examplePromise, {
+        success: { title: 'Feedback saved.', description: 'Looks great' },
+        error: { title: 'Feedback rejected !', description: 'Something wrong' },
+        loading: { title: 'Feedback pending...', description: 'Please wait' },
+      })
+      examplePromise.then(() => {
+        navigate("/buy");
+      }).catch((error) => {
+        console.error("An error occurred:", error);
+      })
     }
   }
 

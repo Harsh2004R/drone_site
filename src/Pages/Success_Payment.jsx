@@ -60,6 +60,7 @@ const Success_Payment = () => {
             if (res.status == 200) {
                 console.log("data send to server...inside user's shop history")
                 setLoading(false)
+                localStorage.removeItem("cart-items");
                 window.location.href = '/'
             } else {
                 console.log("failed to send  shop history data ...inside user's collection")

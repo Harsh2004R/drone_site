@@ -8,29 +8,33 @@ import {
     ModalCloseButton,
     Button,
     Text,
+    IconButton,
 } from '@chakra-ui/react';
+import { CheckIcon } from '@chakra-ui/icons';
+import {AiOutlineAlert} from "react-icons/ai"
 
 const CustomAlert = ({ isOpen, onClose }) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>Alert</ModalHeader>
+                <ModalHeader color="#546E7A">Alert</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                    <Text>Please select one option before proceeding.</Text>
+                    <Text color="blue.500">Please select one option before proceeding.</Text>
                 </ModalBody>
                 <Button
                     mt={4}
                     mb={4}
-                    borderTopRightRadius={"50%"}
-                    borderTopLeftRadius={"50%"}
-                    _hover={{ bgColor: "#fff", border: "1px solid lime", color: "#000" }}
+                    bgColor={"#fff"}
+                    _hover={{ bgColor: "#fff", color: "#000" }}
                     onClick={onClose}
                     alignSelf="center"
                     color="#fff"
-                    bgColor="#79abd2">
-                    OK
+                    textColor={"#000"}
+                    // bgColor="#79abd2"
+                    >
+                   <Text _hover={{color: "green.400" }} color="#546E7A">OK</Text> 
                 </Button>
             </ModalContent>
         </Modal>
