@@ -1,16 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Flex, Spacer, Button, useDisclosure, Image, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, Button, useDisclosure, Image, Text, VStack } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { FiShoppingCart, FiSearch, FiUser } from 'react-icons/fi';
 import { CloseIcon } from '@chakra-ui/icons';
-import { scroller } from 'react-scroll';
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isScrolled, setIsScrolled] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate()
+  const isAuth = localStorage.getItem("USER_ID")
   const handleScroll = () => {
     if (window.scrollY > 0) {
       setIsScrolled(true);
@@ -41,6 +41,16 @@ const Navbar = () => {
   const handleCloseNav = () => {
     onClose()
   }
+
+  const handleLogin = () => {
+    navigate("/login")
+  }
+  const handleLogout = () => {
+    localStorage.clear()
+  }
+
+
+
 
 
 
@@ -218,8 +228,8 @@ const Navbar = () => {
                 onMouseEnter={() => setShowDropdown(true)}
                 onMouseLeave={() => setShowDropdown(false)}
               >
-                <Button w="full" size="sm">Login</Button>
-                <Button w="full" size="sm">Signup</Button>
+                <Button w="full" size="sm" backgroundColor={"#fff"} _hover={{ bgColor: "#fff", textColor: "blue.500" }}>Signup</Button>
+                <Button w="full" onClick={isAuth !== null ? handleLogout : handleLogin }  backgroundColor={"#fff"} _hover={{ bgColor: "#fff", textColor: "blue.500" }} size="sm">{isAuth == null ? "Login" : "Logout"}</Button>
               </VStack>
             )}
           </Box>
