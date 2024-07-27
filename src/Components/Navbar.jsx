@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Flex, Button, useDisclosure, Image, Text, VStack, useToast } from '@chakra-ui/react';
+import { Box, Flex, Button, useDisclosure, Image, Text, VStack, useToast, Center } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { FiShoppingCart, FiSearch, FiUser } from 'react-icons/fi';
 import { CloseIcon } from '@chakra-ui/icons';
@@ -65,6 +65,9 @@ const Navbar = () => {
   const handleSignup = () => {
     navigate("/signup")
   }
+  const handleCart = ()=>{
+    navigate("/cart")
+  }
 
 
 
@@ -99,7 +102,7 @@ const Navbar = () => {
           >
 
           </Button>
-          <Box display={{ base: 'block', md: 'none' }} w="55px" h={{ base: "55px", md: "55px" }}  >
+          <Box onClick={handleHome} display={{ base: 'block', md: 'none' }} w="55px" h={{ base: "55px", md: "55px" }}  >
             <Image w="100%" h="100%" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAAaVBMVEX///
           8VFRUAAAALCwvLy8s8PDxpaWnj4+P7+/sSEhJ8fHzIyMj09PRsbGwGBgYzMzNxcXHd3d3X19fr6+tZWVlKSkqFhYVSUlKWlpZERETAwMCMjIys
           rKy5ubkuLi4nJyeioqIgICBhYWHAKhIRAAAG90lEQVR4nO2b63qqOhCGIUEJSEHEAyIIeP8XuSSJtXuvfKGSuqHPnvdnKWGSzCkz0fMIgiAIgi
@@ -126,7 +129,7 @@ const Navbar = () => {
           J4G5YY63hS80wgyUL82Fs9Vy9wX2KsG2tPFibd/DV96MU4nW9VJ9suS7JdAhBf2ol7wt3tDKHLUZlUofymrhUxka5uNkt0sd5ItWMMluf82+IH+G
           eD4cTqfbehsfL2VdbfIwLEAzdGGIBPL8iQBBEARBEARBEARBEARBEARBEARBEARBEMT/kD91tWukUb8OYwAAAABJRU5ErkJggg==" />
           </Box>
-          <Box w="70px" display={"flex"} alignItems={"center"} justifyContent={"space-evenly"} bgColor="rgb(33, 150, 243)" h="35px" borderRadius={"2xl"}>
+          <Box onClick={handleWhereToBuy} w="70px" display={"flex"} alignItems={"center"} justifyContent={"space-evenly"} bgColor="rgb(33, 150, 243)" h="35px" borderRadius={"2xl"}>
             <FiShoppingCart color='#fff' /><Text color="#fff">Buy</Text>
           </Box>
         </Box>
@@ -215,6 +218,11 @@ const Navbar = () => {
             <Text _hover={{ cursor: "pointer" }} onClick={handleWhereToBuy} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }} >
               Where to buy
             </Text>
+            <Center w="70px" h="30px" flexDirection={"row"} justifyContent={"space-evenly"} alignItems={"center"} alignContent={"center"} display={{ base: isOpen ? 'flex' : 'none', md: 'none' }} >
+            <Text align={"center"} _hover={{ cursor: "pointer" }} onClick={handleCart} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt="15px" mb={{ base: "15px", md: "0px" }} display={"flex"}>Cart</Text>
+            <FiShoppingCart size={"20px"}/>
+
+            </Center>
             {/* <Box w={{base:"0px",md:"15%"}}   h="auto" border={"1px solid green"}>
 
         </Box> */}
@@ -251,7 +259,7 @@ const Navbar = () => {
             )}
           </Box>
         </Box>
-        <Box onClick={handleWhereToBuy} _hover={{ cursor: "pointer" }} display={{ base: "none", md: "flex" }} alignItems={"center"} justifyContent={"space-evenly"} w={{ base: "0%", md: "10%" }} h="55px" >
+        <Box  onClick={handleWhereToBuy} _hover={{ cursor: "pointer" }} display={{ base: "none", md: "flex" }} alignItems={"center"} justifyContent={"space-evenly"} w={{ base: "0%", md: "10%" }} h="55px" >
           <Box w="70px" display={"flex"} alignItems={"center"} justifyContent={"space-evenly"} bgColor="rgb(33, 150, 243)" h="35px" borderRadius={"2xl"}>
             <FiShoppingCart color='#fff' /><Text color="#fff">Buy</Text>
           </Box>

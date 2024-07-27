@@ -41,7 +41,7 @@ const Success_Payment = () => {
                 toast.promise(examplePromise, {
                     success: { title: 'Confirmation mail', description: 'Email has been sent to your provided address.' },
                     error: { title: 'Sending email rejected!', description: 'Something went wrong or email is incorrect...' },
-                    loading: { title: 'Sending email...', description: 'Getting your order details from there...' },
+                    loading: { title: 'Sending email...', description: 'Get your order details from there...' },
                 });
 
                 examplePromise.then(() => {
