@@ -7,9 +7,8 @@ import {
     Text,
     Image,
     Button,
-    VStack,
-    HStack,
     Spinner,
+    useToast,
 } from '@chakra-ui/react';
 import { useSearchParams } from "react-router-dom";
 import { ArrowBackIcon } from '@chakra-ui/icons';
@@ -20,11 +19,47 @@ const Success_Payment = () => {
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)
     const searchQuerry = useSearchParams()[0];
+    const toast = useToast()
     const reff_id = searchQuerry.get("reference");
 
-    useEffect(() => {
-        const localData = localStorage.getItem("cart-items")
+    const sendMail = async () => {
+        const email = localStorage.getItem("USER_EMAIL")
+        try {
+            setLoading(true)
+            if (reff_id !== null && email !== "") {
+                const res = await axios.post(`${BASE_URL}api/sendPaymentMail`, { email: email, reff_id: reff_id });
 
+                const examplePromise = new Promise((resolve, reject) => {
+                    if (res.status === 200) {
+                        setTimeout(() => resolve(200), 4000);
+                        setLoading(false)
+                    } else {
+                        reject(new Error('Failed to send email'));
+                    }
+                });
+
+                toast.promise(examplePromise, {
+                    success: { title: 'Confirmation mail', description: 'Email has been sent to your provided address.' },
+                    error: { title: 'Sending email rejected!', description: 'Something went wrong or email is incorrect...' },
+                    loading: { title: 'Sending email...', description: 'Getting your order details from there...' },
+                });
+
+                examplePromise.then(() => {
+                    setLoading(false)
+                    window.location.href = '/'
+                }).catch((error) => {
+                    console.error("An error occurred: failed to resolve promise of sending email...", error);
+                });
+            }
+        } catch (error) {
+            console.log("we need a reff_code....first", error)
+        }
+    }
+
+
+    useEffect(() => {
+        // reff_id !== null || "" ? sendMail() : null
+        const localData = localStorage.getItem("cart-items")
         const parsedData = JSON.parse(localData);
         const cart = parsedData.state.cart;
         if (localData) {
@@ -43,14 +78,20 @@ const Success_Payment = () => {
         }
         // console.log(data)
     }, [])
+
+
+
+
     useEffect(() => {
         // console.log(data)
     }, [data])
 
 
+
+
     const CreateShopHistory = async () => {
         const user_id = localStorage.getItem("USER_ID")
-        console.log(user_id)
+        // console.log(user_id)
         try {
             setLoading(true)
             const res = await axios.post(`${BASE_URL}users/shophistory`, {
@@ -61,7 +102,7 @@ const Success_Payment = () => {
                 console.log("data send to server...inside user's shop history")
                 setLoading(false)
                 localStorage.removeItem("cart-items");
-                window.location.href = '/'
+                sendMail();
             } else {
                 console.log("failed to send  shop history data ...inside user's collection")
                 setLoading(true)
@@ -72,11 +113,13 @@ const Success_Payment = () => {
         }
     }
 
+
+
     return (
         <>
             {loading ? (
                 <Center w="100%" h="100vh">
-                    <Spinner />
+                    <Spinner size='lg'/>
                 </Center>
             ) : (
                 <Box background="#fff" minH="100vh">

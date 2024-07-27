@@ -29,7 +29,7 @@ const dynamic_data = {
 
 
 const Hero = () => {
-    const baseURL = "http://192.168.114.120:4000"
+    const baseURL = "http://192.168.188.120:4000"
     const { id } = useParams();
     const [pageData, setPageData] = useState(null);
     const [loading, setLoading] = useState(true);

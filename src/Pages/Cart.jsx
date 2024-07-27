@@ -106,13 +106,11 @@ const Cart = () => {
 
 
 
-
     // This function will update UI also display latest || updated data...
     const handleFetchAgain = async () => {
         const Zustand_state = localStorage.getItem("cart-items");
         const parsedState = JSON.parse(Zustand_state);
         const cartItems = parsedState.state.cart;
-
         // Transform the cart items into the desired format
         const cartArray = Object.keys(cartItems).map(productID => {
             return {
@@ -120,7 +118,6 @@ const Cart = () => {
                 quantity: cartItems[productID]
             }
         });
-
         setCartItems(cartArray);
         try {
             const productDetails = await Promise.all(
@@ -131,35 +128,30 @@ const Cart = () => {
             );
             setProducts(productDetails);
             setLoading(false);
-
-
         } catch (error) {
             console.error("Error fetching product details:", error);
             setLoading(false);
         }
         // console.log("new function called")
     }
-
     // This function will reflect final price before proceding to CheckOut page......
     const totalSum = products.reduce((sum, product) => {
         const totalProductPrice = (product.price || 0) * (product.quantity || 0);
         return sum + totalProductPrice;
     }, 0);
 
-
-
     console.log('Grand Sum of Prices:', totalSum);
-
     const handleCheckOut = async () => {
-          // making a get req to server ...
+        const uid = localStorage.getItem("USER_ID")
+        // making a get req to server ...
         const { data: { key } } = await axios.get(`${BASE_URL}api/get/key`)
         console.log(key);
         // making post req to server ...
         // this req will create a order via razorpay ...
         try {
             const amount = totalSum;
-            const { data: { order } } = await axios.post(`${BASE_URL}api/checkout`, {amount})
-            console.log(order.id);
+            const { data: { order } } = await axios.post(`${BASE_URL}api/checkout`, { amount, uid })
+            // console.log(order.id);
             const options = {
                 key: key,
                 amount: order.amount,
@@ -171,7 +163,7 @@ const Cart = () => {
                 callback_url: "http://192.168.188.120:4000/api/paymentVerification",
                 prefill: {
                     name: null,
-                    email: "gaurav.kumar@example.com",
+                    email: "harshsharmaktm03@gmail.com",
                     contact: "9000090000"
                 },
                 notes: {
@@ -187,7 +179,6 @@ const Cart = () => {
             console.log("error is posting amount to server", error.message)
         }
     }
-
 
 
 
