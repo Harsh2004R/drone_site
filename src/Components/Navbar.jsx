@@ -65,7 +65,7 @@ const Navbar = () => {
   const handleSignup = () => {
     navigate("/signup")
   }
-  const handleCart = ()=>{
+  const handleCart = () => {
     navigate("/cart")
   }
 
@@ -206,23 +206,22 @@ const Navbar = () => {
             <Text _hover={{ cursor: "pointer" }} onClick={handleHandHeld} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
               Handheld
             </Text>
+            <Text _hover={{ cursor: "pointer" }} onClick={handleWhereToBuy} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }} >
+              Where to buy
+            </Text>
             <Text _hover={{ cursor: "pointer" }} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
               Specialize
             </Text>
             <Text _hover={{ cursor: "pointer" }} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
-              Explore
-            </Text>
-            <Text _hover={{ cursor: "pointer" }} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }} >
               Support
             </Text>
-            <Text _hover={{ cursor: "pointer" }} onClick={handleWhereToBuy} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }} >
-              Where to buy
-            </Text>
-            <Center w="70px" h="30px" flexDirection={"row"} justifyContent={"space-evenly"} alignItems={"center"} alignContent={"center"} display={{ base: isOpen ? 'flex' : 'none', md: 'none' }} >
-            <Text align={"center"} _hover={{ cursor: "pointer" }} onClick={handleCart} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt="15px" mb={{ base: "15px", md: "0px" }} display={"flex"}>Cart</Text>
-            <FiShoppingCart size={"20px"}/>
-
+            <Center w="70px" h="30px" flexDirection={"row"} justifyContent={"space-evenly"} alignItems={"center"} alignContent={"center"}>
+              <Text onClick={handleCart}  _hover={{ cursor: "pointer" }} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ base: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }} >
+                Cart
+              </Text>
+              <FiShoppingCart display={{ base: isOpen ? 'none' : 'none', md: 'block' }} size={"20px"} />
             </Center>
+           
             {/* <Box w={{base:"0px",md:"15%"}}   h="auto" border={"1px solid green"}>
 
         </Box> */}
@@ -259,7 +258,7 @@ const Navbar = () => {
             )}
           </Box>
         </Box>
-        <Box  onClick={handleWhereToBuy} _hover={{ cursor: "pointer" }} display={{ base: "none", md: "flex" }} alignItems={"center"} justifyContent={"space-evenly"} w={{ base: "0%", md: "10%" }} h="55px" >
+        <Box onClick={handleWhereToBuy} _hover={{ cursor: "pointer" }} display={{ base: "none", md: "flex" }} alignItems={"center"} justifyContent={"space-evenly"} w={{ base: "0%", md: "10%" }} h="55px" >
           <Box w="70px" display={"flex"} alignItems={"center"} justifyContent={"space-evenly"} bgColor="rgb(33, 150, 243)" h="35px" borderRadius={"2xl"}>
             <FiShoppingCart color='#fff' /><Text color="#fff">Buy</Text>
           </Box>
