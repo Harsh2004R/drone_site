@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Box, useBreakpointValue, Text, Image, Tabs, TabPanels, TabPanel, Tab, TabIndicator, TabList, Button, Heading } from '@chakra-ui/react'
-import { useParams } from 'react-router-dom';
+import { Box, useBreakpointValue, Text, Image, Tabs, TabPanels, TabPanel, Tab, TabIndicator, TabList, Button, } from '@chakra-ui/react'
+import { useParams, useNavigate } from 'react-router-dom';
 import { FiShoppingCart, FiArrowRight } from 'react-icons/fi';
 import Navbar from "../Components/Navbar.jsx"
 import Imaging_system from '../ProductComponents/Imaging_system.jsx';
@@ -9,23 +9,19 @@ import Footer from "../Components/Footer.jsx"
 import LoadingSpinner from '../Components/LoadingSpinner.jsx';
 
 
-const dynamic_data = {
-    PRODUCT_NAME: "",
-    RKT_VIDEO1: "",
-    RKT_VIDEO2: "",
-    ACTUAL_PRO_IMAGE: "",
-    WAYPOINT_PRO_IMAGE: "",
-    DARK_IMG: "",
-    TAB_VID1: "",
-    TAB_VID2: "",
-    TAB_VID3: "",
-    FINAL_PRO_IMG: "",
-    PRICE: ""
-}
-
-
-
-
+// const dynamic_data = {
+//     PRODUCT_NAME: "",
+//     RKT_VIDEO1: "",
+//     RKT_VIDEO2: "",
+//     ACTUAL_PRO_IMAGE: "",
+//     WAYPOINT_PRO_IMAGE: "",
+//     DARK_IMG: "",
+//     TAB_VID1: "",
+//     TAB_VID2: "",
+//     TAB_VID3: "",
+//     FINAL_PRO_IMG: "",
+//     PRICE: ""
+// }
 
 
 const Hero = () => {
@@ -33,6 +29,7 @@ const Hero = () => {
     const { id } = useParams();
     const [pageData, setPageData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchPages = async () => {
@@ -64,7 +61,7 @@ const Hero = () => {
     }, [pageData])
 
     const handleBuy = () => {
-        window.location.href = "/buy"
+        navigate("/buy")
     }
     const videoStyles = {
         width: '100%',

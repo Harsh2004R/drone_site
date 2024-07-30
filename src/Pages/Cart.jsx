@@ -102,7 +102,9 @@ const Cart = () => {
         localStorage.setItem("cart-items", JSON.stringify(updatedState));
         handleFetchAgain()
     };
-
+    const handleHome = () => {
+        navigate("/")
+    }
 
 
 
@@ -286,7 +288,7 @@ const Cart = () => {
 
                     <Box mt="20px" w="100%" h="auto" >
                         <Flex w="100%" h="auto" justifyContent={"space-between"}>
-                            <Link ><Button w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
+                            <Link ><Button onClick={handleHome} w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
                                 borderTopLeftRadius={"30px"} bg="#eee" borderTopRightRadius={"30px"}
                                 borderBottomLeftRadius={"30px"} borderBottomRightRadius={"30px"}
                                 justifyContent={"center"} alignItems={"center"} alignContent={"center"} transition={"0.3s ease"}
@@ -339,7 +341,7 @@ const Cart = () => {
 
                 {/* Conditionaly rendering CheckOut Box here.............*/}
 
-            </Box>
+            </Box >
 
 
             <Footer />
