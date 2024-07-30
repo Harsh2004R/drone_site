@@ -288,14 +288,14 @@ const Cart = () => {
 
                     <Box mt="20px" w="100%" h="auto" >
                         <Flex w="100%" h="auto" justifyContent={"space-between"}>
-                            <Link ><Button onClick={handleHome} w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
+                            <Button onClick={handleHome} w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
                                 borderTopLeftRadius={"30px"} bg="#eee" borderTopRightRadius={"30px"}
                                 borderBottomLeftRadius={"30px"} borderBottomRightRadius={"30px"}
                                 justifyContent={"center"} alignItems={"center"} alignContent={"center"} transition={"0.3s ease"}
                                 _hover={{ bg: '#CFD8DC' }}
                             >
                                 <Text fontSize={{ base: "14px", md: "16px" }} color="#6C7073">Continue Shopping</Text>
-                            </Button></Link>
+                            </Button>
                             <Button onClick={handleCheckOut} isDisabled={totalSum === 0} w={{ base: "150px", md: "300px" }} h={{ base: "50px", md: "50px" }}
                                 borderTopLeftRadius={"30px"} borderTopRightRadius={"30px"}
                                 borderBottomLeftRadius={"30px"} borderBottomRightRadius={"30px"} bg="#2196F3" transition={"0.3s ease"}
