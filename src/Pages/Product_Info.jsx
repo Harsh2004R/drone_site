@@ -9,7 +9,7 @@ import useStore from '../Zustand/store';
 
 const Product_Info = () => {
 
-    const baseURL = "http://192.168.188.120:4000/"
+    const baseURL = "https://drone-site-be2k24.onrender.com/"
     const { id } = useParams();
     const Navigate = useNavigate()
 
@@ -38,7 +38,7 @@ const Product_Info = () => {
 
     const changeProductId = (newID) => {
         Navigate(`/buy/${newID}`)
-        console.log("click---------------123")
+        // console.log("click---------------123")
     }
     const imageStyle = {
         width: useBreakpointValue({ base: "100%", md: "100%" }),
@@ -94,7 +94,7 @@ const Product_Info = () => {
 
 
     useEffect(() => {
-        console.log("random array", random)
+        // console.log("random array", random)
     }, [random])
 
 

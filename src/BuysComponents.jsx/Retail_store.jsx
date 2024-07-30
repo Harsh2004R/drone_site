@@ -72,7 +72,7 @@ function Retail_store() {
         setCategory(value)
 
     };
-    const baseURL = "http://192.168.188.120:4000/"
+    const baseURL = "https://drone-site-be2k24.onrender.com/"
     const fetchProductData = async () => {
         try {
             const response = await axios.get(`${baseURL}api/all/data/get?sort=Price from ${sort}`);

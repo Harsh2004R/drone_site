@@ -6,13 +6,16 @@ import LoadingSpinner from "../Components/LoadingSpinner";
 
 
 const PrivateRoute = ({ children }) => {
-
-    const { isAuth, loading } = useContext(AuthContext)
+    const { isAuth, loading } = useContext(AuthContext);
     if (loading) {
-        // Optionally, you can render a loading spinner here
-        return <LoadingSpinner/>;
+        return <LoadingSpinner />;
+    } else {
+        if (isAuth) {
+            return children;
+        } else {
+            return <Navigate to="/login" />;
+        }
     }
-    return isAuth ? children : <Navigate to="/login" />;
 
 }
 

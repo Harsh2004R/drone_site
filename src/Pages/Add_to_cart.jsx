@@ -55,8 +55,8 @@ const Add_to_cart = () => {
                         <Box w={{ base: "auto", md: "auto" }} >
                             <Box display={"flex"} flexDirection={"column"} justifyContent={"left"}>
                                 <Text color="#000" fontWeight={"500"} fontSize={{ base: "12px", md: "14px" }} >
-                                    2 Item(s) Added to Cart Successfully!</Text>
-                                <Text color="#666666" fontSize={{ base: "12px", md: "14px" }}>DJI Mavic 3 Pro (DJI RC) ×1, DJI Care Refresh 2-Year Plan (DJI Mavic 3 Pro) ×1</Text>
+                                    Your Item(s) Added to Cart Successfully!</Text>
+                                <Text color="#666666" fontSize={{ base: "12px", md: "14px" }}> DJI Care Refresh 2-Year Plan (DJI Mavic 3 Pro) ×1 and Others...</Text>
                             </Box>
                         </Box>
                     </Flex>

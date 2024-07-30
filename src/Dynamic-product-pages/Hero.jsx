@@ -29,7 +29,7 @@ const dynamic_data = {
 
 
 const Hero = () => {
-    const baseURL = "http://192.168.188.120:4000"
+    const baseURL = "https://drone-site-be2k24.onrender.com/"
     const { id } = useParams();
     const [pageData, setPageData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -38,7 +38,7 @@ const Hero = () => {
         const fetchPages = async () => {
             if (id) {
                 try {
-                    const res = await axios.get(`${baseURL}/api/page/${id}`);
+                    const res = await axios.get(`${baseURL}api/page/${id}`);
                     if (res && res.data) {
                         // console.log('API response:', res.data);
                         setPageData(res.data.page_data);
@@ -60,10 +60,12 @@ const Hero = () => {
 
 
     useEffect(() => {
-        console.log(pageData)
+        // console.log(pageData)
     }, [pageData])
 
-
+    const handleBuy = () => {
+        window.location.href = "/buy"
+    }
     const videoStyles = {
         width: '100%',
         height: useBreakpointValue({ base: "70vh", md: "100vh", lg: "100vh" }),
@@ -543,7 +545,7 @@ const Hero = () => {
 
                             </Text>
                             <Box w="100%" display={"flex"} justifyContent={"center"} alignContent={"center"} alignItems={"center"}>
-                                <Button _hover={{ textColor: "#fff", bgColor: "#2196F3", }} transition={"0.5s ease"} borderRadius={"0px"} bg="#212121" textAlign={"center"} textColor={"#fff"} fontWeight={"100"} fontSize={{ base: "xl", md: "xl" }}>Buy now
+                                <Button onClick={handleBuy} _hover={{ textColor: "#fff", bgColor: "#2196F3", }} transition={"0.5s ease"} borderRadius={"0px"} bg="#212121" textAlign={"center"} textColor={"#fff"} fontWeight={"100"} fontSize={{ base: "xl", md: "xl" }}>Buy now
 
                                 </Button>
                             </Box>

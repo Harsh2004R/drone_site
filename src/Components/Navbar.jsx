@@ -68,6 +68,9 @@ const Navbar = () => {
   const handleCart = () => {
     navigate("/cart")
   }
+  // const handleAdminPanel = () =>{
+  //   navigate("/admin/add/products")
+  // }
 
 
 
@@ -212,7 +215,7 @@ const Navbar = () => {
             <Text _hover={{ cursor: "pointer" }} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
               Specialize
             </Text>
-            <Text _hover={{ cursor: "pointer" }} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
+            <Text _hover={{ cursor: "pointer" }}  fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ basE: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }}  >
               Support
             </Text>
             <Center w="70px" h="30px" flexDirection={"row"} justifyContent={"space-evenly"} alignItems={"center"} alignContent={"center"}>

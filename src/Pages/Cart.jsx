@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const Cart = () => {
 
-    const BASE_URL = "http://192.168.188.120:4000/"
+    const BASE_URL = "https://drone-site-be2k24.onrender.com/"
     const [cartItems, setCartItems] = useState([]);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -160,7 +160,7 @@ const Cart = () => {
                 description: "Paying to dji global",
                 image: "https://avatars.githubusercontent.com/u/115461808?v=4",
                 order_id: order.id,
-                callback_url: "http://192.168.188.120:4000/api/paymentVerification",
+                callback_url: `${BASE_URL}api/paymentVerification`,
                 prefill: {
                     name: null,
                     email: "harshsharmaktm03@gmail.com",

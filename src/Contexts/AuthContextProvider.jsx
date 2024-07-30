@@ -12,13 +12,14 @@ const AuthContextProvider = ({ children }) => {
         setIsAuth(true);
         localStorage.setItem('USER_TOKEN', newToken);
     };
+
     useEffect(() => {
         // Check for token in local storage when the app initializes
         const storedToken = localStorage.getItem('USER_TOKEN');
-        console.log("token comming from authContext ", storedToken);
+        // console.log("token comming from authContext ", storedToken);
         if (storedToken) {
-            setIsAuth(true);
             setToken(storedToken);
+            setIsAuth(true);
         } else {
             setIsAuth(false);
         }
@@ -34,7 +35,7 @@ const AuthContextProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ isAuth, token, login, logout, loading }}>
+        <AuthContext.Provider value={{ isAuth, token, login, logout, loading, }}>
             {children}
         </AuthContext.Provider>
     );

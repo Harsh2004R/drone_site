@@ -15,7 +15,7 @@ import { ArrowBackIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 
 const Success_Payment = () => {
-    const BASE_URL = "http://192.168.188.120:4000/"
+    const BASE_URL = "https://drone-site-be2k24.onrender.com/"
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)
     const searchQuerry = useSearchParams()[0];

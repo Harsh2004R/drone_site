@@ -75,7 +75,7 @@ const AdminContent = () => {
             onOpen()
         } else {
             try {
-                const base_url = "http://192.168.16.120:4000/"
+                const base_url = "https://drone-site-be2k24.onrender.com/"
                 const response = await axios.post(`${base_url}admin/add/product`, values);
 
                 console.log({ msg: "add success" }, { status: response.status });

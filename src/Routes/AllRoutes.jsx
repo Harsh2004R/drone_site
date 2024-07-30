@@ -80,13 +80,17 @@ function AllRoutes() {
                     <Route path="/design" element={<IndustrialDesign />} />
                     <Route path="/video" element={<Video_transmission />} />
                     <Route path="/opt" element={<Operational_system />} />
-                     <Route path="/success/payment" element={<Success_Payment />} />
+                    <Route path="/success/payment" element={<Success_Payment />} />
                     {/*  <Route path="pro" element={<ProductSpecsSection />} /> */}
 
 
 
                     <Route path="/admin/auth" element={<Auth />} />
-                    <Route path="/admin/add/products" element={<AdminSide />} />
+                    <Route path="/admin/add/products" element={
+                        <PrivateRoute>
+                            <AdminSide />
+                        </PrivateRoute>
+                    } />
 
 
                 </Routes>

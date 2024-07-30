@@ -35,7 +35,7 @@ function Login() {
     // console.log(loginrData)
     try {
 
-      const response = await axios.post('http://192.168.188.120:4000/users/login', loginrData);
+      const response = await axios.post('https://drone-site-be2k24.onrender.com/users/login', loginrData);
 
       console.log({ msg: "login success" }, { status: response.status });
       // saving jwt token in local storage..
@@ -75,7 +75,7 @@ function Login() {
       }, 500);
     }
   }
-  console.log(isAuth)
+  // console.log(isAuth)
   return (
     <>
       <Box

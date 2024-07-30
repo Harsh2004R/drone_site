@@ -26,7 +26,12 @@ import {
 
 export default function WithSubnavigation() {
     const { isOpen, onToggle } = useDisclosure()
-
+    const handleSignOut = () => {
+        const flag = localStorage.removeItem("ADMIN_TOKEN");
+        if (flag == undefined) {
+            window.location.href = "/admin/auth"
+        }
+    }
     return (
         <Box w="100%" >
             <Flex
@@ -62,10 +67,10 @@ export default function WithSubnavigation() {
                     justify={'flex-end'}
                     direction={'row'}
                     spacing={6}>
-                    <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'}>
-                        Sign In
+                    <Button as={'a'} fontSize={'sm'} fontWeight={400} onClick={handleSignOut}>
+                        Sign Out
                     </Button>
-                    <Button
+                    {/* <Button
                         as={'a'}
                         display={{ base: 'none', md: 'inline-flex' }}
                         fontSize={'sm'}
@@ -77,7 +82,7 @@ export default function WithSubnavigation() {
                             bg: 'blue.500',
                         }}>
                         Sign Up
-                    </Button>
+                    </Button> */}
                 </Stack>
             </Flex>
 
@@ -145,12 +150,12 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
             display={'block'}
             p={2}
             rounded={'md'}
-            _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
+            _hover={{ bg: useColorModeValue('blue.50', 'gray.900') }}>
             <Stack direction={'row'} align={'center'}>
                 <Box>
                     <Text
                         transition={'all .3s ease'}
-                        _groupHover={{ color: 'pink.400' }}
+                        _groupHover={{ color: 'blue.400' }}
                         fontWeight={500}>
                         {label}
                     </Text>
@@ -164,7 +169,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
                     justify={'flex-end'}
                     align={'center'}
                     flex={1}>
-                    <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
+                    <Icon color={'black'} w={5} h={5} as={ChevronRightIcon} />
                 </Flex>
             </Stack>
         </Box>
@@ -232,42 +237,47 @@ const MobileNavItem = ({ label, children, href }) => {
 
 
 const NAV_ITEMS = [
+
     {
-        label: 'Inspiration',
+        label: 'Add Products',
         children: [
             {
-                label: 'Explore Design Work',
-                subLabel: 'Trending Design to inspire you',
-                href: '#',
+                label: 'Add Camera Drones',
+                subLabel: 'Add Product to DJI Camera Drones STORE',
+                href: '/admin/add/products',
             },
             {
-                label: 'New & Noteworthy',
-                subLabel: 'Up-and-coming Designers',
+                label: 'Add HandHeld',
+                subLabel: 'Add Product to DJI HandHeld STORE',
                 href: '#',
+            },
+        ],
+    }, {
+        label: 'Visit',
+        children: [
+            {
+                label: 'Explore Products Page',
+                subLabel: 'DJI Product page with all products',
+                href: '/buy',
+            },
+            {
+                label: 'Explore Cart Page',
+                subLabel: 'DJI Cart page including cart items',
+                href: '/cart',
             },
         ],
     },
     {
-        label: 'Find Work',
-        children: [
-            {
-                label: 'Job Board',
-                subLabel: 'Find your dream design job',
-                href: '#',
-            },
-            {
-                label: 'Freelance Projects',
-                subLabel: 'An exclusive list for contract work',
-                href: '#',
-            },
-        ],
-    },
-    {
-        label: 'Learn Design',
+        label: 'Insights',
         href: '#',
     },
     {
-        label: 'Hire Designers',
+        label: 'Users',
         href: '#',
+    },
+    ,
+    {
+        label: 'Home',
+        href: '/',
     },
 ]

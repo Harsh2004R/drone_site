@@ -7,7 +7,7 @@ import { Text, Box, Divider, Image, Grid, Tab, TabIndicator, TabList, TabPanel, 
 function Aerial_Immersive() {
     const [drones, setDrones] = useState([]);
     const [immersive, setImmersive] = useState([]);
-    const baseURL = "http://192.168.1.8:4000/"  
+    const baseURL = "https://drone-site-be2k24.onrender.com/"  
     const localURL = "http://localhost:4000/"
     const fetchDroneData = async () => {
         try {
