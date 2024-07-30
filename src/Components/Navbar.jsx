@@ -224,6 +224,12 @@ const Navbar = () => {
               </Text>
               <FiShoppingCart display={{ base: isOpen ? 'none' : 'none', md: 'block' }} size={"20px"} />
             </Center>
+            <Text onClick={handleCart} display={{ base: isOpen ? 'block' : 'none', md: 'none' }} _hover={{ cursor: "pointer" }} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ base: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }} >
+                Signup
+              </Text>
+              <Text onClick={isAuth !== null ? handleLogout : handleLogin} display={{ base: isOpen ? 'block' : 'none', md: 'none' }} _hover={{ cursor: "pointer" }} fontWeight={{ base: "500", md: "400", lg: "400" }} fontSize={{ base: "16px", md: "14.5px" }} color="#4d4d4d" ml={{ base: "0px", md: "10px" }} mr={{ base: "0px", md: "10px" }} mt={{ base: "15px", md: "0px" }} mb={{ base: "15px", md: "0px" }} >
+              {isAuth == null ? "Login" : "Logout"}
+              </Text>
            
             {/* <Box w={{base:"0px",md:"15%"}}   h="auto" border={"1px solid green"}>
 
